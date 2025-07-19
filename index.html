@@ -31,14 +31,16 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <!-- NOTA: Si el error 404 para icon-192x192.png persiste, asegúrate de que el archivo exista en assets/favicon/
+         y que la ruta en site.webmanifest sea correcta. -->
 
     <!-- SEO Meta Tags -->
     <link rel="canonical" href="https://todogasysr.com/">
     <meta name="robots" content="index, follow">
 
-    <!-- Security Headers -->
+    <!-- Security Headers - Actualizado para permitir 'data:' en font-src -->
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self' https: data:; img-src 'self' data: https:; font-src 'self' https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https:;">
+        content="default-src 'self' https: data:; img-src 'self' data: https:; font-src 'self' https: data:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https:;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
@@ -933,15 +935,12 @@
             right: 0;
             background: rgba(255, 255, 255, 0.98);
             -webkit-backdrop-filter: blur(10px);
-            /* Added for Safari compatibility */
             backdrop-filter: blur(10px);
             z-index: 1000;
-            /* Valor alto fijo para mayor compatibilidad */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             padding: 0;
             height: 80px;
-            /* Altura fija para mejor consistencia */
             display: flex;
             align-items: center;
         }
@@ -949,7 +948,6 @@
         header.scrolled {
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             height: 70px;
-            /* Ligero cambio de altura al hacer scroll */
         }
 
         .navbar {
@@ -974,7 +972,6 @@
 
         .logo img {
             height: 50px;
-            /* Tamaño más adecuado */
             width: auto;
             max-width: 200px;
             object-fit: contain;
@@ -984,7 +981,6 @@
             display: flex;
             list-style: none;
             gap: 25px;
-            /* Espaciado consistente */
             align-items: center;
             margin: 0;
             padding: 0;
@@ -1063,7 +1059,7 @@
             padding-top: 80px;
             position: relative;
             overflow: hidden;
-            width: 100%; /* Ensure hero takes full width */
+            width: 100%;
         }
 
         .hero::before {
@@ -1077,7 +1073,6 @@
             z-index: 1;
         }
 
-        /* New class for the hero background image */
         .hero-bg-img {
             position: absolute;
             top: 0;
@@ -1096,10 +1091,10 @@
             padding: var(--space-8);
             border-radius: var(--radius-xl);
             background-color: var(--hero-content-bg);
-            -webkit-backdrop-filter: blur(4px); /* Added for Safari compatibility */
+            -webkit-backdrop-filter: blur(4px);
             backdrop-filter: blur(4px);
             transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
-            width: calc(100% - (var(--space-6) * 2)); /* Adjust width to account for container padding */
+            width: calc(100% - (var(--space-6) * 2)); /* Ajustado para el padding del contenedor */
         }
 
         .hero h1 {
@@ -1166,7 +1161,6 @@
             box-shadow: var(--shadow-2xl);
         }
 
-        /* Moved inline style for about image background */
         .about-image img {
             background: #e0e0e0;
         }
@@ -1727,7 +1721,6 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            /* Alinea el logo y el texto a la izquierda */
         }
 
         .footer-logo {
@@ -1834,16 +1827,14 @@
             animation: pulse 2s infinite;
         }
 
-        /* Moved inline style for whatsapp button 1 */
         .whatsapp-btn-tunja {
             bottom: 20px;
             right: 20px;
         }
 
-        /* Moved inline style for whatsapp button 2 */
         .whatsapp-btn-garagoa {
             bottom: calc(var(--space-5) + 65px);
-            right: 20px; /* Ensure it's also on the right */
+            right: 20px;
         }
 
         .whatsapp-btn:hover {
@@ -1857,7 +1848,6 @@
             content: attr(aria-label);
             position: absolute;
             right: 65px;
-            /* Ajustado para el nuevo tamaño del botón */
             white-space: nowrap;
             background: var(--dark);
             color: white;
@@ -1884,7 +1874,6 @@
                 box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
             }
 
-            /* Tamaño de pulso reducido */
             100% {
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
             }
@@ -1894,7 +1883,6 @@
         .back-to-top {
             position: fixed;
             bottom: calc(var(--space-5) + 130px);
-            /* Ajustado para no chocar con WhatsApp */
             right: var(--space-5);
             width: 50px;
             height: 50px;
@@ -1944,238 +1932,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-
-            70% {
-                box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-
-        /* DISEÑO RESPONSIVO */
-        /* Pantallas grandes (1200px+) - Por defecto ya está en .container */
-
-        /* Tabletas grandes (992px - 1199px) */
-        @media (max-width: 1199px) {
-            .container {
-                max-width: 1000px;
-            }
-        }
-
-        /* Tabletas (768px - 991px) */
-        @media (max-width: 991px) {
-            .container {
-                max-width: 800px;
-                padding: 0 20px;
-            }
-
-            .about-content {
-                flex-direction: column;
-            }
-
-            .about-image {
-                order: -1;
-                margin-bottom: 2rem;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.25rem;
-            }
-
-            .nav-links {
-                gap: 15px;
-            }
-        }
-
-        /* Móviles grandes (576px - 767px) */
-        @media (max-width: 767px) {
-            header {
-                height: 70px;
-                padding: 0 15px;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .logo img {
-                height: 45px;
-            }
-
-            .navbar {
-                /* Asegura que el navbar use flexbox para alinear elementos */
-                display: flex;
-                flex-wrap: nowrap;
-                /* Prevent wrapping in navbar, let mobile menu handle it */
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            /* Hide these in the main navbar on small screens, they are handled by mobile menu */
-            .nav-cta,
-            .theme-toggle-container {
-                display: none;
-            }
-
-            /* Show them when mobile menu is active */
-            .nav-links.active .nav-cta,
-            .nav-links.active .theme-toggle-container {
-                display: block;
-                width: 100%;
-                text-align: center;
-                margin-top: 20px;
-                /* Add space when displayed */
-            }
-
-            .nav-links.active .nav-cta .btn {
-                width: 80%;
-                /* Make button wider in mobile menu */
-                max-width: 300px;
-            }
-
-            /* Adjust the position of the mobile menu button */
-            .mobile-menu-btn {
-                order: 2;
-                /* Place it after logo */
-                margin-left: auto;
-                /* Push to the right */
-            }
-
-            .hero-content {
-                padding: var(--space-4);
-                /* Reduce padding on small screens */
-                max-width: 90%;
-                /* Allow content to take up more width */
-                width: calc(100% - (var(--space-4) * 2)); /* Adjusted for mobile padding */
-            }
-
-            .hero h1 {
-                font-size: 1.75rem;
-                /* Adjust font size for better fit */
-            }
-
-            .hero p {
-                font-size: 1rem;
-                /* Adjust font size */
-            }
-
-            .hero-btns {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .section {
-                padding: 3rem 0;
-            }
-
-            .section-title h2 {
-                font-size: 1.5rem;
-            }
-
-            .process-step {
-                flex-direction: column;
-            }
-
-            .step-number {
-                margin-right: 0;
-                margin-bottom: 1rem;
-            }
-
-            .process-steps::before {
-                left: 50%;
-                transform: translateX(-50%);
-                height: calc(100% - 60px);
-                top: 60px;
-            }
-
-            /* Botones flotantes */
-            .whatsapp-btn {
-                bottom: 15px;
-                right: 15px;
-                width: 50px;
-                height: 50px;
-                font-size: 1.25rem;
-            }
-
-            .whatsapp-btn-garagoa {
-                bottom: 80px;
-            }
-
-            .back-to-top {
-                bottom: 145px;
-                right: 15px;
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            /* Asegura que los botones de leer texto no se desborden en móviles */
-            .read-text-btn {
-                width: auto;
-                /* Permite que el ancho se ajuste al contenido */
-                max-width: 100%;
-                /* Evita que se desborde */
-                font-size: var(--text-sm);
-                /* Ajusta el tamaño de la fuente si es necesario */
-                padding: var(--space-2) var(--space-3);
-                /* Ajusta el padding */
-            }
-
-            /* Ajuste para los botones dentro de service-content para que no se desborden */
-            .service-content .read-text-btn {
-                margin-top: var(--space-4);
-                /* Asegura espacio entre el texto y el botón */
-                align-self: flex-start;
-                /* Alinea el botón a la izquierda si el contenedor es flex */
-            }
-        }
-
-        /* Móviles pequeños (hasta 575px) */
-        @media (max-width: 575px) {
-            .container {
-                padding: 0 15px;
-            }
-
-            .hero-content {
-                padding: var(--space-3);
-                /* Further reduce padding */
-                width: calc(100% - (var(--space-3) * 2)); /* Adjusted for smaller mobile padding */
-            }
-
-            .hero h1 {
-                font-size: 1.5rem;
-            }
-
-            .hero p {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Modo oscuro responsivo */
-        @media (max-width: 767px) {
-            body.dark-mode .nav-links {
-                background-color: rgba(33, 37, 41, 0.98);
             }
         }
 
@@ -2338,6 +2094,7 @@
 
         .certifications-slider {
             margin-top: var(--space-8);
+            overflow: hidden; /* Asegura que el slider no se desborde */
         }
 
         .certification-slide {
@@ -2593,6 +2350,259 @@
         .hidden-text {
             display: none;
         }
+
+        /* DISEÑO RESPONSIVO */
+        /* Pantallas grandes (1200px+) - Por defecto ya está en .container */
+
+        /* Tabletas grandes (992px - 1199px) */
+        @media (max-width: 1199px) {
+            .container {
+                max-width: 1000px;
+            }
+        }
+
+        /* Tabletas (768px - 991px) */
+        @media (max-width: 991px) {
+            .container {
+                max-width: 800px;
+                padding: 0 20px;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-image {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.25rem;
+            }
+
+            /* Ocultar nav-links en desktop para mobile */
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Móviles grandes (576px - 767px) */
+        @media (max-width: 767px) {
+            header {
+                height: 70px;
+                padding: 0 15px;
+            }
+
+            .mobile-menu-btn {
+                display: block; /* Siempre visible en móvil */
+                margin-left: auto; /* Empuja a la derecha */
+                font-size: var(--text-2xl);
+                padding: var(--space-2);
+                background: none;
+                border: none;
+                color: var(--text-color);
+                cursor: pointer;
+            }
+
+            .logo img {
+                height: 45px;
+            }
+
+            .navbar {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            /* Menú móvil como overlay de ancho completo */
+            .nav-links {
+                display: none; /* Oculto por defecto */
+                flex-direction: column;
+                position: fixed; /* Cambiado a fixed para cubrir toda la pantalla */
+                top: 70px; /* Debajo del header */
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 70px); /* Ocupa el resto de la altura de la pantalla */
+                background-color: var(--card-bg);
+                box-shadow: var(--shadow-lg);
+                padding: var(--space-4) 0;
+                overflow-y: auto; /* Permite scroll si el contenido es muy largo */
+                transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+                transform: translateX(100%); /* Inicia fuera de la pantalla a la derecha */
+                opacity: 0;
+                pointer-events: none; /* Deshabilita interacciones cuando está oculto */
+                z-index: 999; /* Asegura que esté por encima de otros elementos */
+                align-items: center; /* Centra los elementos verticalmente */
+                justify-content: flex-start; /* Alinea los elementos al inicio */
+            }
+
+            .nav-links.active {
+                display: flex; /* Muestra cuando está activo */
+                transform: translateX(0); /* Se desliza desde la derecha */
+                opacity: 1;
+                pointer-events: auto; /* Habilita interacciones */
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                padding: var(--space-2) 0;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: var(--space-2) var(--space-4);
+                font-size: var(--text-lg);
+            }
+
+            .nav-links a::after {
+                display: none; /* Oculta la línea inferior en los enlaces del menú móvil */
+            }
+
+            /* Asegura que el CTA y el toggle de tema se muestren dentro del menú móvil */
+            .nav-cta,
+            .theme-toggle-container {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin: var(--space-4) 0;
+            }
+
+            .nav-cta .btn {
+                width: 80%;
+                max-width: 250px;
+                margin: 0 auto;
+            }
+
+            .theme-toggle {
+                margin: 0 auto;
+            }
+
+            .hero-content {
+                padding: var(--space-4);
+                max-width: 90%;
+                width: calc(100% - (var(--space-4) * 2));
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+
+            .process-step {
+                flex-direction: column;
+            }
+
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .process-steps::before {
+                left: 50%;
+                transform: translateX(-50%);
+                height: calc(100% - 60px);
+                top: 60px;
+            }
+
+            /* Certifications Slider overflow fix */
+            .certifications-slider .swiper-wrapper {
+                width: 100%; /* Ensure swiper wrapper takes full width */
+            }
+            .certifications-slider .swiper-slide {
+                width: 100% !important; /* Force full width for each slide on mobile */
+            }
+
+            /* Botones flotantes */
+            .whatsapp-btn {
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
+
+            .whatsapp-btn-garagoa {
+                bottom: 80px;
+            }
+
+            .back-to-top {
+                bottom: 145px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .read-text-btn {
+                width: auto;
+                max-width: 100%;
+                font-size: var(--text-sm);
+                padding: var(--space-2) var(--space-3);
+            }
+
+            .service-content .read-text-btn {
+                margin-top: var(--space-4);
+                align-self: flex-start;
+            }
+        }
+
+        /* Móviles pequeños (hasta 575px) */
+        @media (max-width: 575px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-content {
+                padding: var(--space-3);
+                width: calc(100% - (var(--space-3) * 2));
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Modo oscuro responsivo */
+        @media (max-width: 767px) {
+            body.dark-mode .nav-links {
+                background-color: rgba(33, 37, 41, 0.98);
+            }
+        }
     </style>
 </head>
 
@@ -2610,6 +2620,7 @@
                     <img src="img/Logo 2025.png" alt="Logo TODO GAS SYR S.A.S" width="auto" height="80">
                 </a>
 
+                <!-- Menú de navegación principal (oculto en móvil por defecto) -->
                 <ul class="nav-links" id="navLinks" role="menubar">
                     <li role="none"><a href="#home" class="active" role="menuitem">Inicio</a></li>
                     <li role="none"><a href="#about" role="menuitem">Nosotros</a></li>
@@ -2620,6 +2631,7 @@
                     <li role="none"><a href="#hseq" role="menuitem">HSEQ</a></li>
                     <li role="none"><a href="#faq" role="menuitem">FAQ</a></li>
                     <li role="none"><a href="#contact" role="menuitem">Contacto</a></li>
+                    <!-- Botón de llamada y toggle de tema se mostrarán dentro del menú móvil cuando esté activo -->
                     <li class="nav-cta" role="none">
                         <a href="tel:+573209485534" class="btn btn-primary btn-sm" role="menuitem">
                             <i class="fas fa-phone-alt"></i> Llamar ahora
@@ -2635,6 +2647,7 @@
                     </li>
                 </ul>
 
+                <!-- Botón de menú móvil (visible solo en móvil) -->
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú móvil" aria-expanded="false"
                     aria-controls="navLinks">
                     <i class="fas fa-bars" aria-hidden="true"></i>
@@ -3859,9 +3872,12 @@
             // Close menu when clicking on a link
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
-                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    // Solo cierra el menú si la pantalla es móvil
+                    if (window.innerWidth <= 991) { // Usar el breakpoint de tabletas/móviles
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    }
                 });
             });
 
@@ -4098,7 +4114,7 @@
                             if (utterance && window.speechSynthesis.speaking) {
                                 if (window.speechSynthesis.paused) {
                                     window.speechSynthesis.resume();
-                                    this.innerHTML = '<i class="fas fa-pause"></i> Continuar';
+                                    this.innerHTML = '<i class="fas fa-pause"></i> Pausar';
                                 } else {
                                     window.speechSynthesis.pause();
                                     this.innerHTML = '<i class="fas fa-play"></i> Continuar';
