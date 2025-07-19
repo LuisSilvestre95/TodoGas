@@ -14,7 +14,9 @@
     <meta property="og:title" content="TODO GAS SYR S.A.S - Expertos Certificados en Gas Natural y GLP">
     <meta property="og:description"
         content="Instalación profesional, mantenimiento y certificación de redes de gas natural y GLP para hogares y empresas en Colombia.">
-    <meta property="og:image" content="https://todogasysr.com/images/og-image.jpg">
+    <meta property="og:image" content="https://todogasysr.com/images/og-image.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -22,19 +24,27 @@
     <meta property="twitter:title" content="TODO GAS SYR S.A.S - Expertos en Gas Natural y GLP">
     <meta property="twitter:description"
         content="25+ años de experiencia en instalación y mantenimiento de redes de gas natural y GLP en Colombia.">
-    <meta property="twitter:image" content="https://todogasysr.com/images/og-image.jpg">
+    <meta property="twitter:image" content="https://todogasysr.com/images/og-image.webp">
 
-    <!-- Favicon - Actualizado para usar la imagen de llama de gas -->
-    <!-- IMPORTANT: Asegúrate de que la carpeta 'assets/favicon' exista al mismo nivel que index.html -->
-    <!-- y que contenga tus archivos de llama de gas: apple-touch-icon.png, favicon-32x32.png, favicon-16x16.png, y site.webmanifest -->
+    <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="assets/favicon/site.webmanifest">
-    <!-- Opcional: Si generaste un favicon.ico que contiene múltiples tamaños -->
-    <!-- <link rel="shortcut icon" href="assets/favicon/favicon.ico"> -->
 
-    <!-- Preload de fuentes críticas -->
+    <!-- SEO Meta Tags -->
+    <link rel="canonical" href="https://todogasysr.com/">
+    <meta name="robots" content="index, follow">
+
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https: data:; img-src 'self' data: https:; font-src 'self' https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+    <!-- Preload y Preconnect de fuentes críticas y CSS de iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload"
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
         as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -43,19 +53,56 @@
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
             rel="stylesheet">
     </noscript>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
+    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    </noscript>
+    <link rel="preload" href="https://unpkg.com/swiper/swiper-bundle.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    </noscript>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- Swiper JS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "TODO GAS SYR S.A.S",
+      "url": "https://todogasysr.com/",
+      "logo": "https://todogasysr.com/img/Logo 2025.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+57-320-948-5534",
+        "contactType": "customer service",
+        "areaServed": "CO",
+        "availableLanguage": ["es"]
+      },
+      "sameAs": [
+        "https://www.facebook.com/todogasysr",
+        "https://www.instagram.com/todogasysr",
+        "https://www.linkedin.com/company/todogasysr"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Calle 28 N° 18-38",
+        "addressLocality": "Tunja",
+        "addressRegion": "Boyacá",
+        "addressCountry": "CO"
+      }
+    }
+    </script>
 
     <style>
+        /* Variables CSS para el sistema de diseño */
         :root {
-            /* Professional design system */
             --primary: #005F87;
             /* Corporate gas blue */
             --primary-light: #0088CC;
@@ -82,10 +129,9 @@
             --gray-800: #343A40;
             --gray-900: #212529;
 
-            /* WhatsApp */
             --whatsapp: #25D366;
 
-            /* Professional shadows */
+            /* Sombras profesionales */
             --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -94,7 +140,7 @@
             --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
 
-            /* Borders */
+            /* Bordes y radios */
             --radius-sm: 0.125rem;
             --radius-md: 0.25rem;
             --radius-lg: 0.5rem;
@@ -102,11 +148,11 @@
             --radius-2xl: 1rem;
             --radius-full: 9999px;
 
-            /* Transitions */
+            /* Transiciones */
             --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-slow: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
-            /* Spacing */
+            /* Espaciado */
             --space-0: 0px;
             --space-1: 0.25rem;
             --space-2: 0.5rem;
@@ -126,7 +172,7 @@
             --space-56: 14rem;
             --space-64: 16rem;
 
-            /* Typography */
+            /* Tipografía */
             --text-xs: 0.75rem;
             --text-sm: 0.875rem;
             --text-base: 1rem;
@@ -149,6 +195,411 @@
             --z-40: 40;
             --z-50: 50;
             --z-auto: auto;
+
+            /* Variables de Tema (Modo Claro por defecto) */
+            --bg-color: var(--white);
+            --text-color: var(--dark);
+            --text-light-color: var(--gray-700);
+            --card-bg: var(--white);
+            --border-color: var(--gray-200);
+            --light-bg: var(--gray-100);
+            --shadow-primary: rgba(0, 0, 0, 0.1);
+            --shadow-secondary: rgba(0, 0, 0, 0.06);
+            --hero-content-bg: rgba(255, 255, 255, 0.1);
+            --hero-content-shadow: rgba(0, 0, 0, 0.7);
+        }
+
+        /* ====================== */
+        /* VARIABLES DE MODO OSCURO */
+        /* ====================== */
+        body.dark-mode {
+            /* Variables base */
+            --bg-color: var(--gray-900);
+            --text-color: var(--gray-100);
+            --text-light-color: var(--gray-400);
+            --card-bg: var(--gray-800);
+            --border-color: var(--gray-700);
+            --light-bg: var(--gray-800);
+            --shadow-primary: rgba(0, 0, 0, 0.4);
+            --shadow-secondary: rgba(0, 0, 0, 0.2);
+            --hero-content-bg: rgba(0, 0, 0, 0.3);
+            --hero-content-shadow: rgba(0, 0, 0, 0.9);
+
+            /* Estilos base */
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        /* ====================== */
+        /* COMPONENTES PRINCIPALES */
+        /* ====================== */
+
+        /* Encabezado */
+        body.dark-mode header {
+            background: rgba(33, 37, 41, 0.98);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Tipografía */
+        body.dark-mode h1,
+        body.dark-mode h2,
+        body.dark-mode h3,
+        body.dark-mode h4,
+        body.dark-mode h5,
+        body.dark-mode h6 {
+            color: var(--primary-light);
+        }
+
+        body.dark-mode p {
+            color: var(--text-light-color);
+        }
+
+        /* Títulos de sección */
+        body.dark-mode .section-title h2 {
+            color: var(--primary-light);
+        }
+
+        body.dark-mode .section-title h2::after {
+            background: var(--secondary);
+        }
+
+        body.dark-mode .section-title p {
+            color: var(--gray-400);
+        }
+
+        /* Navegación */
+        body.dark-mode .nav-links {
+            background-color: var(--card-bg);
+        }
+
+        body.dark-mode .nav-links a {
+            color: var(--text-color);
+        }
+
+        body.dark-mode .nav-links a::after {
+            background: var(--primary-light);
+        }
+
+        body.dark-mode .mobile-menu-btn,
+        body.dark-mode .theme-toggle {
+            color: var(--text-color);
+        }
+
+        /* ====================== */
+        /* COMPONENTES DE INTERFAZ */
+        /* ====================== */
+
+        /* Tarjetas y contenedores */
+        body.dark-mode .card,
+        body.dark-mode .service-card,
+        body.dark-mode .stat-item,
+        body.dark-mode .hseq-card,
+        body.dark-mode .testimonial-card,
+        body.dark-mode .contact-form,
+        body.dark-mode .certification-slide,
+        body.dark-mode .faq-item,
+        body.dark-mode .ai-advisor-container {
+            background: var(--card-bg);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Efectos hover */
+        body.dark-mode .card:hover,
+        body.dark-mode .service-card:hover,
+        body.dark-mode .stat-item:hover,
+        body.dark-mode .hseq-card:hover,
+        body.dark-mode .testimonial-card:hover,
+        body.dark-mode .certification-slide:hover {
+            border-color: var(--primary-light);
+        }
+
+        /* Fondos especiales */
+        body.dark-mode .bg-light {
+            background-color: var(--light-bg);
+        }
+
+        body.dark-mode .bg-white {
+            background-color: var(--bg-color);
+        }
+
+        /* COMPONENTES ESPECÍFICOS */
+
+        /* Botones */
+        body.dark-mode .btn-outline {
+            border-color: var(--primary-light);
+            color: var(--primary-light);
+        }
+
+        body.dark-mode .btn-outline:hover {
+            background: var(--primary-light);
+            color: var(--dark);
+        }
+
+        /* FAQ */
+        body.dark-mode .faq-question {
+            background-color: var(--primary-dark);
+            color: var(--white);
+        }
+
+        body.dark-mode .faq-answer {
+            background-color: var(--card-bg);
+            color: var(--text-light-color);
+        }
+
+        body.dark-mode .faq-answer p {
+            color: var(--text-light-color);
+        }
+
+        /* Formularios */
+        body.dark-mode .form-control {
+            background-color: var(--gray-700);
+            color: var(--text-color);
+            border-color: var(--gray-600);
+        }
+
+        body.dark-mode .form-control:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(0, 136, 204, 0.2);
+        }
+
+        body.dark-mode .form-group label {
+            color: var(--text-color);
+        }
+
+        /* Asesor IA */
+        body.dark-mode .ai-advisor-result {
+            background-color: var(--gray-700);
+        }
+
+        body.dark-mode .ai-advisor-result p {
+            color: var(--gray-300);
+        }
+
+        /* Modo Alto Contraste */
+        body.high-contrast-mode {
+            --bg-color: #000000;
+            --text-color: #FFFF00;
+            /* Amarillo brillante */
+            --text-light-color: #FFFFFF;
+            --primary: #00FFFF;
+            /* Cian */
+            --primary-light: #00FFFF;
+            --primary-dark: #008080;
+            --secondary: #FF00FF;
+            /* Magenta */
+            --accent: #00FF00;
+            /* Verde brillante */
+            --danger: #FF0000;
+            /* Rojo puro */
+            --card-bg: #333333;
+            --border-color: #FFFFFF;
+            --light-bg: #111111;
+            --shadow-primary: rgba(255, 255, 0, 0.5);
+            --shadow-secondary: rgba(255, 255, 0, 0.3);
+            --hero-content-bg: rgba(0, 0, 0, 0.8);
+            --hero-content-shadow: rgba(255, 255, 0, 0.9);
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        body.high-contrast-mode header {
+            background: #000000;
+            box-shadow: 0 0 10px var(--text-color);
+        }
+
+        body.high-contrast-mode h1,
+        body.high-contrast-mode h2,
+        body.high-contrast-mode h3,
+        body.high-contrast-mode h4,
+        body.high-contrast-mode h5,
+        body.high-contrast-mode h6 {
+            color: var(--primary);
+        }
+
+        body.high-contrast-mode p {
+            color: var(--text-light-color);
+        }
+
+        body.high-contrast-mode .section-title h2 {
+            color: var(--primary);
+        }
+
+        body.high-contrast-mode .section-title h2::after {
+            background: var(--secondary);
+        }
+
+        body.high-contrast-mode .section-title p {
+            color: var(--text-light-color);
+        }
+
+        body.high-contrast-mode .btn {
+            border: 2px solid var(--primary) !important;
+            color: var(--primary) !important;
+            background-color: transparent !important;
+            box-shadow: 0 0 5px var(--primary) !important;
+        }
+
+        body.high-contrast-mode .btn:hover {
+            background-color: var(--primary) !important;
+            color: var(--bg-color) !important;
+        }
+
+        body.high-contrast-mode .btn-primary,
+        body.high-contrast-mode .btn-secondary,
+        body.high-contrast-mode .btn-whatsapp {
+            background-color: var(--primary) !important;
+            color: var(--bg-color) !important;
+            border-color: var(--primary) !important;
+        }
+
+        body.high-contrast-mode .btn-primary:hover,
+        body.high-contrast-mode .btn-secondary:hover,
+        body.high-contrast-mode .btn-whatsapp:hover {
+            background-color: var(--secondary) !important;
+            color: var(--bg-color) !important;
+            border-color: var(--secondary) !important;
+        }
+
+        body.high-contrast-mode .card,
+        body.high-contrast-mode .service-card,
+        body.high-contrast-mode .stat-item,
+        body.high-contrast-mode .hseq-card,
+        body.high-contrast-mode .testimonial-card,
+        body.high-contrast-mode .contact-form,
+        body.high-contrast-mode .certification-slide,
+        body.high-contrast-mode .faq-item,
+        body.high-contrast-mode .ai-advisor-container {
+            background: var(--card-bg);
+            box-shadow: 0 0 8px var(--text-color);
+            border: 2px solid var(--border-color);
+        }
+
+        body.high-contrast-mode .card:hover,
+        body.high-contrast-mode .service-card:hover,
+        body.high-contrast-mode .stat-item:hover,
+        body.high-contrast-mode .hseq-card:hover,
+        body.high-contrast-mode .testimonial-card:hover,
+        body.high-contrast-mode .certification-slide:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 0 12px var(--secondary);
+        }
+
+        body.high-contrast-mode .bg-light {
+            background-color: var(--light-bg);
+        }
+
+        body.high-contrast-mode .bg-white {
+            background-color: var(--bg-color);
+        }
+
+        body.high-contrast-mode .nav-links a {
+            color: var(--text-color);
+        }
+
+        body.high-contrast-mode .nav-links a::after {
+            background: var(--primary);
+        }
+
+        body.high-contrast-mode .mobile-menu-btn,
+        body.high-contrast-mode .theme-toggle {
+            color: var(--text-color);
+            border: 1px solid var(--text-color);
+        }
+
+        body.high-contrast-mode .nav-links {
+            background-color: var(--card-bg);
+        }
+
+        body.high-contrast-mode .ai-advisor-result {
+            background-color: var(--gray-700);
+        }
+
+        body.high-contrast-mode .ai-advisor-result p {
+            color: var(--gray-300);
+        }
+
+        body.high-contrast-mode .faq-question {
+            background-color: var(--primary);
+            color: var(--bg-color);
+        }
+
+        body.high-contrast-mode .faq-answer {
+            background-color: var(--card-bg);
+            color: var(--text-light-color);
+        }
+
+        body.high-contrast-mode .faq-answer p {
+            color: var(--text-light-color);
+        }
+
+        body.high-contrast-mode .form-control {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border-color: var(--border-color);
+        }
+
+        body.high-contrast-mode .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary);
+        }
+
+        body.high-contrast-mode .form-group label {
+            color: var(--text-color);
+        }
+
+        body.high-contrast-mode .whatsapp-btn,
+        body.high-contrast-mode .back-to-top {
+            background-color: var(--accent) !important;
+            color: var(--bg-color) !important;
+            box-shadow: 0 0 10px var(--accent) !important;
+        }
+
+        body.high-contrast-mode .whatsapp-btn:hover,
+        body.high-contrast-mode .back-to-top:hover {
+            background-color: var(--primary) !important;
+            box-shadow: 0 0 15px var(--primary) !important;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            border: 8px solid var(--gray-300);
+            border-top: 8px solid var(--primary);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Modern reset */
@@ -164,16 +615,16 @@
             scroll-behavior: smooth;
             font-size: 16px;
             line-height: 1.5;
-            /* Removed -webkit-text-size-adjust and text-size-adjust for better compatibility */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            color: var(--dark);
-            background-color: var(--white);
+            color: var(--text-color);
+            background-color: var(--bg-color);
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         h1,
@@ -191,7 +642,7 @@
 
         p {
             margin-bottom: var(--space-4);
-            color: var(--dark-light);
+            color: var(--text-light-color);
             font-size: var(--text-base);
             line-height: 1.6;
         }
@@ -224,7 +675,18 @@
             line-height: inherit;
         }
 
-        /* Advanced utilities */
+        /* Focus-visible para accesibilidad */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid var(--primary-light);
+            outline-offset: 3px;
+            border-radius: var(--radius-sm);
+        }
+
+        /* Utilidades avanzadas */
         .container {
             width: 100%;
             max-width: 1280px;
@@ -233,7 +695,7 @@
         }
 
         .section {
-            padding: var(--space-20) 0;
+            padding: var(--space-24) 0;
             position: relative;
         }
 
@@ -313,11 +775,11 @@
         }
 
         .bg-light {
-            background-color: var(--light);
+            background-color: var(--light-bg);
         }
 
         .bg-white {
-            background-color: var(--white);
+            background-color: var(--card-bg);
         }
 
         .bg-dark {
@@ -325,7 +787,7 @@
             color: var(--white);
         }
 
-        /* Professional buttons */
+        /* Botones profesionales */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -412,7 +874,7 @@
             font-size: var(--text-sm);
         }
 
-        /* Grid system */
+        /* Sistema de grilla */
         .grid {
             display: grid;
             gap: var(--space-6);
@@ -430,15 +892,15 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         }
 
-        /* Modern card */
+        /* Tarjeta moderna */
         .card {
-            background: var(--white);
+            background: var(--card-bg);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
             overflow: hidden;
             transition: var(--transition);
             position: relative;
-            border: 1px solid var(--gray-200);
+            border: 1px solid var(--border-color);
         }
 
         .card:hover {
@@ -449,7 +911,7 @@
 
         .card-header {
             padding: var(--space-4);
-            border-bottom: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .card-body {
@@ -458,10 +920,10 @@
 
         .card-footer {
             padding: var(--space-4);
-            border-top: 1px solid var(--gray-200);
+            border-top: 1px solid var(--border-color);
         }
 
-        /* Professional Header */
+        /* Encabezado profesional */
         header {
             position: fixed;
             top: 0;
@@ -470,56 +932,73 @@
             background: rgba(255, 255, 255, 0.98);
             -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
-            z-index: var(--z-50);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition-slow);
+            z-index: 1000;
+            /* Valor alto fijo para mayor compatibilidad */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0;
+            height: 80px;
+            /* Altura fija para mejor consistencia */
+            display: flex;
+            align-items: center;
         }
 
         header.scrolled {
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            height: 70px;
+            /* Ligero cambio de altura al hacer scroll */
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: var(--space-3) 0;
-            position: relative;
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: var(--space-2);
-            font-size: var(--text-2xl);
-            font-weight: 700;
-            color: var(--primary);
-            transition: var(--transition);
+            transition: transform 0.3s ease;
         }
 
         .logo:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
         }
 
         .logo img {
             height: 50px;
+            /* Tamaño más adecuado */
             width: auto;
-            transition: var(--transition);
+            max-width: 200px;
+            object-fit: contain;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: var(--space-6);
+            gap: 25px;
+            /* Espaciado consistente */
             align-items: center;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-links a {
             font-weight: 500;
             position: relative;
-            padding: var(--space-2) 0;
-            font-size: var(--text-base);
-            color: var(--dark);
+            padding: 5px 0;
+            font-size: 16px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
         }
 
         .nav-links a::after {
@@ -530,7 +1009,7 @@
             width: 0;
             height: 2px;
             background: var(--primary);
-            transition: var(--transition);
+            transition: width 0.3s ease;
         }
 
         .nav-links a:hover::after,
@@ -539,25 +1018,40 @@
         }
 
         .nav-cta {
-            margin-left: var(--space-4);
+            margin-left: 20px;
         }
 
-        .mobile-menu-btn {
-            display: none;
+        .nav-cta .btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        /* Toggle de tema (Modo Oscuro/Claro/Alto Contraste) */
+        .theme-toggle {
             background: none;
             border: none;
-            font-size: var(--text-2xl);
-            color: var(--dark);
+            font-size: var(--text-xl);
+            color: var(--text-color);
             cursor: pointer;
-            z-index: var(--z-40);
+            margin-left: var(--space-4);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-2);
+            border-radius: var(--radius-full);
         }
 
-        /* Improved Hero section */
+        .theme-toggle:hover {
+            color: var(--primary-light);
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Sección Hero mejorada */
         .hero {
             height: 100vh;
             min-height: 800px;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url('img/3.jpg') no-repeat center center/cover; /* Updated path */
             background-attachment: fixed;
             display: flex;
             align-items: center;
@@ -575,7 +1069,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0, 95, 135, 0.8) 0%, rgba(0, 136, 204, 0.6) 100%);
+            background: linear-gradient(135deg, rgba(0, 95, 135, 0.9) 0%, rgba(0, 136, 204, 0.8) 100%);
             z-index: 1;
         }
 
@@ -584,23 +1078,32 @@
             margin: 0 auto;
             position: relative;
             z-index: 2;
-            padding: 0 var(--space-6);
+            padding: var(--space-8);
+            border-radius: var(--radius-xl);
+            background-color: var(--hero-content-bg);
+            backdrop-filter: blur(4px);
+            transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
         }
 
         .hero h1 {
-            font-size: var(--text-5xl);
+            font-size: var(--text-6xl);
+            font-weight: 700;
             margin-bottom: var(--space-4);
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            line-height: 1.1;
+            text-shadow: 2px 2px 6px var(--hero-content-shadow);
+            line-height: 1.2;
+            color: var(--white);
         }
 
         .hero p {
-            font-size: var(--text-xl);
+            font-size: var(--text-2xl);
+            font-weight: 400;
             margin-bottom: var(--space-8);
-            opacity: 0.9;
+            opacity: 1;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            color: var(--white);
+            line-height: 1.6;
         }
 
         .hero-btns {
@@ -610,7 +1113,7 @@
             flex-wrap: wrap;
         }
 
-        /* Improved About section */
+        /* Sección About mejorada */
         .about-content {
             display: flex;
             align-items: center;
@@ -656,11 +1159,11 @@
         .stat-item {
             text-align: center;
             padding: var(--space-6);
-            background-color: var(--white);
+            background-color: var(--card-bg);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
-            border: 1px solid var(--gray-200);
+            border: 1px solid var(--border-color);
         }
 
         .stat-item:hover {
@@ -683,12 +1186,23 @@
             font-weight: 500;
         }
 
-        /* Improved Services section */
+        /* Sección Services mejorada */
         .service-card {
             height: 100%;
             display: flex;
             flex-direction: column;
-            border: 1px solid var(--gray-200);
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            will-change: transform;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
         }
 
         .service-icon {
@@ -757,7 +1271,7 @@
             border-radius: 50%;
         }
 
-        /* Improved Projects section */
+        /* Sección Projects mejorada */
         .projects-filter {
             display: flex;
             justify-content: center;
@@ -775,6 +1289,7 @@
             transition: var(--transition);
             font-size: var(--text-sm);
             font-weight: 500;
+            color: var(--text-color);
         }
 
         .filter-btn.active,
@@ -835,7 +1350,7 @@
             margin-bottom: var(--space-1);
         }
 
-        /* Improved Process section */
+        /* Sección Process mejorada */
         .process-steps {
             position: relative;
             max-width: 900px;
@@ -877,13 +1392,13 @@
         }
 
         .step-content {
-            background-color: var(--white);
+            background-color: var(--card-bg);
             padding: var(--space-6);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
             flex: 1;
             position: relative;
-            border: 1px solid var(--gray-200);
+            border: 1px solid var(--border-color);
         }
 
         .step-content h3 {
@@ -891,16 +1406,16 @@
             font-size: var(--text-xl);
         }
 
-        /* Improved HSEQ section */
+        /* Sección HSEQ mejorada */
         .hseq-card {
             text-align: center;
             padding: var(--space-8);
-            background-color: var(--white);
+            background-color: var(--card-bg);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
             height: 100%;
-            border: 1px solid var(--gray-200);
+            border: 1px solid var(--border-color);
         }
 
         .hseq-card:hover {
@@ -928,19 +1443,19 @@
             margin-bottom: var(--space-3);
         }
 
-        /* New Testimonials section */
+        /* Nueva sección Testimonials */
         .testimonials {
-            background-color: var(--light);
+            background-color: var(--light-bg);
             position: relative;
         }
 
         .testimonial-card {
-            background-color: var(--white);
+            background-color: var(--card-bg);
             padding: var(--space-6);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
             position: relative;
-            border: 1px solid var(--gray-200);
+            border: 1px solid var(--border-color);
         }
 
         .testimonial-card::before {
@@ -983,7 +1498,7 @@
             color: var(--gray-600);
         }
 
-        /* New Clients section */
+        /* Nueva sección Clients */
         .clients-slider {
             display: flex;
             align-items: center;
@@ -1008,7 +1523,7 @@
             transform: scale(1.1);
         }
 
-        /* Improved Contact section */
+        /* Sección Contact mejorada */
         .contact-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1049,7 +1564,7 @@
 
         .contact-text p,
         .contact-text a {
-            color: var(--dark-light);
+            color: var(--text-light-color);
             transition: var(--transition);
         }
 
@@ -1057,12 +1572,28 @@
             color: var(--primary);
         }
 
+        .contact-text .copy-btn {
+            background: none;
+            border: none;
+            color: var(--primary-light);
+            cursor: pointer;
+            font-size: var(--text-sm);
+            margin-left: var(--space-2);
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-sm);
+            transition: background-color 0.2s ease;
+        }
+
+        .contact-text .copy-btn:hover {
+            background-color: rgba(0, 95, 135, 0.1);
+        }
+
         .contact-form {
-            background-color: var(--white);
+            background-color: var(--card-bg);
             padding: var(--space-8);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
-            border: 1px solid var(--gray-200);
+            border: 1px solid var(--border-color);
         }
 
         .form-group {
@@ -1073,7 +1604,7 @@
             display: block;
             margin-bottom: var(--space-2);
             font-weight: 500;
-            color: var(--dark);
+            color: var(--text-color);
         }
 
         .form-control {
@@ -1084,6 +1615,8 @@
             font-family: inherit;
             font-size: var(--text-base);
             transition: var(--transition);
+            background-color: var(--card-bg);
+            color: var(--text-color);
         }
 
         .form-control:focus {
@@ -1097,21 +1630,21 @@
             resize: vertical;
         }
 
-        /* New Map section */
+        /* Nueva sección Map */
         .map-container {
             height: 400px;
             width: 100%;
             border-radius: var(--radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow-md);
-            border: 1px solid var(--gray-200);
+            border: 1px solid var(--border-color);
         }
 
         .map-container iframe {
-            border: 0; /* Moved from inline style */
+            border: 0;
         }
 
-        /* New CTA section */
+        /* Nueva sección CTA */
         .cta {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: var(--white);
@@ -1128,7 +1661,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('img/GLP2.png'); /* Updated path */
+            background-image: url('img/GLP2.webp');
             background-size: 300px;
             opacity: 0.1;
             z-index: 1;
@@ -1153,7 +1686,7 @@
             margin-bottom: var(--space-8);
         }
 
-        /* Improved Footer */
+        /* Pie de página mejorado */
         footer {
             background-color: var(--dark);
             color: var(--white);
@@ -1166,6 +1699,13 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: var(--space-12);
             margin-bottom: var(--space-12);
+        }
+
+        .footer-about {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            /* Alinea el logo y el texto a la izquierda */
         }
 
         .footer-logo {
@@ -1254,11 +1794,12 @@
             font-size: var(--text-sm);
         }
 
-        /* Improved WhatsApp Button */
+        /* Botones de WhatsApp mejorados */
+        /* Modifica el CSS de los botones de WhatsApp */
         .whatsapp-btn {
             position: fixed;
-            bottom: var(--space-6);
-            right: var(--space-6);
+            bottom: 20px;
+            right: 20px;
             width: 60px;
             height: 60px;
             background-color: var(--whatsapp);
@@ -1267,21 +1808,45 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: var(--text-2xl);
-            box-shadow: var(--shadow-lg);
-            z-index: var(--z-40);
-            transition: var(--transition);
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
             animation: pulse 2s infinite;
         }
 
-        .whatsapp-btn:nth-child(2) {
-            bottom: calc(var(--space-6) + 80px);
+        .whatsapp-btn:nth-of-type(2) {
+            bottom: 90px;
+            /* Espacio entre botones */
         }
 
         .whatsapp-btn:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
             animation: none;
+        }
+
+        /* Tooltip del botón de WhatsApp */
+        .whatsapp-btn::after {
+            content: attr(aria-label);
+            position: absolute;
+            right: 65px;
+            /* Ajustado para el nuevo tamaño del botón */
+            white-space: nowrap;
+            background: var(--dark);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            font-size: var(--text-sm);
+            transform: translateY(-50%);
+            top: 50%;
+        }
+
+        .whatsapp-btn:hover::after {
+            opacity: 1;
         }
 
         @keyframes pulse {
@@ -1290,19 +1855,21 @@
             }
 
             70% {
-                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
             }
 
+            /* Tamaño de pulso reducido */
             100% {
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
             }
         }
 
-        /* Improved Back to Top */
+        /* Botón Back to Top mejorado */
         .back-to-top {
             position: fixed;
-            bottom: calc(var(--space-6) + 160px);
-            right: var(--space-6);
+            bottom: calc(var(--space-5) + 130px);
+            /* Ajustado para no chocar con WhatsApp */
+            right: var(--space-5);
             width: 50px;
             height: 50px;
             background-color: var(--primary);
@@ -1329,7 +1896,9 @@
             transform: translateY(-3px);
         }
 
-        /* Custom animations */
+        /* ==================== */
+        /* ANIMACIONES MEJORADAS */
+        /* ==================== */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -1352,16 +1921,35 @@
             }
         }
 
-        /* Responsive Design */
-        @media (max-width: 1200px) {
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* DISEÑO RESPONSIVO */
+        /* Pantallas grandes (1200px+) - Por defecto ya está en .container */
+
+        /* Tabletas grandes (992px - 1199px) */
+        @media (max-width: 1199px) {
             .container {
                 max-width: 1000px;
             }
         }
 
-        @media (max-width: 992px) {
+        /* Tabletas (768px - 991px) */
+        @media (max-width: 991px) {
             .container {
                 max-width: 800px;
+                padding: 0 20px;
             }
 
             .about-content {
@@ -1370,107 +1958,89 @@
 
             .about-image {
                 order: -1;
-                margin-bottom: var(--space-8);
+                margin-bottom: 2rem;
             }
 
             .section-title h2 {
-                font-size: var(--text-3xl);
+                font-size: 2rem;
             }
 
             .hero h1 {
-                font-size: var(--text-4xl);
+                font-size: 2.5rem;
             }
 
             .hero p {
-                font-size: var(--text-lg);
+                font-size: 1.25rem;
+            }
+
+            .nav-links {
+                gap: 15px;
             }
         }
 
-        @media (max-width: 768px) {
+        /* Móviles grandes (576px - 767px) */
+        @media (max-width: 767px) {
+            header {
+                height: 70px;
+                padding: 0 15px;
+            }
+
             .mobile-menu-btn {
                 display: block;
             }
 
+            .logo img {
+                height: 45px;
+            }
+
             .nav-links {
                 position: fixed;
-                top: 80px;
+                top: 70px;
                 left: -100%;
                 width: 100%;
-                height: calc(100vh - 80px);
-                background-color: var(--white);
+                height: calc(100vh - 70px);
+                background-color: var(--card-bg);
                 flex-direction: column;
                 align-items: center;
-                padding: var(--space-8) 0;
-                transition: var(--transition);
-                box-shadow: var(--shadow-xl);
+                justify-content: flex-start;
+                padding-top: 30px;
+                gap: 25px;
+                transition: left 0.3s ease;
             }
 
             .nav-links.active {
                 left: 0;
             }
 
-            .nav-links li {
-                margin: var(--space-3) 0;
+            .nav-links a {
+                font-size: 1.125rem;
+                padding: 10px 0;
             }
 
-            .nav-cta {
-                margin-left: 0;
-                margin-top: var(--space-3);
+            .nav-cta,
+            .theme-toggle {
+                margin: 20px 0 0;
             }
 
             .hero h1 {
-                font-size: var(--text-3xl);
+                font-size: 1.75rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
             }
 
             .hero-btns {
                 flex-direction: column;
-                gap: var(--space-3);
+                gap: 15px;
             }
 
             .section {
-                padding: var(--space-12) 0;
-            }
-
-            .whatsapp-btn {
-                bottom: var(--space-4);
-                right: var(--space-4);
-                width: 50px;
-                height: 50px;
-                font-size: var(--text-xl);
-            }
-
-            .whatsapp-btn:nth-child(2) {
-                bottom: calc(var(--space-4) + 70px);
-            }
-
-            .back-to-top {
-                bottom: calc(var(--space-4) + 140px);
-                right: var(--space-4);
-                width: 40px;
-                height: 40px;
-                font-size: var(--text-lg);
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .container {
-                padding: 0 var(--space-4);
-            }
-
-            .hero h1 {
-                font-size: var(--text-2xl);
-            }
-
-            .hero p {
-                font-size: var(--text-base);
+                padding: 3rem 0;
             }
 
             .section-title h2 {
-                font-size: var(--text-2xl);
+                font-size: 1.5rem;
             }
 
             .process-step {
@@ -1479,7 +2049,7 @@
 
             .step-number {
                 margin-right: 0;
-                margin-bottom: var(--space-4);
+                margin-bottom: 1rem;
             }
 
             .process-steps::before {
@@ -1488,18 +2058,65 @@
                 height: calc(100% - 60px);
                 top: 60px;
             }
+
+            /* Botones flotantes */
+            .whatsapp-btn {
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
+
+            .whatsapp-btn:nth-of-type(2) {
+                bottom: 80px;
+            }
+
+            .back-to-top {
+                bottom: 145px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
         }
 
-        /* AI Advisor Section */
+        /* Móviles pequeños (hasta 575px) */
+        @media (max-width: 575px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Modo oscuro responsivo */
+        @media (max-width: 767px) {
+            body.dark-mode .nav-links {
+                background-color: rgba(33, 37, 41, 0.98);
+            }
+        }
+
+        /* Sección AI Advisor */
         .ai-advisor {
-            background-color: var(--light);
+            background-color: var(--light-bg);
             padding: var(--space-16) 0;
         }
 
         .ai-advisor-container {
             max-width: 800px;
             margin: 0 auto;
-            background-color: var(--white);
+            background-color: var(--card-bg);
             border-radius: var(--radius-xl);
             box-shadow: var(--shadow-lg);
             padding: var(--space-8);
@@ -1546,6 +2163,8 @@
             resize: vertical;
             font-family: inherit;
             transition: var(--transition);
+            background-color: var(--card-bg);
+            color: var(--text-color);
         }
 
         .ai-advisor-form textarea:focus {
@@ -1555,19 +2174,21 @@
         }
 
         .ai-advisor-result {
-            background-color: var(--gray-100);
+            background-color: var(--light-bg);
             border-radius: var(--radius-md);
             padding: var(--space-6);
             min-height: 200px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
+            color: var(--text-color);
         }
 
         .ai-advisor-result.loading {
-            background-color: var(--gray-100);
+            background-color: var(--light-bg);
         }
 
         .ai-advisor-result.loading::after {
@@ -1582,12 +2203,6 @@
             margin: 0 auto;
         }
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
         .ai-advisor-result p {
             margin-bottom: 0;
         }
@@ -1599,9 +2214,9 @@
             margin-top: var(--space-6);
         }
 
-        /* Certifications Section */
+        /* Sección Certifications */
         .certifications {
-            background-color: var(--white);
+            background-color: var(--bg-color);
             padding: var(--space-16) 0;
         }
 
@@ -1615,10 +2230,10 @@
             align-items: center;
             justify-content: center;
             padding: var(--space-6);
-            background-color: var(--white);
+            background-color: var(--card-bg);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
-            border: 1px solid var(--gray-200);
+            border: 1px solid var(--border-color);
             height: 100%;
             transition: var(--transition);
         }
@@ -1649,7 +2264,7 @@
             text-align: center;
         }
 
-        /* Emergency Section */
+        /* Sección Emergency */
         .emergency {
             background-color: var(--danger);
             color: var(--white);
@@ -1697,10 +2312,15 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* FAQ Section */
+        /* Sección FAQ */
         .faq {
-            background-color: var(--light);
+            background-color: var(--light-bg);
             padding: var(--space-16) 0;
+        }
+
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .faq-item {
@@ -1708,7 +2328,7 @@
             border-radius: var(--radius-md);
             overflow: hidden;
             box-shadow: var(--shadow-sm);
-            background-color: var(--white);
+            background-color: var(--card-bg);
             transition: var(--transition);
         }
 
@@ -1725,6 +2345,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border: none;
+            width: 100%;
+            text-align: left;
         }
 
         .faq-question::after {
@@ -1742,6 +2365,8 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
+            background-color: var(--card-bg);
+            color: var(--text-light-color);
         }
 
         .faq-answer.active {
@@ -1749,7 +2374,7 @@
             max-height: 500px;
         }
 
-        /* Gallery Section */
+        /* Sección Gallery */
         .gallery {
             padding: var(--space-16) 0;
         }
@@ -1802,46 +2427,111 @@
         .gallery-item:hover .gallery-caption {
             opacity: 1;
         }
+
+        /* Search Bar for Services/FAQs */
+        .search-container {
+            margin-bottom: var(--space-8);
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 500px;
+            padding: var(--space-3);
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            font-size: var(--text-base);
+            transition: var(--transition);
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 95, 135, 0.1);
+        }
+
+        /* Text-to-Speech Button */
+        .read-text-btn {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: var(--text-sm);
+            margin-top: var(--space-4);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .read-text-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 
 <body>
-    <!-- ===== PROFESSIONAL HEADER ===== -->
-    <header id="header">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- ===== ENCABEZADO PROFESIONAL ===== -->
+    <header id="header" role="banner">
         <div class="container">
-            <nav class="navbar">
+            <nav class="navbar" aria-label="Navegación principal">
                 <a href="#" class="logo">
-                    <!-- Corrected image path for logo -->
-                    <img src="img/Logo 2025.png" alt="Logo TODO GAS SYR" width="180" height="50">
-                    <span>TODO <span class="text-secondary">GAS SYR</span></span>
+                    <img src="img/Logo 2025.png" alt="Logo TODO GAS SYR S.A.S" width="auto" height="80">
+                    <!-- Ajustado tamaño del logo y ruta -->
                 </a>
 
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#home" class="active">Inicio</a></li>
-                    <li><a href="#about">Nosotros</a></li>
-                    <li><a href="#services">Servicios</a></li>
-                    <li><a href="#certifications">Certificaciones</a></li>
-                    <li><a href="#projects">Proyectos</a></li>
-                    <li><a href="#process">Proceso</a></li>
-                    <li><a href="#hseq">HSEQ</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                    <li class="nav-cta">
-                        <a href="tel:+573209485534" class="btn btn-primary btn-sm">
+                <ul class="nav-links" id="navLinks" role="menubar">
+                    <li role="none"><a href="#home" class="active" role="menuitem">Inicio</a></li>
+                    <li role="none"><a href="#about" role="menuitem">Nosotros</a></li>
+                    <li role="none"><a href="#services" role="menuitem">Servicios</a></li>
+                    <li role="none"><a href="#certifications" role="menuitem">Certificaciones</a></li>
+                    <li role="none"><a href="#projects" role="menuitem">Proyectos</a></li>
+                    <li role="none"><a href="#process" role="menuitem">Proceso</a></li>
+                    <li role="none"><a href="#hseq" role="menuitem">HSEQ</a></li>
+                    <li role="none"><a href="#faq" role="menuitem">FAQ</a></li>
+                    <li role="none"><a href="#contact" role="menuitem">Contacto</a></li>
+                    <li class="nav-cta" role="none">
+                        <a href="tel:+573209485534" class="btn btn-primary btn-sm" role="menuitem">
                             <i class="fas fa-phone-alt"></i> Llamar ahora
                         </a>
                     </li>
+                    <li role="none">
+                        <div class="theme-toggle-container">
+                            <button id="themeToggle" class="theme-toggle"
+                                aria-label="Alternar tema de la interfaz: Modo claro, oscuro o alto contraste">
+                                <i class="fas fa-moon"></i> <!-- Icono inicial: luna para modo claro -->
+                            </button>
+                        </div>
+                    </li>
                 </ul>
 
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú móvil" aria-expanded="false">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú móvil" aria-expanded="false"
+                    aria-controls="navLinks">
                     <i class="fas fa-bars"></i>
                 </button>
             </nav>
         </div>
     </header>
 
-    <!-- ===== IMPROVED HERO SECTION ===== -->
-    <section class="hero" id="home">
+    <!-- ===== SECCIÓN HERO MEJORADA ===== -->
+    <section class="hero" id="home" role="region"
+        aria-label="Sección principal de TODO GAS SYR: Expertos Certificados en Instalaciones de Gas Natural y GLP">
+        <picture>
+            <source srcset="img/27.webp" type="image/webp">
+            <img src="img/27.jpg" alt="Expertos en instalaciones de gas natural y GLP"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;"
+                loading="eager">
+        </picture>
         <div class="container">
             <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
                 <h1>Expertos Certificados en Instalaciones de Gas Natural y GLP</h1>
@@ -1859,8 +2549,9 @@
         </div>
     </section>
 
-    <!-- ===== EMERGENCY SECTION ===== -->
-    <section class="emergency">
+    <!-- ===== SECCIÓN DE EMERGENCIA ===== -->
+    <section class="emergency" role="region"
+        aria-label="Sección de emergencias de gas: Llamada de atención para fugas de gas">
         <div class="container">
             <div class="emergency-content">
                 <div class="emergency-icon">
@@ -1875,8 +2566,9 @@
         </div>
     </section>
 
-    <!-- ===== IMPROVED ABOUT SECTION ===== -->
-    <section class="section bg-light" id="about">
+    <!-- ===== SECCIÓN NOSOTROS MEJORADA ===== -->
+    <section class="section bg-light" id="about" role="region"
+        aria-label="Acerca de TODO GAS SYR: Nuestra Empresa y Experiencia">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>Nuestra Empresa</h2>
@@ -1900,35 +2592,38 @@
 
                     <div class="about-stats">
                         <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
-                            <div class="stat-number">25+</div>
+                            <div class="stat-number" data-target="25">0</div>
                             <div class="stat-text">Años de Experiencia</div>
                         </div>
                         <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-                            <div class="stat-number">15+</div>
+                            <div class="stat-number" data-target="15">0</div>
                             <div class="stat-text">Proyectos Completados</div>
                         </div>
                         <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-                            <div class="stat-number">11+</div>
+                            <div class="stat-number" data-target="11">0</div>
                             <div class="stat-text">Municipios Atendidos</div>
                         </div>
                         <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
-                            <div class="stat-number">100%</div>
+                            <div class="stat-number" data-target="2377">0</div>
                             <div class="stat-text">Clientes Satisfechos</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="about-image" data-aos="fade-left">
-                    <!-- Corrected image path from .jpg to .png -->
-                    <img src="img/31.png" data-src="img/31.png"
-                        alt="Técnicos de TODO GAS SYR instalando tuberías de gas natural" loading="lazy">
+                    <picture>
+                        <source srcset="img/31.webp" type="image/webp">
+                        <img src="img/31.png" alt="Técnicos de TODO GAS SYR instalando tuberías de gas natural"
+                            loading="lazy" style="background: #e0e0e0;">
+                    </picture>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== IMPROVED SERVICES SECTION ===== -->
-    <section class="section bg-white" id="services">
+    <!-- ===== SECCIÓN SERVICIOS MEJORADA ===== -->
+    <section class="section bg-white" id="services" role="region"
+        aria-label="Nuestros servicios de gas natural y GLP: Instalación, Mantenimiento y Certificación">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>Nuestros Servicios</h2>
@@ -1952,7 +2647,17 @@
                             <li>Certificaciones de instalaciones</li>
                             <li>Pruebas de hermeticidad y presión</li>
                         </ul>
-                        <a href="#contact" class="btn btn-outline btn-sm">Más información</a>
+                        <button class="read-text-btn" data-target-id="service-gas-natural-text"
+                            aria-label="Leer descripción de Gas Natural">
+                            <i class="fas fa-volume-up"></i> Leer
+                        </button>
+                        <span id="service-gas-natural-text" style="display: none;">
+                            Servicios profesionales de diseño, instalación y mantenimiento de redes de gas natural para
+                            todo tipo de aplicaciones. Incluye acometidas y redes de distribución, instalaciones
+                            domiciliarias completas,
+                            mantenimiento preventivo y correctivo, reparaciones y actualizaciones de redes,
+                            certificaciones de instalaciones y pruebas de hermeticidad y presión.
+                        </span>
                     </div>
                 </div>
 
@@ -1972,7 +2677,18 @@
                             <li>Pruebas de hermeticidad y certificación</li>
                             <li>Conversiones de sistemas</li>
                         </ul>
-                        <a href="#contact" class="btn btn-outline btn-sm">Más información</a>
+                        <button class="read-text-btn" data-target-id="service-glp-text"
+                            aria-label="Leer descripción de Gas GLP">
+                            <i class="fas fa-volume-up"></i> Leer
+                        </button>
+                        <span id="service-glp-text" style="display: none;">
+                            Sistemas completos de distribución de Gas Licuado de Petróleo con los más altos estándares
+                            de
+                            seguridad y eficiencia. Incluye plantas de almacenamiento y distribución, redes externas de
+                            GLP,
+                            conexiones domiciliarias y comerciales, mantenimiento correctivo y preventivo,
+                            pruebas de hermeticidad y certificación, y conversiones de sistemas.
+                        </span>
                     </div>
                 </div>
 
@@ -1992,15 +2708,26 @@
                             <li>Asesoría técnica personalizada</li>
                             <li>Inspecciones pre-venta de propiedades</li>
                         </ul>
-                        <a href="#contact" class="btn btn-outline btn-sm">Más información</a>
+                        <button class="read-text-btn" data-target-id="service-mantenimiento-text"
+                            aria-label="Leer descripción de Mantenimiento y Certificación">
+                            <i class="fas fa-volume-up"></i> Leer
+                        </button>
+                        <span id="service-mantenimiento-text" style="display: none;">
+                            Servicios especializados de mantenimiento, reparación y certificación de instalaciones de
+                            gas
+                            y gasodomésticos. Incluye mantenimiento programado, reparaciones técnicas especializadas,
+                            revisiones de seguridad completas, certificaciones obligatorias,
+                            asesoría técnica personalizada e inspecciones pre-venta de propiedades.
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== CERTIFICATIONS SECTION ===== -->
-    <section class="section certifications" id="certifications">
+    <!-- ===== SECCIÓN CERTIFICACIONES ===== -->
+    <section class="section certifications" id="certifications" role="region"
+        aria-label="Certificaciones y acreditaciones de la empresa">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>Certificaciones y Acreditaciones</h2>
@@ -2011,31 +2738,38 @@
             <div class="certifications-slider swiper-container" data-aos="fade-up">
                 <div class="swiper-wrapper">
                     <div class="certification-slide swiper-slide">
-                        <!-- Corrected image path and added data-src for lazy loading -->
-                        <img src="img/11.png" data-src="img/11.png" alt="Certificación de Seguridad"
-                            class="certification-image" loading="lazy">
+                        <picture>
+                            <source srcset="img/11.webp" type="image/webp">
+                            <img src="img/11.png" alt="Certificación de Seguridad" class="certification-image"
+                                loading="lazy">
+                        </picture>
                         <h4 class="certification-title">Certificación en Seguridad de Gas</h4>
                         <p class="certification-desc">Acreditación nacional para instalaciones seguras de gas natural y
                             GLP</p>
                     </div>
                     <div class="certification-slide swiper-slide">
-                        <!-- Corrected image path and added data-src for lazy loading -->
-                        <img src="img/7.png" data-src="img/7.png" alt="Certificación Técnica"
-                            class="certification-image" loading="lazy">
+                        <picture>
+                            <source srcset="img/7.webp" type="image/webp">
+                            <img src="img/7.png" alt="Certificación Técnica" class="certification-image" loading="lazy">
+                        </picture>
                         <h4 class="certification-title">Certificación Técnica</h4>
                         <p class="certification-desc">Acreditación de competencias técnicas en redes de distribución</p>
                     </div>
                     <div class="certification-slide swiper-slide">
-                        <!-- Corrected image path and added data-src for lazy loading -->
-                        <img src="img/24.png" data-src="img/24.png" alt="Certificación Ambiental"
-                            class="certification-image" loading="lazy">
+                        <picture>
+                            <source srcset="img/24.webp" type="image/webp">
+                            <img src="img/24.png" alt="Certificación Ambiental" class="certification-image"
+                                loading="lazy">
+                        </picture>
                         <h4 class="certification-title">Certificación Ambiental</h4>
                         <p class="certification-desc">Cumplimiento de normas ambientales para proyectos de gas</p>
                     </div>
                     <div class="certification-slide swiper-slide">
-                        <!-- Corrected image path and added data-src for lazy loading -->
-                        <img src="img/12.png" data-src="img/12.png" alt="Certificación de Calidad"
-                            class="certification-image" loading="lazy">
+                        <picture>
+                            <source srcset="img/12.webp" type="image/webp">
+                            <img src="img/12.png" alt="Certificación de Calidad" class="certification-image"
+                                loading="lazy">
+                        </picture>
                         <h4 class="certification-title">Certificación de Calidad</h4>
                         <p class="certification-desc">Sistema de gestión de calidad ISO 9001 para nuestros procesos</p>
                     </div>
@@ -2045,8 +2779,9 @@
         </div>
     </section>
 
-    <!-- ===== AI ADVISOR SECTION ===== -->
-    <section class="section ai-advisor" id="ai-advisor">
+    <!-- ===== SECCIÓN AI ADVISOR ===== -->
+    <section class="section ai-advisor" id="ai-advisor" role="region"
+        aria-label="Asesor de servicios inteligente: Obtén recomendaciones personalizadas">
         <div class="container">
             <div class="ai-advisor-container" data-aos="fade-up">
                 <div class="ai-advisor-title">
@@ -2056,34 +2791,36 @@
 
                 <div class="ai-advisor-form">
                     <textarea id="aiQuestion"
-                        placeholder="Ejemplo: Necesito instalar gas natural en mi casa nueva, tengo 3 estufas y un calentador..."></textarea>
+                        placeholder="Ejemplo: Necesito instalar gas natural en mi casa nueva, tengo 3 estufas y un calentador..."
+                        aria-label="Describe tu necesidad para obtener una recomendación de servicio"></textarea>
                 </div>
 
                 <div class="ai-advisor-actions">
-                    <button id="aiSubmit" class="btn btn-primary">
+                    <button id="aiSubmit" class="btn btn-primary" aria-label="Obtener recomendación de servicio">
                         <i class="fas fa-robot"></i> Obtener Recomendación
                     </button>
-                    <button id="aiClear" class="btn btn-outline">
+                    <button id="aiClear" class="btn btn-outline" aria-label="Limpiar la pregunta del asesor de IA">
                         <i class="fas fa-redo"></i> Limpiar
                     </button>
                 </div>
 
-                <div class="ai-advisor-result" id="aiResult">
+                <div class="ai-advisor-result" id="aiResult" role="status" aria-live="polite">
                     <p>Aquí aparecerá la recomendación de servicios basada en tu necesidad.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== IMPROVED PROJECTS SECTION ===== -->
-    <section class="section bg-light" id="projects">
+    <!-- ===== SECCIÓN PROYECTOS MEJORADA ===== -->
+    <section class="section bg-light" id="projects" role="region"
+        aria-label="Proyectos destacados de la empresa: Instalaciones de gas natural y GLP">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>Proyectos Destacados</h2>
                 <p>Algunos de nuestros trabajos más relevantes en diferentes regiones del país</p>
             </div>
 
-            <div class="projects-filter" data-aos="fade-up">
+            <div class="projects-filter" data-aos="fade-up" role="group" aria-label="Filtro de proyectos">
                 <button class="filter-btn active" data-filter="all" aria-pressed="true">Todos</button>
                 <button class="filter-btn" data-filter="gas-natural" aria-pressed="false">Gas Natural</button>
                 <button class="filter-btn" data-filter="glp" aria-pressed="false">GLP</button>
@@ -2091,11 +2828,13 @@
                 <button class="filter-btn" data-filter="antioquia" aria-pressed="false">Antioquia</button>
             </div>
 
-            <div class="grid grid-3">
+            <div class="grid grid-3" id="projectGrid">
                 <div class="project-card" data-category="gas-natural boyaca" data-aos="fade-up" data-aos-delay="100">
-                    <!-- Corrected image path and added data-src for lazy loading -->
-                    <img src="img/GN1.png" data-src="img/GN1.png" alt="Instalación de redes de gas natural en Boyacá" class="project-img"
-                        loading="lazy">
+                    <picture>
+                        <source srcset="img/GN1.webp" type="image/webp">
+                        <img src="img/GN1.png" alt="Instalación de redes de gas natural en Boyacá" class="project-img"
+                            loading="lazy">
+                    </picture>
                     <div class="project-overlay">
                         <h3>Redes GN - Boyacá</h3>
                         <p>Guateque, Chinavita, Pachavita (2012-2019)</p>
@@ -2104,9 +2843,10 @@
                 </div>
 
                 <div class="project-card" data-category="glp boyaca" data-aos="fade-up" data-aos-delay="200">
-                    <!-- Corrected image path and added data-src for lazy loading -->
-                    <img src="img/32.png" data-src="img/32.png" alt="Tanques de GLP en Boyacá" class="project-img"
-                        loading="lazy">
+                    <picture>
+                        <source srcset="img/32.webp" type="image/webp">
+                        <img src="img/32.png" alt="Tanques de GLP en Boyacá" class="project-img" loading="lazy">
+                    </picture>
                     <div class="project-overlay">
                         <h3>Redes GLP - Boyacá</h3>
                         <p>Chivor y Pisba (2018-2019)</p>
@@ -2115,9 +2855,10 @@
                 </div>
 
                 <div class="project-card" data-category="glp antioquia" data-aos="fade-up" data-aos-delay="300">
-                    <!-- Corrected image path and added data-src for lazy loading -->
-                    <img src="img/GLP4.png" data-src="img/GLP4.png"
-                        alt="Redes de GLP en Antioquia" class="project-img" loading="lazy">
+                    <picture>
+                        <source srcset="img/GLP4.webp" type="image/webp">
+                        <img src="img/GLP4.png" alt="Redes de GLP en Antioquia" class="project-img" loading="lazy">
+                    </picture>
                     <div class="project-overlay">
                         <h3>Redes GLP - Antioquia</h3>
                         <p>Campamento, Anorí, Armenia, Caicedo, Uramita (2021-2025)</p>
@@ -2128,8 +2869,9 @@
         </div>
     </section>
 
-    <!-- ===== GALLERY SECTION ===== -->
-    <section class="section gallery" id="gallery">
+    <!-- ===== SECCIÓN GALERÍA ===== -->
+    <section class="section gallery" id="gallery" role="region"
+        aria-label="Galería de trabajos realizados por TODO GAS SYR">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>Galería de Trabajos</h2>
@@ -2138,34 +2880,44 @@
 
             <div class="gallery-grid">
                 <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
-                    <!-- Corrected image path and added data-src for lazy loading -->
-                    <img src="img/INST3.png" data-src="img/INST3.png" alt="Instalación de gas natural" class="gallery-image"
-                        loading="lazy">
+                    <picture>
+                        <source srcset="img/INST3.webp" type="image/webp">
+                        <img src="img/INST3.png" alt="Técnico realizando instalación de red de gas natural"
+                            class="gallery-image" loading="lazy">
+                    </picture>
                     <div class="gallery-caption">Instalación de red de gas natural</div>
                 </div>
                 <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-                    <!-- Corrected image path and added data-src for lazy loading -->
-                    <img src="img/26.png" data-src="img/26.png" alt="Mantenimiento de medidores" class="gallery-image"
-                        loading="lazy">
+                    <picture>
+                        <source srcset="img/26.webp" type="image/webp">
+                        <img src="img/26.png" alt="Mantenimiento y revisión de medidores de gas" class="gallery-image"
+                            loading="lazy">
+                    </picture>
                     <div class="gallery-caption">Mantenimiento de medidores</div>
                 </div>
                 <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
-                    <!-- Corrected image path and added data-src for lazy loading -->
-                    <img src="img/EQUI6.png" data-src="img/EQUI6.png" alt="Equipo de trabajo" class="gallery-image" loading="lazy">
+                    <picture>
+                        <source srcset="img/EQUI6.webp" type="image/webp">
+                        <img src="img/EQUI6.png" alt="Equipo de trabajo de TODO GAS SYR en sitio" class="gallery-image"
+                            loading="lazy">
+                    </picture>
                     <div class="gallery-caption">Nuestro equipo certificado</div>
                 </div>
                 <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
-                    <!-- Corrected image path and added data-src for lazy loading -->
-                    <img src="img/OBRA5.png" data-src="img/OBRA5.png" alt="Proyecto industrial" class="gallery-image"
-                        loading="lazy">
+                    <picture>
+                        <source srcset="img/OBRA5.webp" type="image/webp">
+                        <img src="img/OBRA5.png" alt="Proyecto de instalación de GLP a gran escala para uso industrial"
+                            class="gallery-image" loading="lazy">
+                    </picture>
                     <div class="gallery-caption">Proyecto industrial GLP</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== IMPROVED PROCESS SECTION ===== -->
-    <section class="section bg-white" id="process">
+    <!-- ===== SECCIÓN PROCESO MEJORADA ===== -->
+    <section class="section bg-white" id="process" role="region"
+        aria-label="Nuestro proceso constructivo para instalaciones de gas: Pasos de trabajo">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>Nuestro Proceso Constructivo</h2>
@@ -2223,8 +2975,9 @@
         </div>
     </section>
 
-    <!-- ===== IMPROVED HSEQ SECTION ===== -->
-    <section class="section bg-light" id="hseq">
+    <!-- ===== SECCIÓN HSEQ MEJORADA ===== -->
+    <section class="section bg-light" id="hseq" role="region"
+        aria-label="Compromiso HSEQ de la empresa: Salud, Seguridad, Medio Ambiente y Calidad">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>Compromiso HSEQ</h2>
@@ -2268,79 +3021,136 @@
         </div>
     </section>
 
-    <!-- ===== FAQ SECTION ===== -->
-    <section class="section faq" id="faq">
+    <!-- ===== SECCIÓN FAQ ===== -->
+    <section class="section faq" id="faq" role="region" aria-label="Preguntas frecuentes sobre servicios de gas">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>Preguntas Frecuentes</h2>
                 <p>Resolvemos tus dudas sobre nuestros servicios de gas natural y GLP</p>
             </div>
 
-            <div class="faq-list">
-                <div class="faq-item" data-aos="fade-up">
-                    <div class="faq-question">
+            <div class="search-container">
+                <input type="text" id="faqSearch" class="search-input" placeholder="Buscar preguntas frecuentes..."
+                    aria-label="Buscar preguntas frecuentes">
+            </div>
+
+            <div class="faq-list" id="faqList">
+                <div class="faq-item" data-aos="fade-up"
+                    data-keywords="costo instalar gas natural casa estufas calentador presupuesto">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
                         <span>¿Cuánto cuesta instalar gas natural en mi casa?</span>
-                    </div>
-                    <div class="faq-answer">
+                    </button>
+                    <div class="faq-answer" id="faq-answer-1" role="region" aria-hidden="true">
                         <p>El costo de instalación de gas natural varía según varios factores: distancia a la red
                             principal, complejidad de la instalación, número de gasodomésticos a conectar y materiales
                             requeridos. Ofrecemos evaluaciones gratuitas para proporcionar presupuestos exactos
                             adaptados a cada caso.</p>
+                        <button class="read-text-btn" data-target-id="faq-answer-1-text" aria-label="Leer respuesta">
+                            <i class="fas fa-volume-up"></i> Leer
+                        </button>
+                        <span id="faq-answer-1-text" style="display: none;">
+                            El costo de instalación de gas natural varía según varios factores: distancia a la red
+                            principal, complejidad de la instalación, número de gasodomésticos a conectar y materiales
+                            requeridos. Ofrecemos evaluaciones gratuitas para proporcionar presupuestos exactos
+                            adaptados a cada caso.
+                        </span>
                     </div>
                 </div>
 
-                <div class="faq-item" data-aos="fade-up">
-                    <div class="faq-question">
+                <div class="faq-item" data-aos="fade-up" data-keywords="ventajas gas natural glp seguridad costo">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
                         <span>¿Qué ventajas tiene el gas natural sobre el GLP?</span>
-                    </div>
-                    <div class="faq-answer">
+                    </button>
+                    <div class="faq-answer" id="faq-answer-2" role="region" aria-hidden="true">
                         <p>El gas natural ofrece varias ventajas: suministro continuo sin necesidad de recargas, mayor
                             seguridad al no requerir almacenamiento en tanques, menor costo a largo plazo, combustión
                             más limpia y menor mantenimiento. Sin embargo, el GLP puede ser mejor opción en zonas sin
                             red de gas natural disponible.</p>
+                        <button class="read-text-btn" data-target-id="faq-answer-2-text" aria-label="Leer respuesta">
+                            <i class="fas fa-volume-up"></i> Leer
+                        </button>
+                        <span id="faq-answer-2-text" style="display: none;">
+                            El gas natural ofrece varias ventajas: suministro continuo sin necesidad de recargas, mayor
+                            seguridad al no requerir almacenamiento en tanques, menor costo a largo plazo, combustión
+                            más limpia y menor mantenimiento. Sin embargo, el GLP puede ser mejor opción en zonas sin
+                            red de gas natural disponible.
+                        </span>
                     </div>
                 </div>
 
-                <div class="faq-item" data-aos="fade-up">
-                    <div class="faq-question">
+                <div class="faq-item" data-aos="fade-up"
+                    data-keywords="frecuencia mantenimiento instalaciones gas revision">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
                         <span>¿Con qué frecuencia se debe hacer mantenimiento a las instalaciones de gas?</span>
-                    </div>
-                    <div class="faq-answer">
+                    </button>
+                    <div class="faq-answer" id="faq-answer-3" role="region" aria-hidden="true">
                         <p>Recomendamos mantenimiento preventivo anual para instalaciones residenciales y cada 6 meses
                             para instalaciones comerciales/industriales. Esto incluye revisión de tuberías, conexiones,
                             válvulas y gasodomésticos. En áreas con condiciones especiales (sísmicas, corrosivas) pueden
                             requerirse revisiones más frecuentes.</p>
+                        <button class="read-text-btn" data-target-id="faq-answer-3-text" aria-label="Leer respuesta">
+                            <i class="fas fa-volume-up"></i> Leer
+                        </button>
+                        <span id="faq-answer-3-text" style="display: none;">
+                            Recomendamos mantenimiento preventivo anual para instalaciones residenciales y cada 6 meses
+                            para instalaciones comerciales e industriales. Esto incluye revisión de tuberías,
+                            conexiones,
+                            válvulas y gasodomésticos. En áreas con condiciones especiales, pueden
+                            requerirse revisiones más frecuentes.
+                        </span>
                     </div>
                 </div>
 
-                <div class="faq-item" data-aos="fade-up">
-                    <div class="faq-question">
+                <div class="faq-item" data-aos="fade-up" data-keywords="olor gas fuga emergencia seguridad">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
                         <span>¿Qué debo hacer si detecto olor a gas en mi propiedad?</span>
-                    </div>
-                    <div class="faq-answer">
+                    </button>
+                    <div class="faq-answer" id="faq-answer-4" role="region" aria-hidden="true">
                         <p>Si detectas olor a gas: 1) No enciendas ni apagues luces o aparatos eléctricos, 2) Abre
                             ventanas para ventilar, 3) Cierra la válvula principal de gas, 4) Evacúa el área, 5) Llama a
                             nuestro servicio de emergencias (320 948 5534) desde un lugar seguro. Nuestro equipo
                             responderá inmediatamente.</p>
+                        <button class="read-text-btn" data-target-id="faq-answer-4-text" aria-label="Leer respuesta">
+                            <i class="fas fa-volume-up"></i> Leer
+                        </button>
+                        <span id="faq-answer-4-text" style="display: none;">
+                            Si detectas olor a gas: Primero, no enciendas ni apagues luces o aparatos eléctricos.
+                            Segundo, abre
+                            ventanas para ventilar. Tercero, cierra la válvula principal de gas. Cuarto, evacúa el área.
+                            Y quinto, llama a
+                            nuestro servicio de emergencias, al 320 948 5534, desde un lugar seguro. Nuestro equipo
+                            responderá inmediatamente.
+                        </span>
                     </div>
                 </div>
 
-                <div class="faq-item" data-aos="fade-up">
-                    <div class="faq-question">
+                <div class="faq-item" data-aos="fade-up"
+                    data-keywords="municipios cobertura boyaca antioquia tunja garagoa">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
                         <span>¿Qué municipios atienden en Boyacá y Antioquia?</span>
-                    </div>
-                    <div class="faq-answer">
+                    </button>
+                    <div class="faq-answer" id="faq-answer-5" role="region" aria-hidden="true">
                         <p>En Boyacá: Tunja, Garagoa, Guateque, Chinavita, Pachavita, Chivor, Pisba, Tenza, La Capilla,
                             Miraflores, San Eduardo, Páez, San Luis de Gaceno y otros. En Antioquia: Campamento, Anorí,
                             Armenia, Heliconia y municipios aledaños. Continuamos expandiendo nuestra cobertura.</p>
+                        <button class="read-text-btn" data-target-id="faq-answer-5-text" aria-label="Leer respuesta">
+                            <i class="fas fa-volume-up"></i> Leer
+                        </button>
+                        <span id="faq-answer-5-text" style="display: none;">
+                            En Boyacá atendemos: Tunja, Garagoa, Guateque, Chinavita, Pachavita, Chivor, Pisba, Tenza,
+                            La Capilla,
+                            Miraflores, San Eduardo, Páez, San Luis de Gaceno y otros. En Antioquia: Campamento, Anorí,
+                            Armenia, Heliconia y municipios aledaños. Continuamos expandiendo nuestra cobertura.
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== NEW TESTIMONIALS SECTION ===== -->
-    <section class="section testmonials bg-white">
+    <!-- ===== NUEVA SECCIÓN TESTIMONIOS ===== -->
+    <section class="section testmonials bg-white" role="region"
+        aria-label="Testimonios de clientes satisfechos con los servicios de TODO GAS SYR">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>Clientes Satisfechos</h2>
@@ -2355,8 +3165,10 @@
                             fueron impecables.</p>
                     </div>
                     <div class="testimonial-author">
-                        <!-- Corrected image path and added data-src for lazy loading -->
-                        <img src="img/2.jpg" data-src="img/2.jpg" alt="Juan Pérez" loading="lazy">
+                        <picture>
+                            <source srcset="img/2.webp" type="image/webp">
+                            <img src="img/2.jpg" alt="Foto de Juan Pérez, cliente satisfecho" loading="lazy">
+                        </picture>
                         <div class="author-info">
                             <h4>Juan Pérez</h4>
                             <p>Restaurante La Casona, Tunja</p>
@@ -2370,8 +3182,10 @@
                             profesionales y explicaron todo el proceso detalladamente. Totalmente recomendados.</p>
                     </div>
                     <div class="testimonial-author">
-                        <!-- Corrected image path and added data-src for lazy loading -->
-                        <img src="img/1.jpg" data-src="img/1.jpg" alt="María González" loading="lazy">
+                        <picture>
+                            <source srcset="img/1.webp" type="image/webp">
+                            <img src="img/1.jpg" alt="Foto de María González, cliente satisfecha" loading="lazy">
+                        </picture>
                         <div class="author-info">
                             <h4>María González</h4>
                             <p>Hotel Los Andes, Garagoa</p>
@@ -2385,8 +3199,12 @@
                             ampliación de redes y siempre han demostrado altos estándares de calidad y seguridad.</p>
                     </div>
                     <div class="testimonial-author">
-                        <!-- Corrected image path and added data-src for lazy loading -->
-                        <img src="img/22.png" data-src="img/22.png" alt="Carlos Rodríguez" loading="lazy">
+                        <picture>
+                            <source srcset="img/22.webp" type="image/webp">
+                            <img src="img/22.png"
+                                alt="Foto de Carlos Rodríguez, representante de la Gobernación de Boyacá"
+                                loading="lazy">
+                        </picture>
                         <div class="author-info">
                             <h4>Carlos Rodríguez</h4>
                             <p>Gobernación de Boyacá</p>
@@ -2397,8 +3215,8 @@
         </div>
     </section>
 
-    <!-- ===== NEW CLIENTS SECTION ===== -->
-    <section class="section bg-light">
+    <!-- ===== NUEVA SECCIÓN CLIENTES ===== -->
+    <section class="section bg-light" role="region" aria-label="Nuestros clientes y socios estratégicos">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>Nuestros Clientes</h2>
@@ -2406,20 +3224,33 @@
             </div>
 
             <div class="clients-slider" data-aos="fade-up">
-                <!-- Corrected image paths and added data-src for lazy loading -->
-                <img src="img/enercer.png" data-src="img/enercer.png" alt="Enercer S.A. E.S.P" class="client-logo"
-                    loading="lazy">
-                <img src="img/13.png" data-src="img/13.png" alt="DISTICON" class="client-logo" loading="lazy">
-                <img src="img/14.png" data-src="img/14.png" alt="ONENERGY" class="client-logo" loading="lazy">
-                <img src="img/gober.png" data-src="img/gober.png" alt="Gobernación de Boyacá" class="client-logo"
-                    loading="lazy">
-                <img src="img/alacaltunja.png" data-src="img/alacaltunja.png" alt="Alcaldía de Tunja" class="client-logo" loading="lazy">
+                <picture>
+                    <source srcset="img/enercer.webp" type="image/webp">
+                    <img src="img/enercer.png" alt="Logo Enercer S.A. E.S.P" class="client-logo" loading="lazy">
+                </picture>
+                <picture>
+                    <source srcset="img/13.webp" type="image/webp">
+                    <img src="img/13.png" alt="Logo DISTICON" class="client-logo" loading="lazy">
+                </picture>
+                <picture>
+                    <source srcset="img/14.webp" type="image/webp">
+                    <img src="img/14.png" alt="Logo ONENERGY" class="client-logo" loading="lazy">
+                </picture>
+                <picture>
+                    <source srcset="img/gober.webp" type="image/webp">
+                    <img src="img/gober.png" alt="Logo Gobernación de Boyacá" class="client-logo" loading="lazy">
+                </picture>
+                <picture>
+                    <source srcset="img/alacaltunja.webp" type="image/webp">
+                    <img src="img/alacaltunja.png" alt="Logo Alcaldía de Tunja" class="client-logo" loading="lazy">
+                </picture>
             </div>
         </div>
     </section>
 
-    <!-- ===== NEW CTA SECTION ===== -->
-    <section class="section cta">
+    <!-- ===== NUEVA SECCIÓN CTA ===== -->
+    <section class="section cta" role="region"
+        aria-label="Llamada a la acción para solicitar servicios de instalación o mantenimiento de gas">
         <div class="container">
             <div class="cta-content" data-aos="fade-up">
                 <h2>¿Necesitas instalación o mantenimiento de gas?</h2>
@@ -2436,8 +3267,9 @@
         </div>
     </section>
 
-    <!-- ===== IMPROVED CONTACT SECTION ===== -->
-    <section class="section bg-white" id="contact">
+    <!-- ===== SECCIÓN CONTACTO MEJORADA ===== -->
+    <section class="section bg-white" id="contact" role="region"
+        aria-label="Información de contacto y formulario para TODO GAS SYR">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>Contacto</h2>
@@ -2453,7 +3285,8 @@
                         <div class="contact-text">
                             <h3>Oficina Principal</h3>
                             <p>Calle 28 N° 18-38, Tunja, Boyacá</p>
-                            <a href="https://www.google.com/maps/search/Calle+28+N%C2%B0+18-38,+Tunja,+Boyac%C3%A1" target="_blank" rel="noopener">Ver en mapa</a>
+                            <a href="https://www.google.com/maps/search/Calle+28+N%C2%B0+18-38,+Tunja,+Boyac%C3%A1"
+                                target="_blank" rel="noopener">Ver en mapa</a>
                         </div>
                     </div>
 
@@ -2464,7 +3297,8 @@
                         <div class="contact-text">
                             <h3>Oficina Garagoa</h3>
                             <p>Calle 7 N° 4-29, Garagoa, Boyacá</p>
-                            <a href="https://www.google.com/maps/search/Calle+7+N%C2%B0+4-29,+Garagoa,+Boyac%C3%A1" target="_blank" rel="noopener">Ver en mapa</a>
+                            <a href="https://www.google.com/maps/search/Calle+7+N%C2%B0+4-29,+Garagoa,+Boyac%C3%A1"
+                                target="_blank" rel="noopener">Ver en mapa</a>
                         </div>
                     </div>
 
@@ -2474,8 +3308,18 @@
                         </div>
                         <div class="contact-text">
                             <h3>Teléfonos</h3>
-                            <p><a href="tel:+573209485534">320 948 5534</a></p>
-                            <p><a href="tel:+573223618360">322 361 8360</a></p>
+                            <p>
+                                <a href="tel:+573209485534" id="phone1">320 948 5534</a>
+                                <button class="copy-btn" data-clipboard-target="phone1"
+                                    aria-label="Copiar número de teléfono 320 948 5534"><i
+                                        class="fas fa-copy"></i></button>
+                            </p>
+                            <p>
+                                <a href="tel:+573223618360" id="phone2">322 361 8360</a>
+                                <button class="copy-btn" data-clipboard-target="phone2"
+                                    aria-label="Copiar número de teléfono 322 361 8360"><i
+                                        class="fas fa-copy"></i></button>
+                            </p>
                         </div>
                     </div>
 
@@ -2506,22 +3350,26 @@
                     <form id="contactFormWhatsApp">
                         <div class="form-group">
                             <label for="name">Nombre Completo *</label>
-                            <input type="text" id="name" class="form-control" required>
+                            <input type="text" id="name" class="form-control" required aria-required="true"
+                                aria-label="Campo para nombre completo">
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Correo Electrónico </label>
-                            <input type="email" id="email" class="form-control" >
+                            <label for="email">Correo Electrónico *</label>
+                            <input type="email" id="email" class="form-control" required aria-required="true"
+                                aria-label="Campo para correo electrónico">
                         </div>
 
                         <div class="form-group">
                             <label for="phone">Teléfono *</label>
-                            <input type="tel" id="phone" class="form-control" required>
+                            <input type="tel" id="phone" class="form-control" required aria-required="true"
+                                aria-label="Campo para número de teléfono">
                         </div>
 
                         <div class="form-group">
                             <label for="service">Servicio de Interés *</label>
-                            <select id="service" class="form-control" required>
+                            <select id="service" class="form-control" required aria-required="true"
+                                aria-label="Seleccione un servicio de interés">
                                 <option disabled selected value="">Seleccione un servicio</option>
                                 <option value="Instalación">Instalación</option>
                                 <option value="Mantenimiento">Mantenimiento</option>
@@ -2532,11 +3380,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="message">Mensaje </label>
-                            <textarea id="message" class="form-control" rows="5" ></textarea>
+                            <label for="message">Mensaje *</label>
+                            <textarea id="message" class="form-control" rows="5" required aria-required="true"
+                                aria-label="Escriba su mensaje o consulta"></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary" aria-label="Enviar mensaje">
+                        <button type="submit" class="btn btn-primary" aria-label="Enviar mensaje por WhatsApp">
                             <i class="fab fa-whatsapp"></i> Enviar Mensaje por WhatsApp
                         </button>
                     </form>
@@ -2552,19 +3401,26 @@
         </div>
     </section>
 
-    <!-- ===== IMPROVED FOOTER ===== -->
-    <footer>
+    <!-- ===== PIE DE PÁGINA MEJORADO ===== -->
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about" data-aos="fade-up">
-                    <a href="#" class="footer-logo">TODO <img src="assets/favicon/favicon-16x16.png" alt="Llama de gas" style="display: inline-block; vertical-align: middle; width: 16px; height: 16px; margin: 0 4px;"> <span class="text-secondary">GAS SYR</span></a>
-                    <p>Empresa boyacense con más de 20 años de experiencia en el sector del gas natural y GLP,
+                    <a href="#" class="footer-logo">
+                        <img src="img/Logo 2025.png" alt="Logo TODO GAS SYR S.A.S" width="auto" height="60">
+                        <!-- Logo en el footer -->
+                    </a>
+                    <p>Empresa boyacense con más de 25 años de experiencia en el sector del gas natural y GLP,
                         comprometida con la calidad, seguridad y satisfacción de nuestros clientes.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/573209485534" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link" aria-label="Visitar página de Facebook de TODO GAS SYR"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Visitar perfil de Instagram de TODO GAS SYR"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Visitar perfil de LinkedIn de TODO GAS SYR"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/573209485534" class="social-link"
+                            aria-label="Contactar a TODO GAS SYR por WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
 
@@ -2616,27 +3472,34 @@
         </div>
     </footer>
 
-    <!-- ===== IMPROVED WHATSAPP BUTTONS ===== -->
-    <a href="https://wa.me/573209485534?text=Hola%20TODO%20GAS%20SYR,%20me%20interesan%20sus%20servicios"
-        class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp - Tunja">
+    <!-- ===== BOTONES DE WHATSAPP MEJORADOS ===== -->
+    <a href="https://wa.me/573209485534?text=Hola%20TODO%20GAS%20SYR,%20me%20interesan%20sus%20servicios%20(Oficina%20Tunja)"
+        class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
+        aria-label="Contactar por WhatsApp a la oficina de Tunja">
         <i class="fab fa-whatsapp"></i>
     </a>
-    <a href="https://wa.me/573223618360?text=Hola%20TODO%20GAS%20SYR,%20me%20interesan%20sus%20servicios"
-        class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp - Garagoa">
+    <a href="https://wa.me/573223618360?text=Hola%20TODO%20GAS%20SYR,%20me%20interesan%20sus%20servicios%20(Oficina%20Garagoa)"
+        class="whatsapp-btn" style="bottom: calc(var(--space-5) + 65px);" target="_blank" rel="noopener noreferrer"
+        aria-label="Contactar por WhatsApp a la oficina de Garagoa">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- ===== BACK TO TOP BUTTON MEJORADO ===== -->
+    <!-- ===== BOTÓN BACK TO TOP MEJORADO ===== -->
     <a href="#home" class="back-to-top" id="backToTop" aria-label="Volver arriba">
         <i class="fas fa-arrow-up"></i>
     </a>
 
-    <!-- Optimized Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
-        // Initialize AOS (Animate On Scroll) after page load
+    <!-- Scripts JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+    <script defer>
         document.addEventListener('DOMContentLoaded', function () {
+            // Preloader
+            const preloader = document.getElementById('preloader');
+            window.addEventListener('load', () => {
+                preloader.classList.add('hidden');
+            });
+
             AOS.init({
                 duration: 800,
                 once: true,
@@ -2646,10 +3509,10 @@
                 }
             });
 
-            // Update year in the footer
+            // Actualizar año en el pie de página
             document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-            // Initialize Swiper for certifications
+            // Inicializar Swiper para certificaciones
             const certSwiper = new Swiper('.certifications-slider', {
                 slidesPerView: 1,
                 spaceBetween: 20,
@@ -2670,28 +3533,35 @@
                 }
             });
 
-            // FAQ Accordion
+            // Acordeón de FAQ
             const faqQuestions = document.querySelectorAll('.faq-question');
             faqQuestions.forEach(question => {
                 question.addEventListener('click', () => {
                     const item = question.parentElement;
                     const answer = item.querySelector('.faq-answer');
+                    const isExpanded = question.getAttribute('aria-expanded') === 'true';
 
-                    // Close all other items
+                    // Cerrar todos los demás elementos
                     document.querySelectorAll('.faq-item').forEach(faqItem => {
                         if (faqItem !== item) {
-                            faqItem.querySelector('.faq-question').classList.remove('active');
-                            faqItem.querySelector('.faq-answer').classList.remove('active');
+                            const otherQuestion = faqItem.querySelector('.faq-question');
+                            const otherAnswer = faqItem.querySelector('.faq-answer');
+                            otherQuestion.classList.remove('active');
+                            otherQuestion.setAttribute('aria-expanded', 'false');
+                            otherAnswer.classList.remove('active');
+                            otherAnswer.setAttribute('aria-hidden', 'true');
                         }
                     });
 
-                    // Toggle the current item
+                    // Alternar el elemento actual
                     question.classList.toggle('active');
+                    question.setAttribute('aria-expanded', !isExpanded);
                     answer.classList.toggle('active');
+                    answer.setAttribute('aria-hidden', isExpanded);
                 });
             });
 
-            // AI Advisor Functionality
+            // Funcionalidad del Asesor AI
             const aiSubmit = document.getElementById('aiSubmit');
             const aiClear = document.getElementById('aiClear');
             const aiQuestion = document.getElementById('aiQuestion');
@@ -2710,31 +3580,60 @@
                     aiResult.innerHTML = '';
 
                     try {
-                        // Simulate API call (in production this would be a real fetch call)
+                        // Simular llamada a la API (en producción sería una llamada fetch real)
+                        // Para demostración, usamos un setTimeout.
+                        // En un escenario real, integrarías con un modelo como Gemini aquí.
                         setTimeout(() => {
-                            const services = [
-                                {
-                                    name: "Instalación de Gas Natural",
-                                    description: "Basado en tu descripción, recomendamos nuestro servicio completo de instalación de gas natural, que incluye diseño, instalación de red interna, conexión de gasodomésticos y certificación final.",
+                            const lowerQuestion = question.toLowerCase();
+                            let recommendedServices = [];
+
+                            if (lowerQuestion.includes('instalar') || lowerQuestion.includes('casa nueva') || lowerQuestion.includes('apartamento')) {
+                                recommendedServices.push({
+                                    name: "Instalación de Gas Natural/GLP",
+                                    description: "Servicio completo de diseño, instalación de red interna y conexión de gasodomésticos.",
                                     icon: "fas fa-fire-alt"
-                                },
-                                {
-                                    name: "Mantenimiento Preventivo",
-                                    description: "También te sugerimos considerar nuestro servicio de mantenimiento preventivo anual para garantizar la seguridad y eficiencia de tu instalación.",
+                                });
+                            }
+                            if (lowerQuestion.includes('mantenimiento') || lowerQuestion.includes('revisión') || lowerQuestion.includes('fuga')) {
+                                recommendedServices.push({
+                                    name: "Mantenimiento Preventivo y Correctivo",
+                                    description: "Revisión, reparación y optimización de tus instalaciones para garantizar seguridad y eficiencia.",
                                     icon: "fas fa-tools"
-                                }
-                            ];
+                                });
+                            }
+                            if (lowerQuestion.includes('certificación') || lowerQuestion.includes('seguridad')) {
+                                recommendedServices.push({
+                                    name: "Certificación de Instalaciones",
+                                    description: "Emisión de certificados obligatorios y pruebas de hermeticidad para cumplir con la normativa.",
+                                    icon: "fas fa-award"
+                                });
+                            }
+                            if (lowerQuestion.includes('asesoría') || lowerQuestion.includes('duda')) {
+                                recommendedServices.push({
+                                    name: "Asesoría Técnica Personalizada",
+                                    description: "Expertos disponibles para resolver tus dudas y ofrecerte las mejores soluciones.",
+                                    icon: "fas fa-question-circle"
+                                });
+                            }
+
+                            if (recommendedServices.length === 0) {
+                                recommendedServices.push({
+                                    name: "Servicio General de Asesoría",
+                                    description: "No encontramos un servicio específico, pero podemos ofrecerte una asesoría general para entender mejor tu necesidad.",
+                                    icon: "fas fa-info-circle"
+                                });
+                            }
 
                             let resultHTML = '<h4 style="margin-bottom: 1rem; color: var(--primary);">Recomendaciones de Servicios</h4>';
 
-                            services.forEach(service => {
+                            recommendedServices.forEach(service => {
                                 resultHTML += `
                                     <div style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--gray-200);">
                                         <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
                                             <i class="${service.icon}" style="color: var(--primary);"></i>
                                             <h5 style="margin: 0; font-size: 1.1rem;">${service.name}</h5>
                                         </div>
-                                        <p style="margin: 0; color: var(--dark-light);">${service.description}</p>
+                                        <p style="margin: 0; color: var(--text-light-color);">${service.description}</p>
                                     </div>
                                 `;
                             });
@@ -2756,225 +3655,377 @@
                     aiResult.innerHTML = '<p>Aquí aparecerá la recomendación de servicios basada en tu necesidad.</p>';
                 });
             }
-        });
 
-        // Mobile Menu Toggle optimized
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
+            // Toggle de Tema (Claro/Oscuro/Alto Contraste)
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+            const themes = ['light-mode', 'dark-mode', 'high-contrast-mode'];
+            let currentThemeIndex = 0;
 
-        mobileMenuBtn.addEventListener('click', () => {
-            const isExpanded = navLinks.classList.toggle('active');
-            mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
-            mobileMenuBtn.innerHTML = isExpanded
-                ? '<i class="fas fa-times"></i><span class="sr-only">Cerrar menú</span>'
-                : '<i class="fas fa-bars"></i><span class="sr-only">Abrir menú</span>';
-        });
-
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            });
-        });
-
-        // Header scroll effect optimized
-        let lastScroll = 0;
-        const header = document.getElementById('header');
-
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.scrollY;
-
-            if (currentScroll <= 50) {
-                header.classList.remove('scrolled');
-            } else if (currentScroll > lastScroll) {
-                header.classList.add('scrolled');
-            }
-
-            lastScroll = currentScroll;
-        });
-
-        // Back to top button improved
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTop.classList.add('visible');
+            // Cargar preferencia de tema guardada
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                currentThemeIndex = themes.indexOf(savedTheme);
+                if (currentThemeIndex === -1) currentThemeIndex = 0; // Fallback
+                body.classList.add(themes[currentThemeIndex]);
+                updateThemeToggleIcon(themes[currentThemeIndex]);
             } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        // Projects filter optimized
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Update active buttons
-                filterButtons.forEach(btn => {
-                    btn.classList.remove('active');
-                    btn.setAttribute('aria-pressed', 'false');
-                });
-
-                button.classList.add('active');
-                button.setAttribute('aria-pressed', 'true');
-
-                // Filter projects
-                const filter = button.getAttribute('data-filter');
-
-                projectCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
-                        card.style.display = 'block';
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                        }, 50);
-                    } else {
-                        card.style.opacity = '0';
-                        setTimeout(() => {
-                            card.style.display = 'none';
-                        }, 300);
-                    }
-                });
-
-                // Recalculate animations
-                AOS.refreshHard();
-            });
-        });
-
-        // WhatsApp Form Submission
-        document.getElementById("contactFormWhatsApp").addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            const nombre = document.getElementById("name").value.trim();
-            const email = document.getElementById("email").value.trim();
-            const telefono = document.getElementById("phone").value.trim();
-            const servicio = document.getElementById("service").value;
-            const mensaje = document.getElementById("message").value.trim();
-
-            // Basic validation (can be enhanced with more specific regex if needed)
-            if (!nombre || !telefono || !servicio) {
-                alert("Por favor, complete todos los campos obligatorios."); // Using alert for simplicity as per user's previous context, but a custom modal is recommended for production.
-                return;
+                // Si no hay tema guardado, usar el tema por defecto (light-mode)
+                body.classList.add('light-mode');
+                updateThemeToggleIcon('light-mode');
             }
 
-            const texto = `Hola, soy *${nombre}*.%0A` +
-                          `Correo: ${email}%0A` +
-                          `Teléfono: ${telefono}%0A` +
-                          `Estoy interesado(a) en: *${servicio}*%0A` +
-                          `Mensaje: ${mensaje}`;
+            function updateThemeToggleIcon(theme) {
+                if (theme === 'dark-mode') {
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                    themeToggle.setAttribute('aria-label', 'Alternar a modo claro');
+                } else if (theme === 'high-contrast-mode') {
+                    themeToggle.innerHTML = '<i class="fas fa-adjust"></i>';
+                    themeToggle.setAttribute('aria-label', 'Alternar a modo claro');
+                } else {
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                    themeToggle.setAttribute('aria-label', 'Alternar a modo oscuro');
+                }
+            }
 
-            const telefonoEmpresa = "573209485534"; // Primary WhatsApp number for the business
+            themeToggle.addEventListener('click', () => {
+                body.classList.remove(...themes); // Eliminar todas las clases de tema
+                currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+                const newTheme = themes[currentThemeIndex];
+                body.classList.add(newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeToggleIcon(newTheme);
+            });
 
-            const url = `https://wa.me/${telefonoEmpresa}?text=${texto}`;
-            window.open(url, "_blank");
-        });
 
-
-        // Smooth scrolling for all links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-
-                // Handle href="#" which means scroll to top
-                if (targetId === '#') {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                    // Change URL without reloading
-                    if (history.pushState) {
-                        history.pushState(null, null, targetId);
-                    } else {
-                        location.hash = targetId;
+            // Funcionalidad de copiar al portapapeles
+            document.querySelectorAll('.copy-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    const targetId = this.dataset.clipboardTarget;
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        const textToCopy = targetElement.textContent.trim();
+                        const tempInput = document.createElement('textarea');
+                        tempInput.value = textToCopy;
+                        document.body.appendChild(tempInput);
+                        tempInput.select();
+                        try {
+                            document.execCommand('copy');
+                            const originalIcon = this.innerHTML;
+                            this.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+                            setTimeout(() => {
+                                this.innerHTML = originalIcon;
+                            }, 2000);
+                        } catch (err) {
+                            console.error('Failed to copy text: ', err);
+                        } finally {
+                            document.body.removeChild(tempInput);
+                        }
                     }
-                    return; // Exit the function
+                });
+            });
+
+            // COMENTADO: Registro del Service Worker (para evitar errores en Canvas)
+            // if ('serviceWorker' in navigator) {
+            //     navigator.serviceWorker.register('service-worker.js')
+            //         .then(reg => console.log('Service Worker registrado con éxito:', reg))
+            //         .catch(err => console.error('Error al registrar el Service Worker:', err));
+            // }
+
+            // Toggle de menú móvil
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                const isExpanded = navLinks.classList.toggle('active');
+                mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+                mobileMenuBtn.innerHTML = isExpanded
+                    ? '<i class="fas fa-times"></i><span class="sr-only">Cerrar menú</span>'
+                    : '<i class="fas fa-bars"></i><span class="sr-only">Abrir menú</span>';
+            });
+
+            // Cerrar menú al hacer clic en un enlace
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Efecto de scroll del encabezado
+            let lastScroll = 0;
+            const header = document.getElementById('header');
+
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.scrollY;
+
+                if (currentScroll <= 50) {
+                    header.classList.remove('scrolled');
+                } else if (currentScroll > lastScroll) {
+                    header.classList.add('scrolled');
                 }
 
-                const targetElement = document.querySelector(targetId);
+                lastScroll = currentScroll;
+            });
 
-                if (targetElement) {
-                    const headerHeight = document.getElementById('header').offsetHeight;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
-
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-
-                    // Change URL without reloading
-                    if (history.pushState) {
-                        history.pushState(null, null, targetId);
-                    } else {
-                        location.hash = targetId;
-                    }
+            // Botón Back to Top mejorado
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
                 }
             });
-        });
 
-        // Preload critical images
-        function preloadImage(url) {
-            const img = new Image();
-            img.src = url;
-        }
-
-        // Preload important images
-        window.addEventListener('load', function () {
-            const imagesToPreload = [
-                'img/31.png', /* workers-installing-gas.jpg */
-                'img/GN1.png', /* project-gas-network.jpg */
-                'img/32.png', /* project-glp-tanks.jpg */
-                'img/GLP4.png', /* project-glp-maintenance.jpg */
-                'img/INST3.png', /* gallery-1.jpg */
-                'img/26.png', /* gallery-2.jpg */
-                'img/EQUI6.png', /* gallery-3.jpg */
-                'img/OBRA5.png', /* gallery-4.jpg */
-                'img/11.png', /* certification-1.png */
-                'img/7.png', /* certification-2.png */
-                'img/24.png', /* certification-3.png */
-                'img/12.png', /* certification-4.png */
-                'img/2.jpg', /* testimonial-1.jpg */
-                'img/1.jpg', /* testimonial-2.jpg */
-                'img/22.png', /* testimonial-3.jpg */
-                'img/enercer.png', /* client-enercer.png */
-                'img/13.png', /* client-disticon.png */
-                'img/14.png', /* client-onenergy.png */
-                'img/gober.png', /* client-gob-boyaca.png */
-                'img/alacaltunja.png' /* client-alc-tunja.png */
-            ];
-
-            imagesToPreload.forEach(preloadImage);
-        });
-
-        // Lazy loading for images
-        if ('loading' in HTMLImageElement.prototype) {
-            // Browser supports native lazy loading
-            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-            lazyImages.forEach(img => {
-                // Use data-src for native lazy loading as well
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                }
-            });
-        } else {
-            // Polyfill for lazy loading
-            const lazyLoadObserver = new IntersectionObserver((entries) => {
+            // Contador animado para estadísticas
+            const animateNumbers = (entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const img = entry.target;
-                        if (img.dataset.src) {
-                            img.src = img.dataset.src;
+                        const statItems = entry.target.querySelectorAll('.stat-number');
+                        statItems.forEach(item => {
+                            const target = parseInt(item.dataset.target);
+                            let current = 0;
+                            const increment = target / 200; // Ajustar velocidad de la animación
+
+                            const updateCounter = () => {
+                                if (current < target) {
+                                    current += increment;
+                                    item.textContent = Math.ceil(current);
+                                    requestAnimationFrame(updateCounter);
+                                } else {
+                                    item.textContent = target;
+                                }
+                            };
+                            updateCounter();
+                        });
+                        observer.unobserve(entry.target); // Detener la observación una vez animado
+                    }
+                });
+            };
+
+            const aboutSection = document.querySelector('#about .about-stats');
+            if (aboutSection) {
+                const observer = new IntersectionObserver(animateNumbers, {
+                    threshold: 0.5 // Cuando el 50% de la sección es visible
+                });
+                observer.observe(aboutSection);
+            }
+
+            // Filtro de proyectos optimizado
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-pressed', 'false');
+                    });
+
+                    button.classList.add('active');
+                    button.setAttribute('aria-pressed', 'true');
+
+                    const filter = button.getAttribute('data-filter');
+
+                    projectCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                            }, 50);
+                        } else {
+                            card.style.opacity = '0';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
                         }
-                        lazyLoadObserver.unobserve(img);
+                    });
+
+                    AOS.refreshHard();
+                });
+            });
+
+            // Envío de formulario de WhatsApp
+            document.getElementById("contactFormWhatsApp").addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const nombre = sanitizeInput(document.getElementById("name").value);
+                const email = sanitizeInput(document.getElementById("email").value);
+                const telefono = sanitizeInput(document.getElementById("phone").value);
+                const servicio = sanitizeInput(document.getElementById("service").value);
+                const mensaje = sanitizeInput(document.getElementById("message").value);
+
+                if (!nombre || !email || !telefono || !servicio || !mensaje) {
+                    // Reemplazar alert con un mensaje en la UI
+                    const form = document.getElementById("contactFormWhatsApp");
+                    let errorMessage = form.querySelector('.form-error-message');
+                    if (!errorMessage) {
+                        errorMessage = document.createElement('p');
+                        errorMessage.className = 'form-error-message';
+                        errorMessage.style.color = 'var(--danger)';
+                        errorMessage.style.marginTop = 'var(--space-4)';
+                        form.insertBefore(errorMessage, form.querySelector('button'));
+                    }
+                    errorMessage.textContent = "Por favor, complete todos los campos obligatorios.";
+                    return;
+                }
+
+                const texto = `Hola, soy *${nombre}*.%0A` +
+                    `Correo: ${email}%0A` +
+                    `Teléfono: ${telefono}%0A` +
+                    `Estoy interesado(a) en: *${servicio}*%0A` +
+                    `Mensaje: ${mensaje}`;
+
+                const telefonoEmpresa = "573209485534";
+
+                const url = `https://wa.me/${telefonoEmpresa}?text=${texto}`;
+                window.open(url, "_blank");
+            });
+
+            // Función para sanitizar la entrada
+            function sanitizeInput(text) {
+                const div = document.createElement("div");
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            // Scroll suave para todos los enlaces
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+
+                    if (targetId === '#') {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                        if (history.pushState) {
+                            history.pushState(null, null, targetId);
+                        } else {
+                            location.hash = targetId;
+                        }
+                        return;
+                    }
+
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        const headerHeight = document.getElementById('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        if (history.pushState) {
+                            history.pushState(null, null, targetId);
+                        } else {
+                            location.hash = targetId;
+                        }
                     }
                 });
             });
 
-            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-                lazyLoadObserver.observe(img);
-            });
-        }
+            // Lazy loading para imágenes
+            // Ya está implementado con el atributo loading="lazy" en las etiquetas <img>
+            // y el polyfill para navegadores que no lo soportan.
+
+            // Búsqueda de FAQ / Servicios
+            const faqSearchInput = document.getElementById('faqSearch');
+            const faqList = document.getElementById('faqList');
+            const serviceCards = document.querySelectorAll('.service-card'); // También para buscar en servicios
+
+            if (faqSearchInput) {
+                faqSearchInput.addEventListener('input', function () {
+                    const searchTerm = this.value.toLowerCase().trim();
+
+                    // Filtrar FAQs
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        const questionText = item.querySelector('.faq-question span').textContent.toLowerCase();
+                        const answerText = item.querySelector('.faq-answer p').textContent.toLowerCase();
+                        const keywords = item.dataset.keywords ? item.dataset.keywords.toLowerCase() : '';
+
+                        if (questionText.includes(searchTerm) || answerText.includes(searchTerm) || keywords.includes(searchTerm)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+
+                    // Filtrar tarjetas de servicios
+                    serviceCards.forEach(card => {
+                        const serviceTitle = card.querySelector('h3').textContent.toLowerCase();
+                        const serviceDescription = card.querySelector('p').textContent.toLowerCase();
+                        const serviceList = Array.from(card.querySelectorAll('li')).map(li => li.textContent.toLowerCase()).join(' ');
+
+                        if (serviceTitle.includes(searchTerm) || serviceDescription.includes(searchTerm) || serviceList.includes(searchTerm)) {
+                            card.style.display = 'flex'; // Usar flex porque es un flex container
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            }
+
+            // Text-to-Speech
+            const readTextButtons = document.querySelectorAll('.read-text-btn');
+            if ('speechSynthesis' in window) {
+                readTextButtons.forEach(button => {
+                    let utterance = null; // Variable para almacenar la instancia de SpeechSynthesisUtterance
+
+                    button.addEventListener('click', function () {
+                        const targetId = this.dataset.targetId;
+                        const textElement = document.getElementById(targetId);
+
+                        if (textElement) {
+                            const textToRead = textElement.textContent;
+
+                            if (utterance && window.speechSynthesis.speaking) {
+                                if (window.speechSynthesis.paused) {
+                                    window.speechSynthesis.resume();
+                                    this.innerHTML = '<i class="fas fa-pause"></i> Pausar';
+                                } else {
+                                    window.speechSynthesis.pause();
+                                    this.innerHTML = '<i class="fas fa-play"></i> Continuar';
+                                }
+                            } else {
+                                // Si no hay una instancia o no está hablando, crear una nueva
+                                utterance = new SpeechSynthesisUtterance(textToRead);
+                                utterance.lang = 'es-ES'; // Establecer idioma a español
+
+                                utterance.onend = () => {
+                                    this.innerHTML = '<i class="fas fa-volume-up"></i> Leer'; // Reiniciar icono al finalizar
+                                    utterance = null; // Limpiar la instancia
+                                };
+                                utterance.onpause = () => {
+                                    this.innerHTML = '<i class="fas fa-play"></i> Continuar';
+                                };
+                                utterance.onresume = () => {
+                                    this.innerHTML = '<i class="fas fa-pause"></i> Pausar';
+                                };
+                                utterance.onerror = (event) => {
+                                    console.error('SpeechSynthesisUtterance.onerror', event);
+                                    this.innerHTML = '<i class="fas fa-volume-up"></i> Error'; // Mostrar error
+                                    utterance = null;
+                                };
+
+                                window.speechSynthesis.speak(utterance);
+                                this.innerHTML = '<i class="fas fa-pause"></i> Pausar';
+                            }
+                        }
+                    });
+                });
+            } else {
+                readTextButtons.forEach(button => {
+                    button.style.display = 'none'; // Ocultar si la API no es compatible
+                });
+                console.warn('SpeechSynthesis API no es compatible con este navegador.');
+            }
+        });
     </script>
 </body>
 
