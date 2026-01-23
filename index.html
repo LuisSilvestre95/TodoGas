@@ -943,39 +943,23 @@
           doc.autoTable({
             startY: formulasTableY,
             margin: { left: margin, right: margin },
-            head: [["Descripción", "Valor Utilizado", "Parámetros Aplicados"]],
+            head: [["Fórmula / Concepto", "Operación Realizada", "Resultado"]],
             body: [
               [
-                "Longitud Equivalente (LE)",
+                "Longitud Equivalente (Factor 1.2)",
+                longitud1 + " × 1.2",
                 le1 + " m",
-                "Longitud: " + longitud1 + " m × 1.2",
               ],
               [
                 "Pérdida de Presión (Müller)",
+                "Caudal elevado a 1.82 × Diámetro elevado a -4.82 × Longitud equivalente",
                 perdida1 + " mbar",
-                "Q: " +
-                  caudal1 +
-                  " m³/h | D: " +
-                  diametro1 +
-                  " mm | LE: " +
-                  le1 +
-                  " m",
               ],
+              ["Presión Final (Resta)", pi1 + " - " + perdida1, pf1 + " mbar"],
               [
-                "Presión Final",
-                pf1 + " mbar",
-                "Pi: " + pi1 + " mbar - " + perdida1 + " mbar",
-              ],
-              [
-                "Velocidad del Gas",
+                "Velocidad del Gas (Fórmula Gas)",
+                "Caudal ÷ Área del tubo ÷ Presión",
                 velocidad1 + " m/s",
-                "Q: " +
-                  caudal1 +
-                  " m³/h | Pf: " +
-                  pf1 +
-                  " mbar | D: " +
-                  diametro1 +
-                  " mm",
               ],
             ],
             theme: "grid",
@@ -1374,67 +1358,59 @@
           doc.autoTable({
             startY: formulasTableY,
             margin: { left: margin, right: margin },
-            head: [["Descripción", "Valor Utilizado", "Parámetros Aplicados"]],
+            head: [["Fórmula / Concepto", "Operación Realizada", "Resultado"]],
             body: [
               [
-                "Longitud Equivalente (LE)",
+                "Longitud Equivalente (Factor 0.2)",
+                longitudMedia + " × 0.2",
                 leMedia + " m",
-                "Longitud: " + longitudMedia + " m × 0.2",
               ],
               [
-                "Longitud Total (LT)",
+                "Longitud Total (Suma)",
+                longitudMedia + " + " + leMedia,
                 ltMedia + " m",
-                "Longitud: " + longitudMedia + " m + LE: " + leMedia + " m",
               ],
               [
-                "Presión Absoluta Inicial",
+                "Presión Absoluta Inicial (Suma)",
+                p1Media + " + 723.6 (atmosférica)",
                 pAbsMedia + " mbar",
-                "P1: " + p1Media + " mbar + 723.6 (Patm)",
               ],
               [
-                "Presión Absoluta Final",
+                "Presión Absoluta Final (Müller)",
+                "Caudal elevado a 0.425 × Longitud elevada a 0.576 ÷ Diámetro elevado a 2.725",
                 p2AbsMedia + " mbar",
-                "Q: " +
-                  caudalMedia +
-                  " m³/h | D: " +
-                  diamIntMedia +
-                  " mm | LT: " +
-                  ltMedia +
-                  " m",
               ],
               [
-                "Presión Final Manométrica",
+                "Presión Final Manométrica (Resta)",
+                p2AbsMedia + " - 723.6",
                 pfMedia + " mbar",
-                "P2abs: " + p2AbsMedia + " mbar - 723.6 (Patm)",
               ],
               [
-                "Pérdida % Absoluta",
+                "Pérdida % Absoluta (Porcentaje)",
+                "Diferencia ÷ Presión inicial × 100",
                 perdAbsMedia,
-                "(Pabs - P2abs) / Pabs × 100",
               ],
-              ["Pérdida % Manométrica", perdManMedia, "(P1 - Pf) / P1 × 100"],
               [
-                "Velocidad del Gas",
+                "Pérdida % Manométrica (Porcentaje)",
+                "Diferencia ÷ Presión entrada × 100",
+                perdManMedia,
+              ],
+              [
+                "Velocidad del Gas (Fórmula Gas)",
+                "Caudal ÷ Área del tubo ÷ Presión",
                 velocidadMedia + " m/s",
-                "Q: " +
-                  caudalMedia +
-                  " m³/h | Pf: " +
-                  pfMedia +
-                  " mbar | D: " +
-                  diamIntMedia +
-                  " mm",
               ],
             ],
             theme: "grid",
             styles: {
-              fontSize: 7,
-              cellPadding: 1.8,
+              fontSize: 6.5,
+              cellPadding: 1.5,
               lineColor: [150, 150, 150],
               lineWidth: 0.3,
               halign: "left",
               valign: "top",
               overflow: "linebreak",
-              minCellHeight: 7,
+              minCellHeight: 6,
             },
             headStyles: {
               fillColor: [200, 120, 100],
@@ -1447,12 +1423,12 @@
             },
             bodyStyles: {
               fillColor: [252, 250, 250],
-              fontSize: 7,
+              fontSize: 6.5,
             },
             columnStyles: {
-              0: { cellWidth: 30 },
-              1: { cellWidth: 35 },
-              2: { cellWidth: 135 },
+              0: { cellWidth: 35 },
+              1: { cellWidth: 70 },
+              2: { cellWidth: 55 },
             },
             alternateRowStyles: {
               fillColor: [245, 240, 240],
