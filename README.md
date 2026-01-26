@@ -595,7 +595,7 @@ console.log("Ciclos:", detectarCiclos(red));
 
 ## 🚀 Roadmap de Mejoras
 
-### 🔵 v2.3.0 (Próximo - Q1 2024)
+### 🔵 v2.3.0 (Próximo - Q1 2026)
 
 - [ ] Selector dinámico GLP/GN en interfaz
 - [ ] Exportación a Excel con múltiples hojas
@@ -604,7 +604,7 @@ console.log("Ciclos:", detectarCiclos(red));
 - [ ] Undo/Redo en edición de tablas
 - [ ] Validación de unidades automática
 
-### 🟢 v3.0.0 (Mediano Plazo - Q2-Q3 2024)
+### 🟢 v3.0.0 (Mediano Plazo - Q2-Q3 2026)
 
 - [ ] Backend Node.js + Base de datos
 - [ ] Autenticación de usuarios
@@ -613,7 +613,7 @@ console.log("Ciclos:", detectarCiclos(red));
 - [ ] Control de versiones de proyectos
 - [ ] API REST para integración
 
-### 🟡 v3.1.0 (Largo Plazo - Q4 2024+)
+### 🟡 v3.1.0 (Largo Plazo - Q4 2026+)
 
 - [ ] Análisis de ciclo de vida (LCA)
 - [ ] Optimización automática de diámetros
@@ -640,19 +640,18 @@ console.log("Ciclos:", detectarCiclos(red));
 
 | Canal        | Contacto                                                    | Disponibilidad | Respuesta |
 | ------------ | ----------------------------------------------------------- | -------------- | --------- |
-| 📧 Email     | [contacto@todogas.com.co](mailto:contacto@todogas.com.co)   | 24/7           | 24 horas  |
+| 📧 Email     | [todogassyr@hotmail.com]                                    | 24/7           | 24 horas  |
 | 💬 WhatsApp  | +57 301 594 9331                                            | L-V 8AM-5PM    | 1 hora    |
 | 🐛 Issues    | GitHub Issues                                               | 24/7           | 48 horas  |
-| 💼 Comercial | [comercial@todogas.com.co](mailto:comercial@todogas.com.co) | L-V 9AM-6PM    | 2 horas   |
 
 ### 🏢 Información Corporativa
 
 ```text
 TODO GAS SYR S.A.S
-Dirección: Bogotá D.C., Colombia
-NIT: XXXXXXXXXXXX
-Contacto: [todogas.com.co](https://todogas.com.co)
-Teléfono: +57 (1) 234-5678
+Dirección: Tunja - Boyacá Calle 28 N° 18 - 38
+NIT: 901126243-3
+Contacto: todogassyr@hotmail,com
+Teléfono: +57 322 361 8360
 ```
 
 ### 🤝 Contribución
@@ -672,7 +671,7 @@ Este proyecto está bajo licencia **MIT** - ver archivo [LICENSE](LICENSE) para 
 ```text
 MIT License
 
-Copyright (c) 2024 TODO GAS SYR S.A.S
+Copyright (c) 2026 TODO GAS SYR S.A.S
 
 Permission is hereby granted, free of charge...
 ```
