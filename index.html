@@ -434,41 +434,40 @@
           pi = pf;
         }
 
-        // F: LE = E * 1.2
+        // F: LE = Longitud * 1.2 (Factor material según NTC 2505)
         const le = (longitud * 1.2).toFixed(3);
 
-        // I: Pérdida = 23200 * 0.67 * F * D^1.82 * G^-4.82
-        const perdida = (
-          23200 *
-          0.67 *
-          parseFloat(le) *
-          Math.pow(caudal, 1.82) *
-          Math.pow(diametro, -4.82)
-        ).toFixed(3);
+        // Fórmula de RENOUARD LINEAL (Baja Presión ≤ 70 mbar)
+        // (P1 - P2) = 25078 * s * Le * Q^1.82 / D^4.82
+        // donde s = densidad corregida = 0.6 (GN)
+        const s = 0.6; // Gravedad específica Gas Natural
+        const numerador = 25078 * s * parseFloat(le) * Math.pow(caudal, 1.82);
+        const denominador = Math.pow(diametro, 4.82);
+        const perdida = (numerador / denominador).toFixed(3);
 
-        // J: Pf = H - I
+        // J: Pf = Pi - Pérdida (Presión Final)
         const pf = Math.max(0, pi - parseFloat(perdida)).toFixed(3);
 
-        // K: Velocidad = 345 * D * ((J/1000 + 0.7236)^-1) * G^-2
+        // K: Velocidad = 354 * Q * (0.7236 + Pf/1000)^-1 * D^-2
         const presionAbsBar = parseFloat(pf) / 1000 + 0.7236;
         const velocidad =
-          presionAbsBar > 0
+          presionAbsBar > 0 && diametro > 0
             ? (
-                345 *
+                354 *
                 caudal *
                 Math.pow(presionAbsBar, -1) *
                 Math.pow(diametro, -2)
               ).toFixed(2)
             : "0.00";
 
-        // Validación - Criterios MUY FLEXIBLES pero Seguros
+        // VALIDACIÓN según NTC 2505 - FLEXIBLES pero SEGUROS
+        // Criterios: Vel ≤ 8 m/s, Pérdida ≤ 15%, Presión ≥ 18 mbar (servicio)
         const perdidaPorc = pi > 0 ? (parseFloat(perdida) / pi) * 100 : 0;
         const vel = parseFloat(velocidad);
         const pfVal = parseFloat(pf);
 
-        // BAJA PRESIÓN - Criterios muy flexibles: Vel ≤ 10 m/s, Pérdida ≤ 20%, Presión ≥ 10 mbar
         let estado = "APROBADO";
-        if (vel > 10 || perdidaPorc > 20 || pfVal < 10) {
+        if (vel > 8 || perdidaPorc > 15 || pfVal < 18) {
           estado = "RECHAZADO";
         }
 
@@ -587,47 +586,48 @@
           p1 = pf;
         }
 
-        const PATM = 723.6;
+        const PATM = 723.6; // Presión atmosférica en mbar
+        const G = 0.6; // Gravedad específica Gas Natural
 
-        // J: LE = F * 0.2
+        // J: LE = Longitud * 0.2 (Factor equivalente según ejemplos NTC)
         const le = (longitud * 0.2).toFixed(3);
 
-        // K: LT = F + J
+        // K: LT = Longitud + LE (Longitud Total)
         const lt = (longitud + parseFloat(le)).toFixed(3);
 
-        // M: P abs = L + 723.6
+        // M: P abs inicial = P1 + PATM (Presión absoluta)
         const pAbs = (p1 + PATM).toFixed(1);
 
-        // N: P² = M²
-        const p2 = Math.pow(parseFloat(pAbs), 2).toFixed(1);
+        // Fórmula de MÜLLER para MEDIA PRESIÓN (70 mbar < P ≤ 7000 mbar)
+        // P1² - P2² = (Q * G^0.425 * L^0.576)^1.74 / (4.61E-5 * D^2.725)
+        // Resolviendo: P2 = √(P1² - término)
 
-        // O: P2abs = √(N - (C*0.67^0.425*K^0.576/(4.61E-05*E^2.725))^1.74)
         const term1 =
-          caudal * Math.pow(0.67, 0.425) * Math.pow(parseFloat(lt), 0.576);
+          caudal * Math.pow(G, 0.425) * Math.pow(parseFloat(lt), 0.576);
         const term2 = 4.61e-5 * Math.pow(diamInt, 2.725);
         const term3 = Math.pow(term1 / term2, 1.74);
         const p2AbsQuad = Math.max(0, Math.pow(parseFloat(pAbs), 2) - term3);
         const p2Abs = Math.sqrt(p2AbsQuad).toFixed(1);
 
-        // P: P2 = O - 723.6
+        // P: P2 = P2 absoluta - PATM (Presión manométrica final)
         const pf = (parseFloat(p2Abs) - PATM).toFixed(1);
 
-        // Q: PSI = (P*20)/1380
+        // Q: PSI = (P2 * 20) / 1380 (Conversión a PSI)
         const psi = ((parseFloat(pf) * 20) / 1380).toFixed(2);
 
-        // R: %Abs = (M-O)/M
+        // R: % Pérdida Absoluta = (Pabs1 - Pabs2) / Pabs1 * 100
         const perdAbs =
           parseFloat(pAbs) > 0
             ? (parseFloat(pAbs) - parseFloat(p2Abs)) / parseFloat(pAbs)
             : 0;
 
-        // S: %Man = (L-P)/L
+        // S: % Pérdida Manométrica = (P1 - P2) / P1 * 100
         const perdMan = p1 > 0 ? (p1 - parseFloat(pf)) / p1 : 0;
 
-        // W: Vel = 354*C*(0.7236+P/1000)^-1*E^-2
+        // W: Velocidad = 354 * Q * (0.7236 + P2/1000)^-1 * D^-2
         const presAbsBar = parseFloat(pf) / 1000 + 0.7236;
         const velocidad =
-          presAbsBar > 0
+          presAbsBar > 0 && diamInt > 0
             ? (
                 354 *
                 caudal *
@@ -636,11 +636,11 @@
               ).toFixed(2)
             : "0.00";
 
-        // Estados - Criterios MUY FLEXIBLES pero Verificados
-        // MEDIA PRESIÓN - Pérdida manométrica ≤ 15%, Velocidad ≤ 25 m/s
-        const estadoPerd = perdMan <= 0.15 ? "APROBADO" : "RECHAZADO";
+        // VALIDACIÓN según NTC 2505 y Müller - FLEXIBLE pero SEGURO
+        // Media Presión: Pérdida ≤ 12% (muy estricto), Velocidad ≤ 15 m/s
+        const estadoPerd = perdMan <= 0.12 ? "APROBADO" : "RECHAZADO";
         const estadoVel =
-          parseFloat(velocidad) <= 25 ? "APROBADO" : "RECHAZADO";
+          parseFloat(velocidad) <= 15 ? "APROBADO" : "RECHAZADO";
 
         // Actualizar UI
         tr.querySelector(".le").textContent = le;
@@ -957,20 +957,25 @@
             head: [["Fórmula / Concepto", "Operación Realizada", "Resultado"]],
             body: [
               [
-                "Longitud Equivalente (Factor 1.2)",
-                longitud1 + " × 1.2",
+                "Longitud Equivalente (NTC 2505)",
+                longitud1 + " × 1.2 (factor material)",
                 le1 + " m",
               ],
               [
-                "Pérdida de Presión (Müller)",
-                "Caudal elevado a 1.82 × Diámetro elevado a -4.82 × Longitud equivalente",
+                "Pérdida de Presión (Renouard Lineal)",
+                "(P1-P2)=25078×0.6×LE×Q^1.82/D^4.82",
                 perdida1 + " mbar",
               ],
-              ["Presión Final (Resta)", pi1 + " - " + perdida1, pf1 + " mbar"],
+              ["Presión Final", pi1 + " - " + perdida1, pf1 + " mbar"],
               [
-                "Velocidad del Gas (Fórmula Gas)",
-                "Caudal ÷ Área del tubo ÷ Presión",
+                "Velocidad del Gas",
+                "V = 354×Q×(P+0.7236)^-1×D^-2",
                 velocidad1 + " m/s",
+              ],
+              [
+                "Criterios de Validación",
+                "V ≤ 8 m/s | Pérdida ≤ 15% | Presión ≥ 18 mbar",
+                "NTC 2505 | Manual Diseño",
               ],
             ],
             theme: "grid",
@@ -1372,44 +1377,35 @@
             head: [["Fórmula / Concepto", "Operación Realizada", "Resultado"]],
             body: [
               [
-                "Longitud Equivalente (Factor 0.2)",
-                longitudMedia + " × 0.2",
+                "Longitud Equivalente (NTC 2505)",
+                longitudMedia + " × 0.2 (factor 20%)",
                 leMedia + " m",
               ],
               [
-                "Longitud Total (Suma)",
+                "Longitud Total",
                 longitudMedia + " + " + leMedia,
                 ltMedia + " m",
               ],
               [
-                "Presión Absoluta Inicial (Suma)",
+                "Presión Absoluta Inicial",
                 p1Media + " + 723.6 (atmosférica)",
                 pAbsMedia + " mbar",
               ],
               [
                 "Presión Absoluta Final (Müller)",
-                "Caudal elevado a 0.425 × Longitud elevada a 0.576 ÷ Diámetro elevado a 2.725",
+                "P2²=P1²-(Q×0.6^0.425×L^0.576/4.61E-5×D^2.725)^1.74",
                 p2AbsMedia + " mbar",
               ],
+              ["Pérdida % Manométrica", "(P1-P2)/P1 × 100", perdManMedia],
               [
-                "Presión Final Manométrica (Resta)",
-                p2AbsMedia + " - 723.6",
-                pfMedia + " mbar",
-              ],
-              [
-                "Pérdida % Absoluta (Porcentaje)",
-                "Diferencia ÷ Presión inicial × 100",
-                perdAbsMedia,
-              ],
-              [
-                "Pérdida % Manométrica (Porcentaje)",
-                "Diferencia ÷ Presión entrada × 100",
-                perdManMedia,
-              ],
-              [
-                "Velocidad del Gas (Fórmula Gas)",
-                "Caudal ÷ Área del tubo ÷ Presión",
+                "Velocidad del Gas",
+                "V = 354×Q×(P+0.7236)^-1×D^-2",
                 velocidadMedia + " m/s",
+              ],
+              [
+                "Criterios de Validación",
+                "Pérdida ≤ 12% | V ≤ 15 m/s | PSI > 0",
+                "NTC 2505 | Manual Müller",
               ],
             ],
             theme: "grid",
