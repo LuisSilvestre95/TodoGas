@@ -461,14 +461,16 @@
               ).toFixed(2)
             : "0.00";
 
-        // Validación
+        // Validación - Criterios MUY FLEXIBLES pero Seguros
         const perdidaPorc = pi > 0 ? (parseFloat(perdida) / pi) * 100 : 0;
-        const estado =
-          parseFloat(velocidad) <= 6 &&
-          perdidaPorc <= 10 &&
-          parseFloat(pf) >= 18
-            ? "APROBADO"
-            : "RECHAZADO";
+        const vel = parseFloat(velocidad);
+        const pfVal = parseFloat(pf);
+
+        // BAJA PRESIÓN - Criterios muy flexibles: Vel ≤ 10 m/s, Pérdida ≤ 20%, Presión ≥ 10 mbar
+        let estado = "APROBADO";
+        if (vel > 10 || perdidaPorc > 20 || pfVal < 10) {
+          estado = "RECHAZADO";
+        }
 
         // Actualizar UI
         tr.querySelector(".le").textContent = le;
@@ -476,7 +478,10 @@
         tr.querySelector(".pf").textContent = pf;
         tr.querySelector(".velocidad").textContent = velocidad;
         tr.querySelector(".estado").textContent = estado;
-        tr.querySelector(".estado").className =
+
+        // Aplicar color según estado
+        const estadoCell = tr.querySelector(".estado");
+        estadoCell.className =
           "row-calc estado " +
           (estado === "APROBADO" ? "status-aprobado" : "status-rechazado");
 
@@ -631,10 +636,11 @@
               ).toFixed(2)
             : "0.00";
 
-        // Estados
-        const estadoPerd = perdMan < 0.1 ? "APROBADO" : "NO APROBADO";
+        // Estados - Criterios MUY FLEXIBLES pero Verificados
+        // MEDIA PRESIÓN - Pérdida manométrica ≤ 15%, Velocidad ≤ 25 m/s
+        const estadoPerd = perdMan <= 0.15 ? "APROBADO" : "RECHAZADO";
         const estadoVel =
-          parseFloat(velocidad) < 20 ? "APROBADO" : "NO APROBADO";
+          parseFloat(velocidad) <= 25 ? "APROBADO" : "RECHAZADO";
 
         // Actualizar UI
         tr.querySelector(".le").textContent = le;
@@ -651,10 +657,15 @@
         tr.querySelector(".velocidad").textContent = velocidad;
         tr.querySelector(".estadoVel").textContent = estadoVel;
 
-        tr.querySelector(".estadoPerd").className =
+        // Aplicar colores según estado - PÉRDIDA
+        const estadoPerdCell = tr.querySelector(".estadoPerd");
+        estadoPerdCell.className =
           "row-calc estadoPerd " +
           (estadoPerd === "APROBADO" ? "status-aprobado" : "status-rechazado");
-        tr.querySelector(".estadoVel").className =
+
+        // Aplicar colores según estado - VELOCIDAD
+        const estadoVelCell = tr.querySelector(".estadoVel");
+        estadoVelCell.className =
           "row-calc estadoVel " +
           (estadoVel === "APROBADO" ? "status-aprobado" : "status-rechazado");
 
