@@ -92,18 +92,6 @@
                 <input type="text" id="bajaDireccion" placeholder="Dirección" />
               </div>
               <div class="data-input">
-                <label><i class="fas fa-flag"></i> DEPARTAMENTO</label>
-                <input
-                  type="text"
-                  id="bajaDepartamento"
-                  placeholder="Departamento"
-                />
-              </div>
-              <div class="data-input">
-                <label><i class="fas fa-building"></i> CIUDAD</label>
-                <input type="text" id="bajaCiudad" placeholder="Ciudad" />
-              </div>
-              <div class="data-input">
                 <label><i class="fas fa-city"></i> MUNICIPIO</label>
                 <input type="text" id="bajaMunicipio" placeholder="Municipio" />
               </div>
@@ -204,18 +192,6 @@
               <div class="data-input">
                 <label><i class="fas fa-map-marker-alt"></i> DIRECCIÓN</label>
                 <input type="text" id="bajaDireccion" placeholder="Dirección" />
-              </div>
-              <div class="data-input">
-                <label><i class="fas fa-flag"></i> DEPARTAMENTO</label>
-                <input
-                  type="text"
-                  id="bajaDepartamento"
-                  placeholder="Departamento"
-                />
-              </div>
-              <div class="data-input">
-                <label><i class="fas fa-building"></i> CIUDAD</label>
-                <input type="text" id="bajaCiudad" placeholder="Ciudad" />
               </div>
               <div class="data-input">
                 <label><i class="fas fa-city"></i> MUNICIPIO</label>
@@ -791,10 +767,8 @@
           const c1 = document.getElementById("bajaClientName")?.value || "N/A";
           const c2 = document.getElementById("bajaCedula")?.value || "N/A";
           const c3 = document.getElementById("bajaDireccion")?.value || "N/A";
-          const c5 =
-            document.getElementById("bajaDepartamento")?.value || "N/A";
-          const c6 = document.getElementById("bajaCiudad")?.value || "N/A";
-          const c4 = document.getElementById("bajaTelefono")?.value || "N/A";
+          const c4 = document.getElementById("bajaMunicipio")?.value || "N/A";
+          const c5 = document.getElementById("bajaTelefono")?.value || "N/A";
           doc.autoTable({
             startY: 4,
             margin: { left: rightColX, right: margin },
@@ -804,9 +778,8 @@
               ["NOMBRE:", c1],
               ["CÉDULA:", c2],
               ["DIRECCIÓN:", c3],
-              ["DEPARTAMENTO:", c5],
-              ["CIUDAD:", c6],
-              ["TELÉFONO:", c4],
+              ["MUNICIPIO:", c4],
+              ["TELÉFONO:", c5],
             ],
             theme: "grid",
             styles: {
@@ -1176,10 +1149,8 @@
           const c1 = document.getElementById("bajaClientName")?.value || "N/A";
           const c2 = document.getElementById("bajaCedula")?.value || "N/A";
           const c3 = document.getElementById("bajaDireccion")?.value || "N/A";
-          const c5 =
-            document.getElementById("bajaDepartamento")?.value || "N/A";
-          const c6 = document.getElementById("bajaCiudad")?.value || "N/A";
-          const c4 = document.getElementById("bajaTelefono")?.value || "N/A";
+          const c4 = document.getElementById("bajaMunicipio")?.value || "N/A";
+          const c5 = document.getElementById("bajaTelefono")?.value || "N/A";
           doc.autoTable({
             startY: 4,
             margin: { left: rightColX, right: margin },
@@ -1189,9 +1160,8 @@
               ["NOMBRE:", c1],
               ["CÉDULA:", c2],
               ["DIRECCIÓN:", c3],
-              ["DEPARTAMENTO:", c5],
-              ["CIUDAD:", c6],
-              ["TELÉFONO:", c4],
+              ["MUNICIPIO:", c4],
+              ["TELÉFONO:", c5],
             ],
             theme: "grid",
             styles: {
@@ -1551,8 +1521,7 @@
           "bajaClientName",
           "bajaCedula",
           "bajaDireccion",
-          "bajaDepartamento",
-          "bajaCiudad",
+          "bajaMunicipio",
           "bajaTelefono",
         ].forEach((id) => {
           const v = localStorage.getItem(id);
@@ -1563,7 +1532,7 @@
         // Guardar al cambiar
         document
           .querySelectorAll(
-            'input[id*="Client"],input[id*="cedula"],input[id*="direccion"],input[id*="departamento"],input[id*="ciudad"],input[id*="telefono"]',
+            'input[id*="Client"],input[id*="cedula"],input[id*="direccion"],input[id*="municipio"],input[id*="telefono"]',
           )
           .forEach((inp) => {
             inp.addEventListener("change", (e) =>
