@@ -410,16 +410,14 @@
           pi = pf;
         }
 
-        // F: LE = Longitud * 1.2 (Factor material según NTC 2505)
+        // F: LE = Longitud * 1.2 (factor material según NTC 2505)
         const le = (longitud * 1.2).toFixed(3);
 
         // Fórmula de RENOUARD LINEAL (Baja Presión ≤ 70 mbar)
-        // (P1 - P2) = 25078 * s * Le * Q^1.82 / D^4.82
-        // donde s = densidad corregida = 0.6 (GN)
-        const s = 0.6; // Gravedad específica Gas Natural
-        const numerador = 25078 * s * parseFloat(le) * Math.pow(caudal, 1.82);
-        const denominador = Math.pow(diametro, 4.82);
-        const perdida = (numerador / denominador).toFixed(3);
+        // usando constante simplificada 15544 (23200×0.67)
+        const perdida = (
+          15544 * parseFloat(le) * Math.pow(caudal, 1.82) * Math.pow(diametro, -4.82)
+        ).toFixed(3);
 
         // J: Pf = Pi - Pérdida (Presión Final)
         const pf = Math.max(0, pi - parseFloat(perdida)).toFixed(3);
@@ -429,7 +427,7 @@
         const velocidad =
           presionAbsBar > 0 && diametro > 0
             ? (
-                354 *
+                345.73 *
                 caudal *
                 Math.pow(presionAbsBar, -1) *
                 Math.pow(diametro, -2)
@@ -601,7 +599,8 @@
         const perdMan = p1 > 0 ? (p1 - parseFloat(pf)) / p1 : 0;
 
         // W: Velocidad = 354 * Q * (0.7236 + P2/1000)^-1 * D^-2
-        const presAbsBar = parseFloat(pf) / 1000 + 0.7236;
+        // use presión inicial (p1) para cálculo de velocidad según la nueva fórmula
+        const presAbsBar = parseFloat(p1) / 1000 + 0.7236;
         const velocidad =
           presAbsBar > 0 && diamInt > 0
             ? (
@@ -716,7 +715,7 @@
           const logoSize = 35;
           const col1Width = 50;
           const logoX = margin + (col1Width - logoSize) / 2; // Centrado en columna 1
-          const logoY = 8;
+          const logoY = 4;
           if (logoBase64) {
             try {
               console.log("📄 Agregando logo al PDF...");
@@ -945,11 +944,7 @@
                 "V = 354×Q×(P+0.7236)^-1×D^-2",
                 velocidad1 + " m/s",
               ],
-              [
-                "Criterios de Validación",
-                "V ≤ 8 m/s | Pérdida ≤ 15% | Presión ≥ 18 mbar",
-                "NTC 2505 | Manual Diseño",
-              ],
+
             ],
             theme: "grid",
             styles: {
@@ -1098,7 +1093,7 @@
           const logoSize = 35;
           const col1Width = 50;
           const logoX = margin + (col1Width - logoSize) / 2; // Centrado en columna 1
-          const logoY = 8;
+          const logoY = 4;
           if (logoBase64) {
             try {
               console.log("📄 Agregando logo al PDF...");
@@ -1372,11 +1367,7 @@
                 "V = 354×Q×(P+0.7236)^-1×D^-2",
                 velocidadMedia + " m/s",
               ],
-              [
-                "Criterios de Validación",
-                "Pérdida ≤ 12% | V ≤ 15 m/s | PSI > 0",
-                "NTC 2505 | Manual Müller",
-              ],
+
             ],
             theme: "grid",
             styles: {
