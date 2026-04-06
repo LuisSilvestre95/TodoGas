@@ -56,6 +56,40 @@
         </div>
       </div>
 
+      <!-- PARÁMETROS GENERALES CON CIUDADES -->
+      <div style="margin-bottom: 20px; display:flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+        <div style="min-width: 240px;">
+          <label style="display:block; font-weight:700; margin-bottom:4px;">
+            <i class="fas fa-city" style="margin-right:6px; color:#0066cc;"></i>Seleccionar municipio
+          </label>
+          <select id="municipioSelect" style="width:100%; padding:8px; border:2px solid #ddd; border-radius:4px; font-size:14px; cursor:pointer;">
+            <option value="">-- Seleccionar municipio --</option>
+            <option value="Garagoa">Garagoa (2000m) - Boyacá</option>
+            <option value="Bogota">Bogotá (2640m) - Distrito Capital</option>
+            <option value="Medellin">Medellín (1495m) - Antioquia</option>
+            <option value="Cali">Cali (1000m) - Valle del Cauca</option>
+            <option value="Barranquilla">Barranquilla (10m) - Atlántico</option>
+            <option value="Santa_Marta">Santa Marta (5m) - Magdalena</option>
+            <option value="Bucaramanga">Bucaramanga (920m) - Santander</option>
+            <option value="Cartagena">Cartagena (5m) - Bolívar</option>
+            <option value="Manizales">Manizales (2150m) - Caldas</option>
+            <option value="Pereira">Pereira (1411m) - Risaralda</option>
+            <option value="____">───────────────────</option>
+            <option value="personalizado">⚙️ Personalizado (editar valores)</option>
+          </select>
+        </div>
+        <div style="min-width: 220px;">
+          <label style="display:block; font-weight:700; margin-bottom:4px;">Densidad relativa del gas</label>
+          <input type="number" id="densidadRelativa" step="0.01" value="0.67" style="width:100%; padding:8px; border:2px solid #ddd; border-radius:4px;" />
+          <small style="color:#666; font-size:12px; margin-top:2px; display:block;">Gas Natural: 0.55-0.70</small>
+        </div>
+        <div style="min-width: 220px;">
+          <label style="display:block; font-weight:700; margin-bottom:4px;">Presión atmosférica (mbar)</label>
+          <input type="number" id="presionAtmosferica" step="0.1" value="823" style="width:100%; padding:8px; border:2px solid #ddd; border-radius:4px;" />
+          <small style="color:#666; font-size:12px; margin-top:2px; display:block;">Según altitud de la ciudad</small>
+        </div>
+      </div>
+
       <!-- ========== BAJA PRESIÓN ========== -->
       <div id="baja" class="tab-content active">
         <div class="excel-section">
@@ -116,6 +150,9 @@
                   <th style="min-width: 80px">Fin<br />(C)</th>
                   <th style="min-width: 110px">Caudal<br />(m³/h)</th>
                   <th style="min-width: 100px">Longitud<br />(m)</th>
+                  <th style="min-width: 80px">Codos<br />(#)</th>
+                  <th style="min-width: 80px">Tees<br />(#)</th>
+                  <th style="min-width: 80px">Válvulas<br />(#)</th>
                   <th style="min-width: 100px">L. Equiv<br />(m)</th>
                   <th style="min-width: 100px">Diámetro<br />(mm)</th>
                   <th style="min-width: 100px">Pi<br />(mbar)</th>
@@ -132,6 +169,8 @@
               </tbody>
             </table>
           </div>
+
+          <div id="balanceWarningBaja" style="color:#b45309; font-size:0.95rem; margin-bottom:12px;"></div>
 
           <div
             style="
@@ -181,25 +220,25 @@
                 <label><i class="fas fa-user"></i> NOMBRE</label>
                 <input
                   type="text"
-                  id="bajaClientName"
+                  id="mediaClientName"
                   placeholder="Nombre completo"
                 />
               </div>
               <div class="data-input">
                 <label><i class="fas fa-id-card"></i> CÉDULA</label>
-                <input type="text" id="bajaCedula" placeholder="79.295.777" />
+                <input type="text" id="mediaCedula" placeholder="79.295.777" />
               </div>
               <div class="data-input">
                 <label><i class="fas fa-map-marker-alt"></i> DIRECCIÓN</label>
-                <input type="text" id="bajaDireccion" placeholder="Dirección" />
+                <input type="text" id="mediaDireccion" placeholder="Dirección" />
               </div>
               <div class="data-input">
                 <label><i class="fas fa-city"></i> MUNICIPIO</label>
-                <input type="text" id="bajaMunicipio" placeholder="Municipio" />
+                <input type="text" id="mediaMunicipio" placeholder="Municipio" />
               </div>
               <div class="data-input">
                 <label><i class="fas fa-phone"></i> TELÉFONO</label>
-                <input type="text" id="bajaTelefono" placeholder="Teléfono" />
+                <input type="text" id="mediaTelefono" placeholder="Teléfono" />
               </div>
             </div>
           </div>
@@ -220,6 +259,9 @@
                   <th style="min-width: 90px">Ø Nom<br />(D)</th>
                   <th style="min-width: 90px">Ø Int<br />(mm)</th>
                   <th style="min-width: 90px">Long.<br />(m)</th>
+                  <th style="min-width: 90px; display:none;">Codos<br />(#)</th>
+                  <th style="min-width: 80px; display:none;">Tees<br />(#)</th>
+                  <th style="min-width: 90px; display:none;">Válvulas<br />(#)</th>
                   <th style="min-width: 90px">L.Equiv<br />(m)</th>
                   <th style="min-width: 90px">L.Total<br />(m)</th>
                   <th style="min-width: 95px">P1<br />(mbar)</th>
@@ -241,6 +283,8 @@
               </tbody>
             </table>
           </div>
+
+          <div id="balanceWarningMedia" style="color:#b45309; font-size:0.95rem; margin-bottom:12px;"></div>
 
           <div
             style="
@@ -287,9 +331,218 @@
     </footer>
 
     <script>
+      // ==================== BASE DE DATOS DE CIUDADES COLOMBIANAS ====================
+      const CIUDADES_COLOMBIA = {
+        "Garagoa": { "altitud": 2000, "G": 0.67, "PATM": 823, "departamento": "Boyacá" },
+        "Bogota": { "altitud": 2640, "G": 0.68, "PATM": 735, "departamento": "Distrito Capital" },
+        "Medellin": { "altitud": 1495, "G": 0.67, "PATM": 865, "departamento": "Antioquia" },
+        "Cali": { "altitud": 1000, "G": 0.67, "PATM": 908, "departamento": "Valle del Cauca" },
+        "Barranquilla": { "altitud": 10, "G": 0.67, "PATM": 1012, "departamento": "Atlántico" },
+        "Santa_Marta": { "altitud": 5, "G": 0.67, "PATM": 1013, "departamento": "Magdalena" },
+        "Bucaramanga": { "altitud": 920, "G": 0.67, "PATM": 918, "departamento": "Santander" },
+        "Cartagena": { "altitud": 5, "G": 0.67, "PATM": 1013, "departamento": "Bolívar" },
+        "Manizales": { "altitud": 2150, "G": 0.67, "PATM": 806, "departamento": "Caldas" },
+        "Pereira": { "altitud": 1411, "G": 0.67, "PATM": 877, "departamento": "Risaralda" }
+      };
+
       // ==================== DATOS GLOBALES ====================
+      const DEFAULT_PARAMS = {
+        densidadRelativa: 0.67,
+        presionAtmosferica: 823,
+        velocidadMaxBaja: 8,
+        velocidadMaxMedia: 20,
+        perdidaRelativaMaxBaja: 10,
+        perdidaRelativaMaxMedia: 10,
+        presionMinimaBaja: 18,
+        constanteRenouardBaja: 23200,
+        constanteRenouardMedia: 4.61e-5,
+      };
+
+      // BASE DE DATOS DE TUBERÍAS (Material -> Diámetro Interno en mm)
+      const PIPE_DATABASE = {
+        "PEALPE 1/2": 12.0,
+        "PEALPE 3/4": 20.0,
+        "PEALPE 1": 26.0,
+        "PEALPE 1 1/4": 32.0,
+        "PEALPE 1 1/2": 40.0,
+        "PEALPE 2": 52.0,
+        "Acero 1/2": 15.8,
+        "Acero 3/4": 20.6,
+        "Acero 1": 27.2,
+        "Cobre 1/2": 12.7,
+        "Cobre 3/4": 19.1,
+        "Cobre 1": 25.4,
+      };
+
+      // FACTORES DE LONGITUD EQUIVALENTE (en metros por accesorio)
+      const ACCESORIOS_FACTORS = {
+        codos: 0.6,    // Un codo = 0.6m adicionales
+        tees: 1.2,     // Una T = 1.2m adicionales
+        valvulas: 0.5  // Una válvula = 0.5m
+      };
+
       let rowsBAJA = [];
       let rowsMedia = [];
+
+      // ==================== FUNCIONES INTELIGENTES ====================
+      
+      /**
+       * Obtiene la siguiente letra del alfabeto
+       * A → B, B → C, etc.
+       */
+      function getNextLetter(letter) {
+        if (!letter) return "A";
+        const clean = String(letter).trim().toUpperCase();
+        if (clean.length === 0) return "A";
+        const charCode = clean.charCodeAt(clean.length - 1);
+        return String.fromCharCode(charCode + 1);
+      }
+
+      /**
+       * Auto-predice el nodo siguiente cuando cambias el "Fin" actual
+       * Si A→B, siguiente será B→C (auto-magic)
+       */
+      function autoPredictNextNode(tr, tableId) {
+        const tbody = document.getElementById(tableId);
+        const filas = Array.from(tbody.children);
+        const indexActual = filas.indexOf(tr);
+        const siguiente = filas[indexActual + 1];
+
+        if (!siguiente) return;
+
+        const finActual = tr.querySelector(".fin").value.trim().toUpperCase();
+        const inicioSig = siguiente.querySelector(".inicio");
+        const finSig = siguiente.querySelector(".fin");
+
+        // Auto-llena el inicio con el fin anterior
+        if (finActual) {
+          inicioSig.value = finActual;
+        }
+
+        // Predice el fin siguiente si está vacío
+        if (!finSig.value && finActual) {
+          finSig.value = getNextLetter(finActual);
+        }
+
+        // Recalcula la siguiente fila automáticamente
+        const indexSig = indexActual + 1;
+        if (tableId === "tablaBAJA") {
+          calculateRowBAJA(siguiente, indexSig);
+        } else if (tableId === "tablaMedia") {
+          calculateRowMedia(siguiente, indexSig);
+        }
+      }
+
+      /**
+       * Busca el diámetro interno en la base de datos de tuberías
+       */
+      function getPipeDiameter(nominal) {
+        return PIPE_DATABASE[nominal] || 0;
+      }
+
+      /**
+       * Calcula la Longitud Equivalente (LE) incluyendo accesorios
+       * LE = L_tubería + (codos × factor_codo) + (tees × factor_tee) + (válvulas × factor_válvula)
+       */
+      function calcularLE(longitud, codos = 0, tees = 0, valvulas = 0) {
+        const numCodos = parseFloat(codos) || 0;
+        const numTees = parseFloat(tees) || 0;
+        const numValvulas = parseFloat(valvulas) || 0;
+
+        const leAccesorios =
+          (numCodos * ACCESORIOS_FACTORS.codos) +
+          (numTees * ACCESORIOS_FACTORS.tees) +
+          (numValvulas * ACCESORIOS_FACTORS.valvulas);
+
+        return parseFloat(longitud) + leAccesorios;
+      }
+
+      /**
+       * Aplica color de semáforo a una celda según % de utilización
+       * Verde (< 70%), Amarillo (70-90%), Rojo (> 90%)
+       */
+      function applyStatusColor(cell, valor, limite) {
+        const porcentaje = (valor / limite) * 100;
+        if (porcentaje >= 100) {
+          cell.style.color = "#991b1b"; // Rojo oscuro
+          cell.style.fontWeight = "bold";
+          cell.style.backgroundColor = "#fee2e2"; // Fondo rojo claro
+        } else if (porcentaje >= 80) {
+          cell.style.color = "#b45309"; // Naranja
+          cell.style.fontWeight = "bold";
+          cell.style.backgroundColor = "#fef3c7"; // Fondo naranja claro
+        } else {
+          cell.style.color = "#166534"; // Verde
+          cell.style.backgroundColor = "#dcfce7"; // Fondo verde claro
+        }
+      }
+
+      /**
+       * Recalcula toda la tabla Baja Presión (cascada completa)
+       */
+      function recalculateTablaBaja() {
+        const filas = document.querySelectorAll("#tablaBAJA tr");
+        filas.forEach((tr, idx) => {
+          calculateRowBAJA(tr, idx);
+        });
+        validateFlowBalance("tablaBajaPresion", "balanceWarningBaja");
+      }
+
+      /**
+       * Recalcula toda la tabla Media Presión (cascada completa)
+       */
+      function recalculateTablaMedia() {
+        const filas = document.querySelectorAll("#tablaMedia tr");
+        filas.forEach((tr, idx) => {
+          calculateRowMedia(tr, idx);
+        });
+        validateFlowBalance("tablaMediaPresion", "balanceWarningMedia");
+      }
+
+      function getParam(name) {
+        const element = document.getElementById(name);
+        const value = element ? parseFloat(element.value) : NaN;
+        return Number.isFinite(value) ? value : DEFAULT_PARAMS[name];
+      }
+
+      function validateFlowBalance(tableId, warningId) {
+        const filas = document.querySelectorAll(`#${tableId} tr`);
+        const nodos = {};
+
+        filas.forEach((tr) => {
+          const inicio = tr.querySelector(".inicio")?.value?.trim();
+          const fin = tr.querySelector(".fin")?.value?.trim();
+          const caudal = parseFloat(tr.querySelector(".caudal")?.value) || 0;
+
+          if (inicio) {
+            nodos[inicio] = nodos[inicio] || { entrada: 0, salida: 0 };
+            nodos[inicio].salida += caudal;
+          }
+          if (fin) {
+            nodos[fin] = nodos[fin] || { entrada: 0, salida: 0 };
+            nodos[fin].entrada += caudal;
+          }
+        });
+
+        const mensajes = [];
+        Object.entries(nodos).forEach(([nodo, valores]) => {
+          const error = Math.abs(valores.entrada - valores.salida);
+          if (error > 0.01) {
+            mensajes.push(`${nodo}: desequilibrio ${error.toFixed(3)} m³/h`);
+          }
+        });
+
+        const warning = document.getElementById(warningId);
+        if (warning) {
+          if (mensajes.length > 0) {
+            warning.textContent = "Balance de caudales incorrecto: " + mensajes.join("; ");
+            warning.style.color = "#b91c1c";
+          } else {
+            warning.textContent = "Balance de caudales válido";
+            warning.style.color = "#047857";
+          }
+        }
+      }
 
       // ==================== FUNCIONES DE TABS ====================
       function showTab(tab) {
@@ -323,30 +576,46 @@
       // ==================== BAJA PRESIÓN ====================
       function addRowBAJA() {
         const tabla = document.getElementById("tablaBAJA");
+        if (!tabla) {
+          console.error("❌ Error: No se encontró tabla#tablaBAJA");
+          return;
+        }
         const rowNum = rowsBAJA.length + 1;
+        console.log("✅ Agregando fila BAJA #" + rowNum);
+
+        // Determina los nodos automáticamente
+        let inicio = "A";
+        let fin = "B";
+        if (rowNum > 1) {
+          const filaAnterior = tabla.children[rowNum - 2];
+          const finAnterior = filaAnterior.querySelector(".fin").value.trim().toUpperCase();
+          if (finAnterior) {
+            inicio = finAnterior;
+            fin = getNextLetter(finAnterior);
+          }
+        }
 
         const tr = document.createElement("tr");
         tr.innerHTML = `
-        <td class="row-input"><input type="text" value="A" class="inicio"></td>
-        <td class="row-input"><input type="text" value="B" class="fin"></td>
+        <td class="row-input"><input type="text" value="${inicio}" class="inicio" readonly style="background:#e8f4f8; font-weight:bold; cursor:not-allowed;"></td>
+        <td class="row-input"><input type="text" value="${fin}" class="fin" style="font-weight:bold;" title="Cuando cambies esto, el siguiente Inicio se actualiza auto!"></td>
         <td class="row-input"><input type="number" step="0.01" class="caudal" placeholder="0.00"></td>
         <td class="row-input"><input type="number" step="0.01" class="longitud" placeholder="0.00"></td>
+        <td class="row-input"><input type="number" step="0" class="codos" placeholder="0" title="Cantidad de codos 90°"></td>
+        <td class="row-input"><input type="number" step="0" class="tees" placeholder="0" title="Cantidad de Tees"></td>
+        <td class="row-input"><input type="number" step="0" class="valvulas" placeholder="0" title="Cantidad de válvulas"></td>
         <td class="row-calc le">-</td>
         <td class="row-input"><input type="number" step="0.1" class="diametro" placeholder="0.0"></td>
-        <td class="row-input"><input type="number" step="0.1" class="pi" ${rowNum === 1 ? "" : "readonly"} placeholder="0.0" style="${rowNum === 1 ? "border: 2px solid #0066cc; background: white;" : "border: 2px solid #999; background: #f5f5f5; color: #666; cursor: not-allowed; font-weight: 600;"}" title="${rowNum === 1 ? "Ingrese presión inicial" : "Calculado automáticamente"}"></td>
+        <td class="row-input"><input type="number" step="0.1" class="pi" ${rowNum === 1 ? "" : "readonly"} placeholder="0.0" style="${rowNum === 1 ? "border: 2px solid #0066cc; background: white;" : "border: 2px solid #999; background: #f5f5f5; color: #666; cursor: not-allowed; font-weight: 600;"}" title="${rowNum === 1 ? "Ingrese presión inicial (regulador)" : "Se calcula automáticamente ← Presión anterior"}"></td>
         <td class="row-calc perdida">-</td>
         <td class="row-calc pf">-</td>
         <td class="row-calc velocidad">-</td>
         <td class="row-input">
             <select class="material">
-                <option value="PE AL PE">PE AL PE</option>
+                <option value="PEALPE">PEALPE</option>
                 <option value="Polietileno">Polietileno</option>
                 <option value="Cobre">Cobre</option>
                 <option value="Acero">Acero</option>
-                <option value="Acero Galvanizado">Acero Galvanizado</option>
-                <option value="Acero Negro">Acero Negro</option>
-                <option value="PVC">PVC</option>
-                <option value="CPVC">CPVC</option>
             </select>
         </td>
         <td class="row-calc estado">-</td>
@@ -360,11 +629,17 @@
         tabla.appendChild(tr);
         rowsBAJA.push({});
 
-        // Listeners
-        tr.querySelectorAll("input, select").forEach((input) => {
-          input.addEventListener("input", () =>
-            calculateRowBAJA(tr, rowNum - 1),
-          );
+        // Listener especial para "Fin" → Auto-predice siguiente
+        const finInput = tr.querySelector(".fin");
+        finInput.addEventListener("input", () => {
+          autoPredictNextNode(tr, "tablaBAJA");
+        });
+
+        // Listeners para todos los inputs
+        tr.querySelectorAll("input").forEach((input) => {
+          input.addEventListener("input", () => {
+            calculateRowBAJA(tr, rowNum - 1);
+          });
         });
 
         if (rowNum === 1) calculateRowBAJA(tr, 0);
@@ -391,15 +666,19 @@
         filas.forEach((fila, idx) => {
           calculateRowBAJA(fila, idx);
         });
+        validateFlowBalance("tablaBajaPresion", "balanceWarningBaja");
       }
 
       function calculateRowBAJA(tr, rowIndex) {
         const caudal = parseFloat(tr.querySelector(".caudal").value) || 0;
         const longitud = parseFloat(tr.querySelector(".longitud").value) || 0;
         const diametro = parseFloat(tr.querySelector(".diametro").value) || 0;
+        const codos = parseFloat(tr.querySelector(".codos").value) || 0;
+        const tees = parseFloat(tr.querySelector(".tees").value) || 0;
+        const valvulas = parseFloat(tr.querySelector(".valvulas").value) || 0;
         let pi = parseFloat(tr.querySelector(".pi").value) || 0;
 
-        // Continuidad automática
+        // Continuidad automática (cascada de presión)
         if (rowIndex > 0) {
           const previousRow =
             document.querySelectorAll("#tablaBAJA tr")[rowIndex - 1];
@@ -409,76 +688,115 @@
           pi = pf;
         }
 
-        // F: LE = Longitud * 1.2 (factor material según NTC 2505)
-        const le = (longitud * 1.2).toFixed(3);
+        const G = getParam("densidadRelativa");
+        const PATM = getParam("presionAtmosferica");
+        const K = DEFAULT_PARAMS.constanteRenouardBaja;
 
-        // Fórmula de RENOUARD LINEAL (Baja Presión ≤ 70 mbar)
-        // usando constante simplificada 15544 (23200×0.67)
-        const perdida = (
-          15544 * parseFloat(le) * Math.pow(caudal, 1.82) * Math.pow(diametro, -4.82)
-        ).toFixed(3);
-
-        // J: Pf = Pi - Pérdida (Presión Final)
-        const pf = Math.max(0, pi - parseFloat(perdida)).toFixed(3);
-
-        // K: Velocidad = 354 * Q * (0.7236 + Pf/1000)^-1 * D^-2
-        const presionAbsBar = parseFloat(pf) / 1000 + 0.7236;
-        const velocidad =
-          presionAbsBar > 0 && diametro > 0
-            ? (
-                345.73 *
-                caudal *
-                Math.pow(presionAbsBar, -1) *
-                Math.pow(diametro, -2)
-              ).toFixed(2)
-            : "0.00";
-
-        // VALIDACIÓN según NTC 2505 - FLEXIBLES pero SEGUROS
-        // Criterios: Vel ≤ 8 m/s, Pérdida ≤ 15%, Presión ≥ 18 mbar (servicio)
-        const perdidaPorc = pi > 0 ? (parseFloat(perdida) / pi) * 100 : 0;
-        const vel = parseFloat(velocidad);
-        const pfVal = parseFloat(pf);
-
-        let estado = "APROBADO";
-        if (vel > 8 || perdidaPorc > 15 || pfVal < 18) {
-          estado = "RECHAZADO";
+        if (caudal <= 0 || diametro <= 0 || longitud < 0) {
+          tr.querySelector(".le").textContent = "-";
+          tr.querySelector(".perdida").textContent = "0.000";
+          tr.querySelector(".pf").textContent = pi.toFixed(3);
+          tr.querySelector(".velocidad").textContent = "0.00";
+          tr.querySelector(".estado").textContent = "RECHAZADO";
+          tr.querySelector(".estado").className = "row-calc estado status-rechazado";
+          const nextRow = document.querySelectorAll("#tablaBAJA tr")[rowIndex + 1];
+          if (nextRow) calculateRowBAJA(nextRow, rowIndex + 1);
+          return;
         }
 
-        // Actualizar UI
-        tr.querySelector(".le").textContent = le;
-        tr.querySelector(".perdida").textContent = perdida;
-        tr.querySelector(".pf").textContent = pf;
-        tr.querySelector(".velocidad").textContent = velocidad;
-        tr.querySelector(".estado").textContent = estado;
+        // Calcula LE con accesorios
+        const leCalculada = calcularLE(longitud, codos, tees, valvulas);
+        const le = leCalculada.toFixed(3);
 
-        // Aplicar color según estado
-        const estadoCell = tr.querySelector(".estado");
-        estadoCell.className =
+        // Pérdida usando LE completa con accesorios
+        const perdida = (K * G * leCalculada * Math.pow(caudal, 1.82)) / Math.pow(diametro, 4.82);
+        const perdidaVal = Number.isFinite(perdida) ? perdida : 0;
+        let pf = Math.max(0, pi - perdidaVal);
+
+        const presionAbs = (parseFloat(pf) + PATM) / 1000;
+        const area = Math.PI * Math.pow(diametro / 1000, 2);
+        const velocidad =
+          area > 0 && presionAbs > 0
+            ? (4 * caudal) / (area * 3600 * presionAbs)
+            : 0;
+
+        const perdidaPorc = pi > 0 ? (perdidaVal / pi) * 100 : 0;
+        const estado =
+          velocidad <= DEFAULT_PARAMS.velocidadMaxBaja &&
+          perdidaPorc <= DEFAULT_PARAMS.perdidaRelativaMaxBaja &&
+          pf >= DEFAULT_PARAMS.presionMinimaBaja &&
+          pf <= pi &&
+          diametro > 0 &&
+          caudal > 0
+            ? "APROBADO"
+            : "RECHAZADO";
+
+        if (estado === "RECHAZADO") {
+          pf = 0;
+        }
+
+        tr.querySelector(".le").textContent = le;
+        tr.querySelector(".perdida").textContent = perdidaVal.toFixed(3);
+        tr.querySelector(".pf").textContent = pf.toFixed(3);
+        
+        // Aplicar color a velocidad (semáforo)
+        const velCell = tr.querySelector(".velocidad");
+        velCell.textContent = velocidad.toFixed(2);
+        applyStatusColor(velCell, velocidad, DEFAULT_PARAMS.velocidadMaxBaja);
+
+        // Aplicar color a pérdida (semáforo)
+        const perdidaCell = tr.querySelector(".perdida");
+        applyStatusColor(perdidaCell, perdidaPorc, DEFAULT_PARAMS.perdidaRelativaMaxBaja);
+
+        tr.querySelector(".estado").textContent = estado;
+        tr.querySelector(".estado").className =
           "row-calc estado " +
           (estado === "APROBADO" ? "status-aprobado" : "status-rechazado");
 
-        // Recalcular siguiente
         const nextRow =
           document.querySelectorAll("#tablaBAJA tr")[rowIndex + 1];
         if (nextRow) calculateRowBAJA(nextRow, rowIndex + 1);
+        
+        // Validar balance después de calcular
+        validateFlowBalance("tablaBajaPresion", "balanceWarningBaja");
       }
 
       // ==================== MEDIA PRESIÓN ====================
       function addRowMedia() {
         const tabla = document.getElementById("tablaMedia");
+        if (!tabla) {
+          console.error("❌ Error: No se encontró tabla#tablaMedia");
+          return;
+        }
         const rowNum = rowsMedia.length + 1;
+        console.log("✅ Agregando fila MEDIA #" + rowNum);
+
+        // Determina los nodos automáticamente
+        let inicio = "A";
+        let fin = "B";
+        if (rowNum > 1) {
+          const filaAnterior = tabla.children[rowNum - 2];
+          const finAnterior = filaAnterior.querySelector(".fin").value.trim().toUpperCase();
+          if (finAnterior) {
+            inicio = finAnterior;
+            fin = getNextLetter(finAnterior);
+          }
+        }
 
         const tr = document.createElement("tr");
         tr.innerHTML = `
-        <td class="row-input"><input type="text" value="A" class="inicio"></td>
-        <td class="row-input"><input type="text" value="B" class="fin"></td>
+        <td class="row-input"><input type="text" value="${inicio}" class="inicio" readonly style="background:#e8f4f8; font-weight:bold; cursor:not-allowed;"></td>
+        <td class="row-input"><input type="text" value="${fin}" class="fin" style="font-weight:bold;" title="Cuando cambjes esto, el siguiente Inicio se actualiza auto!"></td>
         <td class="row-input"><input type="number" step="0.01" class="caudal" placeholder="0.00"></td>
-        <td class="row-input"><input type="text" class="diamNom" placeholder="1/2"></td>
-        <td class="row-input"><input type="number" step="0.1" class="diamInt" placeholder="0.0"></td>
+        <td class="row-input"><input type="text" class="diamNom" placeholder="1/2" title="Diámetro nominal (1/2, 3/4, 1, etc)"></td>
+        <td class="row-input"><input type="number" step="0.1" class="diamInt" placeholder="0.0" title="Diámetro interno en mm"></td>
         <td class="row-input"><input type="number" step="0.01" class="longitud" placeholder="0.00"></td>
+        <td class="row-input" style="display:none;"><input type="number" step="0" class="codos" value="0" placeholder="0" title="Cantidad de codos 90°" style="display:none;"></td>
+        <td class="row-input" style="display:none;"><input type="number" step="0" class="tees" value="0" placeholder="0" title="Cantidad de Tees" style="display:none;"></td>
+        <td class="row-input" style="display:none;"><input type="number" step="0" class="valvulas" value="0" placeholder="0" title="Cantidad de válvulas" style="display:none;"></td>
         <td class="row-calc le">-</td>
         <td class="row-calc lt">-</td>
-        <td class="row-input"><input type="number" step="0.1" class="p1" ${rowNum === 1 ? "" : "readonly"} placeholder="0.0" style="${rowNum === 1 ? "border: 2px solid #0066cc; background: white;" : "border: 2px solid #999; background: #f5f5f5; color: #666; cursor: not-allowed; font-weight: 600;"}" title="${rowNum === 1 ? "Ingrese presión inicial" : "Calculado automáticamente"}"></td>
+        <td class="row-input"><input type="number" step="0.1" class="p1" ${rowNum === 1 ? "" : "readonly"} placeholder="0.0" style="${rowNum === 1 ? "border: 2px solid #0066cc; background: white;" : "border: 2px solid #999; background: #f5f5f5; color: #666; cursor: not-allowed; font-weight: 600;"}" title="${rowNum === 1 ? "Ingrese presión inicial (regulador)" : "Se calcula automáticamente ← Presión anterior"}"></td>
         <td class="row-calc pAbs">-</td>
         <td class="row-calc p2Abs">-</td>
         <td class="row-calc pf">-</td>
@@ -490,14 +808,10 @@
         <td class="row-calc estadoVel">-</td>
         <td class="row-input">
             <select class="material">
+                <option value="PEALPE">PEALPE</option>
                 <option value="Polietileno">Polietileno</option>
-                <option value="PE AL PE">PE AL PE</option>
                 <option value="Cobre">Cobre</option>
                 <option value="Acero">Acero</option>
-                <option value="Acero Galvanizado">Acero Galvanizado</option>
-                <option value="Acero Negro">Acero Negro</option>
-                <option value="PVC">PVC</option>
-                <option value="CPVC">CPVC</option>
             </select>
         </td>
         <td style="text-align: center;">
@@ -510,11 +824,18 @@
         tabla.appendChild(tr);
         rowsMedia.push({});
 
-        // Listeners
+        // Listener especial para "Fin" → Auto-predice siguiente
+        const finInput = tr.querySelector(".fin");
+        finInput.addEventListener("input", () => {
+          autoPredictNextNode(tr, "tablaMedia");
+        });
+
+        // Listeners para todos los inputs
         tr.querySelectorAll("input").forEach((input) => {
-          input.addEventListener("input", () =>
-            calculateRowMedia(tr, rowNum - 1),
-          );
+          input.addEventListener("input", () => {
+            calculateRowMedia(tr, rowNum - 1);
+            validateFlowBalance("tablaMediaPresion", "balanceWarningMedia");
+          });
         });
 
         if (rowNum === 1) calculateRowMedia(tr, 0);
@@ -541,15 +862,19 @@
         filas.forEach((fila, idx) => {
           calculateRowMedia(fila, idx);
         });
+        validateFlowBalance("tablaMediaPresion", "balanceWarningMedia");
       }
 
       function calculateRowMedia(tr, rowIndex) {
         const caudal = parseFloat(tr.querySelector(".caudal").value) || 0;
         const diamInt = parseFloat(tr.querySelector(".diamInt").value) || 0;
         const longitud = parseFloat(tr.querySelector(".longitud").value) || 0;
+        const codos = parseFloat(tr.querySelector(".codos").value) || 0;
+        const tees = parseFloat(tr.querySelector(".tees").value) || 0;
+        const valvulas = parseFloat(tr.querySelector(".valvulas").value) || 0;
         let p1 = parseFloat(tr.querySelector(".p1").value) || 0;
 
-        // Continuidad automática
+        // Continuidad automática (cascada de presión)
         if (rowIndex > 0) {
           const previousRow =
             document.querySelectorAll("#tablaMedia tr")[rowIndex - 1];
@@ -559,94 +884,95 @@
           p1 = pf;
         }
 
-        const PATM = 723.6; // Presión atmosférica en mbar
-        const G = 0.6; // Gravedad específica Gas Natural
+        const PATM = getParam("presionAtmosferica");
+        const G = getParam("densidadRelativa");
+        const K = DEFAULT_PARAMS.constanteRenouardMedia;
 
-        // J: LE = Longitud * 0.2 (Factor equivalente según ejemplos NTC)
-        const le = (longitud * 0.2).toFixed(3);
+        if (caudal <= 0 || diamInt <= 0 || longitud < 0) {
+          tr.querySelector(".le").textContent = "-";
+          tr.querySelector(".lt").textContent = "-";
+          tr.querySelector(".pAbs").textContent = "0.0";
+          tr.querySelector(".p2Abs").textContent = "0.0";
+          tr.querySelector(".pf").textContent = "0.0";
+          tr.querySelector(".psi").textContent = "0.00";
+          tr.querySelector(".perdAbs").textContent = "0.00%";
+          tr.querySelector(".perdMan").textContent = "0.00%";
+          tr.querySelector(".velocidad").textContent = "0.00";
+          tr.querySelector(".estadoPerd").textContent = "RECHAZADO";
+          tr.querySelector(".estadoVel").textContent = "RECHAZADO";
+          tr.querySelector(".estadoPerd").className = "row-calc estadoPerd status-rechazado";
+          tr.querySelector(".estadoVel").className = "row-calc estadoVel status-rechazado";
+          const nextRow = document.querySelectorAll("#tablaMedia tr")[rowIndex + 1];
+          if (nextRow) calculateRowMedia(nextRow, rowIndex + 1);
+          return;
+        }
 
-        // K: LT = Longitud + LE (Longitud Total)
+        // Calcula LE automáticamente (Media Presión: 20% de la tubería, sin accesorios)
+        const le = (longitud * 0.20).toFixed(3);
         const lt = (longitud + parseFloat(le)).toFixed(3);
-
-        // M: P abs inicial = P1 + PATM (Presión absoluta)
-        const pAbs = (p1 + PATM).toFixed(1);
-
-        // Fórmula de MÜLLER para MEDIA PRESIÓN (70 mbar < P ≤ 7000 mbar)
-        // P1² - P2² = (Q * G^0.425 * L^0.576)^1.74 / (4.61E-5 * D^2.725)
-        // Resolviendo: P2 = √(P1² - término)
-
-        const term1 =
-          caudal * Math.pow(G, 0.425) * Math.pow(parseFloat(lt), 0.576);
-        const term2 = 4.61e-5 * Math.pow(diamInt, 2.725);
-        const term3 = Math.pow(term1 / term2, 1.74);
-        const p2AbsQuad = Math.max(0, Math.pow(parseFloat(pAbs), 2) - term3);
-        const p2Abs = Math.sqrt(p2AbsQuad).toFixed(1);
-
-        // P: P2 = P2 absoluta - PATM (Presión manométrica final)
-        const pf = (parseFloat(p2Abs) - PATM).toFixed(1);
-
-        // Q: PSI = (P2 * 20) / 1380 (Conversión a PSI)
-        const psi = ((parseFloat(pf) * 20) / 1380).toFixed(2);
-
-        // R: % Pérdida Absoluta = (Pabs1 - Pabs2) / Pabs1 * 100
-        const perdAbs =
-          parseFloat(pAbs) > 0
-            ? (parseFloat(pAbs) - parseFloat(p2Abs)) / parseFloat(pAbs)
+        
+        const pAbs = p1 + PATM;
+        const term = K * Math.pow(G, 0.425) * parseFloat(le) * Math.pow(caudal, 1.82) * Math.pow(diamInt, -4.82);
+        const radicando = Math.max(0, Math.pow(pAbs, 2) - term);
+        const p2Abs = Math.sqrt(radicando);
+        let pf = p2Abs - PATM;
+        const presAbs = p2Abs / 1000;
+        const area = Math.PI * Math.pow(diamInt / 1000, 2);
+        const velocidad =
+          area > 0 && presAbs > 0
+            ? (4 * caudal) / (area * 3600 * presAbs)
             : 0;
 
-        // S: % Pérdida Manométrica = (P1 - P2) / P1 * 100
-        const perdMan = p1 > 0 ? (p1 - parseFloat(pf)) / p1 : 0;
+        const psi = ((pf * 20) / 1380).toFixed(2);
+        const perdMan = p1 > 0 ? (p1 - pf) / p1 : 0;
+        const perdAbs = pAbs > 0 ? (pAbs - p2Abs) / pAbs : 0;
+        const perdidaPorc = p1 > 0 ? (p1 - pf) / p1 * 100 : 0;
 
-        // W: Velocidad = 354 * Q * (0.7236 + P2/1000)^-1 * D^-2
-        // use presión inicial (p1) para cálculo de velocidad según la nueva fórmula
-        const presAbsBar = parseFloat(p1) / 1000 + 0.7236;
-        const velocidad =
-          presAbsBar > 0 && diamInt > 0
-            ? (
-                354 *
-                caudal *
-                Math.pow(presAbsBar, -1) *
-                Math.pow(diamInt, -2)
-              ).toFixed(2)
-            : "0.00";
+        const estado =
+          velocidad <= DEFAULT_PARAMS.velocidadMaxMedia &&
+          perdidaPorc <= DEFAULT_PARAMS.perdidaRelativaMaxMedia &&
+          pf >= 0 &&
+          diamInt > 0 &&
+          caudal > 0
+            ? "APROBADO"
+            : "RECHAZADO";
 
-        // VALIDACIÓN según NTC 2505 y Müller - FLEXIBLE pero SEGURO
-        // Media Presión: Pérdida ≤ 12% (muy estricto), Velocidad ≤ 15 m/s
-        const estadoPerd = perdMan <= 0.12 ? "APROBADO" : "RECHAZADO";
-        const estadoVel =
-          parseFloat(velocidad) <= 15 ? "APROBADO" : "RECHAZADO";
+        if (estado === "RECHAZADO") {
+          pf = 0;
+        }
 
-        // Actualizar UI
         tr.querySelector(".le").textContent = le;
         tr.querySelector(".lt").textContent = lt;
-        tr.querySelector(".pAbs").textContent = pAbs;
-        tr.querySelector(".p2Abs").textContent = p2Abs;
-        tr.querySelector(".pf").textContent = pf;
+        tr.querySelector(".pAbs").textContent = pAbs.toFixed(1);
+        tr.querySelector(".p2Abs").textContent = p2Abs.toFixed(1);
+        tr.querySelector(".pf").textContent = pf.toFixed(1);
         tr.querySelector(".psi").textContent = psi;
-        tr.querySelector(".perdAbs").textContent =
-          (perdAbs * 100).toFixed(2) + "%";
-        tr.querySelector(".perdMan").textContent =
-          (perdMan * 100).toFixed(2) + "%";
-        tr.querySelector(".estadoPerd").textContent = estadoPerd;
-        tr.querySelector(".velocidad").textContent = velocidad;
-        tr.querySelector(".estadoVel").textContent = estadoVel;
+        tr.querySelector(".perdAbs").textContent = (perdAbs * 100).toFixed(2) + "%";
+        tr.querySelector(".perdMan").textContent = (perdMan * 100).toFixed(2) + "%";
+        
+        // Aplicar colores semáforo
+        const velCell = tr.querySelector(".velocidad");
+        velCell.textContent = velocidad.toFixed(2);
+        applyStatusColor(velCell, velocidad, DEFAULT_PARAMS.velocidadMaxMedia);
 
-        // Aplicar colores según estado - PÉRDIDA
-        const estadoPerdCell = tr.querySelector(".estadoPerd");
-        estadoPerdCell.className =
+        const perdidaCell = tr.querySelector(".perdAbs");
+        applyStatusColor(perdidaCell, perdidaPorc, DEFAULT_PARAMS.perdidaRelativaMaxMedia);
+
+        tr.querySelector(".estadoPerd").textContent = estado;
+        tr.querySelector(".estadoVel").textContent = estado;
+        tr.querySelector(".estadoPerd").className =
           "row-calc estadoPerd " +
-          (estadoPerd === "APROBADO" ? "status-aprobado" : "status-rechazado");
-
-        // Aplicar colores según estado - VELOCIDAD
-        const estadoVelCell = tr.querySelector(".estadoVel");
-        estadoVelCell.className =
+          (estado === "APROBADO" ? "status-aprobado" : "status-rechazado");
+        tr.querySelector(".estadoVel").className =
           "row-calc estadoVel " +
-          (estadoVel === "APROBADO" ? "status-aprobado" : "status-rechazado");
+          (estado === "APROBADO" ? "status-aprobado" : "status-rechazado");
 
-        // Recalcular siguiente
         const nextRow =
           document.querySelectorAll("#tablaMedia tr")[rowIndex + 1];
         if (nextRow) calculateRowMedia(nextRow, rowIndex + 1);
+        
+        // Validar balance después de calcular
+        validateFlowBalance("tablaMediaPresion", "balanceWarningMedia");
       }
 
       // ==================== UTILIDAD: CONVERTIR IMAGEN A BASE64 ====================
@@ -938,7 +1264,7 @@
               ],
               [
                 "Pérdida de Presión (Renouard Lineal)",
-                "(P1-P2)=25078×0.6×LE×Q^1.82/D^4.82",
+                "ΔP = 23200 × G × LE × Q^1.82 / D^4.82",
                 perdida1 + " mbar",
               ],
               ["Presión Final", pi1 + " - " + perdida1, pf1 + " mbar"],
@@ -1146,11 +1472,11 @@
           // Columna 3: Caja de cliente (derecha) - alineada al borde derecho
           const rightColX = w - margin - 90;
           const rightColWidth = 90;
-          const c1 = document.getElementById("bajaClientName")?.value || "N/A";
-          const c2 = document.getElementById("bajaCedula")?.value || "N/A";
-          const c3 = document.getElementById("bajaDireccion")?.value || "N/A";
-          const c4 = document.getElementById("bajaMunicipio")?.value || "N/A";
-          const c5 = document.getElementById("bajaTelefono")?.value || "N/A";
+          const c1 = document.getElementById("mediaClientName")?.value || "N/A";
+          const c2 = document.getElementById("mediaCedula")?.value || "N/A";
+          const c3 = document.getElementById("mediaDireccion")?.value || "N/A";
+          const c4 = document.getElementById("mediaMunicipio")?.value || "N/A";
+          const c5 = document.getElementById("mediaTelefono")?.value || "N/A";
           doc.autoTable({
             startY: 4,
             margin: { left: rightColX, right: margin },
@@ -1358,12 +1684,12 @@
               ],
               [
                 "Presión Absoluta Inicial",
-                p1Media + " + 723.6 (atmosférica)",
+                p1Media + " + 823 (atmosférica)",
                 pAbsMedia + " mbar",
               ],
               [
-                "Presión Absoluta Final (Müller)",
-                "P2²=P1²-(Q×0.6^0.425×L^0.576/4.61E-5×D^2.725)^1.74",
+                "Presión Absoluta Final (Renouard Cuadrática)",
+                "P2² = P1² - (4.61e-5 × G^0.425 × L × Q^1.82 / D^4.82)",
                 p2AbsMedia + " mbar",
               ],
               ["Pérdida % Manométrica", "(P1-P2)/P1 × 100", perdManMedia],
@@ -1477,7 +1803,7 @@
           }
 
           const mediaName = (
-            document.getElementById("bajaClientName")?.value || "CLIENTE"
+            document.getElementById("mediaClientName")?.value || "CLIENTE"
           ).trim();
           const mediaSafe =
             mediaName.replace(/[^\w\s-]+/g, "").replace(/\s+/g, "_") ||
@@ -1511,16 +1837,75 @@
 
       // ==================== INICIALIZACIÓN ====================
       window.addEventListener("load", () => {
+        // Mostrar tab Baja inicialmente
+        showTab("baja");
+        
+        // Crear primera fila en cada tabla
         addRowBAJA();
         addRowMedia();
+        validateFlowBalance("tablaBajaPresion", "balanceWarningBaja");
+        validateFlowBalance("tablaMediaPresion", "balanceWarningMedia");
 
-        // Cargar datos cliente desde localStorage
+        // ========== LISTENER PARA MUNICIPIOS ==========
+        const municipioSelect = document.getElementById("municipioSelect");
+        municipioSelect.addEventListener("change", (e) => {
+          const municipio = e.target.value;
+          const inputG = document.getElementById("densidadRelativa");
+          const inputPATM = document.getElementById("presionAtmosferica");
+          
+          if (municipio === "personalizado" || municipio === "") {
+            // No hacer nada, dejar editable
+            inputG.style.opacity = "1";
+            inputG.style.cursor = "auto";
+            inputPATM.style.opacity = "1";
+            inputPATM.style.cursor = "auto";
+            if (municipio === "") {
+              inputG.value = "0.67";
+              inputPATM.value = "823";
+            }
+          } else {
+            // Cargar datos de la ciudad
+            const ciudad = CIUDADES_COLOMBIA[municipio];
+            if (ciudad) {
+              inputG.value = ciudad.G;
+              inputPATM.value = ciudad.PATM;
+              
+              // Disparar eventos de cambio para recalcular
+              inputG.dispatchEvent(new Event("input", { bubbles: true }));
+              inputPATM.dispatchEvent(new Event("input", { bubbles: true }));
+              
+              // Feedback visual
+              inputG.style.opacity = "0.7";
+              inputG.style.cursor = "default";
+              inputPATM.style.opacity = "0.7";
+              inputPATM.style.cursor = "default";
+              
+              // Notificación bonita
+              Swal.fire({
+                icon: "success",
+                title: "¡Municipio cargado!",
+                text: `${ciudad.departamento} - Altitud: ${ciudad.altitud}m`,
+                timer: 2000,
+                showConfirmButton: false,
+                toast: true,
+                position: "top-end",
+              });
+            }
+          }
+        });
+
+        // Cargar datos cliente desde localStorage (BAJA y MEDIA)
         [
           "bajaClientName",
           "bajaCedula",
           "bajaDireccion",
           "bajaMunicipio",
           "bajaTelefono",
+          "mediaClientName",
+          "mediaCedula",
+          "mediaDireccion",
+          "mediaMunicipio",
+          "mediaTelefono",
         ].forEach((id) => {
           const v = localStorage.getItem(id);
           if (v && document.getElementById(id))
