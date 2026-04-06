@@ -349,7 +349,7 @@
       const DEFAULT_PARAMS = {
         densidadRelativa: 0.67,
         presionAtmosferica: 823,
-        velocidadMaxBaja: 8,
+        velocidadMaxBaja: 20,
         velocidadMaxMedia: 20,
         perdidaRelativaMaxBaja: 10,
         perdidaRelativaMaxMedia: 10,
@@ -485,7 +485,7 @@
         filas.forEach((tr, idx) => {
           calculateRowBAJA(tr, idx);
         });
-        validateFlowBalance("tablaBajaPresion", "balanceWarningBaja");
+        validateFlowBalance("tablaBAJA", "balanceWarningBaja");
       }
 
       /**
@@ -496,7 +496,7 @@
         filas.forEach((tr, idx) => {
           calculateRowMedia(tr, idx);
         });
-        validateFlowBalance("tablaMediaPresion", "balanceWarningMedia");
+        validateFlowBalance("tablaMedia", "balanceWarningMedia");
       }
 
       function getParam(name) {
@@ -666,7 +666,7 @@
         filas.forEach((fila, idx) => {
           calculateRowBAJA(fila, idx);
         });
-        validateFlowBalance("tablaBajaPresion", "balanceWarningBaja");
+        validateFlowBalance("tablaBAJA", "balanceWarningBaja");
       }
 
       function calculateRowBAJA(tr, rowIndex) {
@@ -714,10 +714,9 @@
         let pf = Math.max(0, pi - perdidaVal);
 
         const presionAbs = (parseFloat(pf) + PATM) / 1000;
-        const area = Math.PI * Math.pow(diametro / 1000, 2);
         const velocidad =
-          area > 0 && presionAbs > 0
-            ? (4 * caudal) / (area * 3600 * presionAbs)
+          diametro > 0 && presionAbs > 0
+            ? (354 * caudal) / (Math.pow(diametro, 2) * Math.sqrt(presionAbs))
             : 0;
 
         const perdidaPorc = pi > 0 ? (perdidaVal / pi) * 100 : 0;
@@ -758,7 +757,7 @@
         if (nextRow) calculateRowBAJA(nextRow, rowIndex + 1);
         
         // Validar balance después de calcular
-        validateFlowBalance("tablaBajaPresion", "balanceWarningBaja");
+        validateFlowBalance("tablaBAJA", "balanceWarningBaja");
       }
 
       // ==================== MEDIA PRESIÓN ====================
@@ -834,7 +833,7 @@
         tr.querySelectorAll("input").forEach((input) => {
           input.addEventListener("input", () => {
             calculateRowMedia(tr, rowNum - 1);
-            validateFlowBalance("tablaMediaPresion", "balanceWarningMedia");
+            validateFlowBalance("tablaMedia", "balanceWarningMedia");
           });
         });
 
@@ -862,7 +861,7 @@
         filas.forEach((fila, idx) => {
           calculateRowMedia(fila, idx);
         });
-        validateFlowBalance("tablaMediaPresion", "balanceWarningMedia");
+        validateFlowBalance("tablaMedia", "balanceWarningMedia");
       }
 
       function calculateRowMedia(tr, rowIndex) {
@@ -912,15 +911,14 @@
         const lt = (longitud + parseFloat(le)).toFixed(3);
         
         const pAbs = p1 + PATM;
-        const term = K * Math.pow(G, 0.425) * parseFloat(le) * Math.pow(caudal, 1.82) * Math.pow(diamInt, -4.82);
+        const term = K * Math.pow(G, 0.425) * parseFloat(lt) * Math.pow(caudal, 1.82) * Math.pow(diamInt, -4.82);
         const radicando = Math.max(0, Math.pow(pAbs, 2) - term);
         const p2Abs = Math.sqrt(radicando);
         let pf = p2Abs - PATM;
         const presAbs = p2Abs / 1000;
-        const area = Math.PI * Math.pow(diamInt / 1000, 2);
         const velocidad =
-          area > 0 && presAbs > 0
-            ? (4 * caudal) / (area * 3600 * presAbs)
+          diamInt > 0 && presAbs > 0
+            ? (354 * caudal) / (Math.pow(diamInt, 2) * Math.sqrt(presAbs))
             : 0;
 
         const psi = ((pf * 20) / 1380).toFixed(2);
@@ -972,7 +970,7 @@
         if (nextRow) calculateRowMedia(nextRow, rowIndex + 1);
         
         // Validar balance después de calcular
-        validateFlowBalance("tablaMediaPresion", "balanceWarningMedia");
+        validateFlowBalance("tablaMedia", "balanceWarningMedia");
       }
 
       // ==================== UTILIDAD: CONVERTIR IMAGEN A BASE64 ====================
@@ -1843,8 +1841,8 @@
         // Crear primera fila en cada tabla
         addRowBAJA();
         addRowMedia();
-        validateFlowBalance("tablaBajaPresion", "balanceWarningBaja");
-        validateFlowBalance("tablaMediaPresion", "balanceWarningMedia");
+        validateFlowBalance("tablaBAJA", "balanceWarningBaja");
+        validateFlowBalance("tablaMedia", "balanceWarningMedia");
 
         // ========== LISTENER PARA MUNICIPIOS ==========
         const municipioSelect = document.getElementById("municipioSelect");
