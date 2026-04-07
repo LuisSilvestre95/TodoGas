@@ -24,6 +24,12 @@
 
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.9.1/chart.min.js"></script>
+
+    <!-- html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   </head>
   <body>
     <!-- HEADER -->
@@ -65,6 +71,7 @@
           <select id="municipioSelect" style="width:100%; padding:8px; border:2px solid #ddd; border-radius:4px; font-size:14px; cursor:pointer;">
             <option value="">-- Seleccionar municipio --</option>
             <option value="Garagoa">Garagoa (2000m) - Boyacá</option>
+             <option value="Tunja">Tunja (2820m) - Boyacá</option>
             <option value="Bogota">Bogotá (2640m) - Distrito Capital</option>
             <option value="Medellin">Medellín (1495m) - Antioquia</option>
             <option value="Cali">Cali (1000m) - Valle del Cauca</option>
@@ -74,6 +81,7 @@
             <option value="Cartagena">Cartagena (5m) - Bolívar</option>
             <option value="Manizales">Manizales (2150m) - Caldas</option>
             <option value="Pereira">Pereira (1411m) - Risaralda</option>
+           
             <option value="____">───────────────────</option>
             <option value="personalizado">⚙️ Personalizado (editar valores)</option>
           </select>
@@ -110,6 +118,8 @@
                 <input
                   type="text"
                   id="bajaClientName"
+                  class="client-name"
+                  name="clientName"
                   placeholder="Nombre completo"
                 />
               </div>
@@ -118,20 +128,22 @@
                 <input
                   type="text"
                   id="bajaCedula"
+                  class="client-cedula"
+                  name="clientCedula"
                   placeholder="Ej: 79.295.777"
                 />
               </div>
               <div class="data-input">
                 <label><i class="fas fa-map-marker-alt"></i> DIRECCIÓN</label>
-                <input type="text" id="bajaDireccion" placeholder="Dirección" />
+                <input type="text" id="bajaDireccion" class="client-direccion" name="clientDireccion" placeholder="Dirección" />
               </div>
               <div class="data-input">
                 <label><i class="fas fa-city"></i> MUNICIPIO</label>
-                <input type="text" id="bajaMunicipio" placeholder="Municipio" />
+                <input type="text" id="bajaMunicipio" class="client-municipio" name="clientMunicipio" placeholder="Municipio" />
               </div>
               <div class="data-input">
                 <label><i class="fas fa-phone"></i> TELÉFONO</label>
-                <input type="text" id="bajaTelefono" placeholder="Teléfono" />
+                <input type="text" id="bajaTelefono" class="client-telefono" name="clientTelefono" placeholder="Teléfono" />
               </div>
             </div>
           </div>
@@ -146,20 +158,17 @@
             <table class="excel-table" id="tablaBajaPresion">
               <thead>
                 <tr>
-                  <th style="min-width: 80px">Inicio<br />(B)</th>
-                  <th style="min-width: 80px">Fin<br />(C)</th>
-                  <th style="min-width: 110px">Caudal<br />(m³/h)</th>
-                  <th style="min-width: 100px">Longitud<br />(m)</th>
-                  <th style="min-width: 80px">Codos<br />(#)</th>
-                  <th style="min-width: 80px">Tees<br />(#)</th>
-                  <th style="min-width: 80px">Válvulas<br />(#)</th>
-                  <th style="min-width: 100px">L. Equiv<br />(m)</th>
-                  <th style="min-width: 100px">Diámetro<br />(mm)</th>
-                  <th style="min-width: 100px">Pi<br />(mbar)</th>
-                  <th style="min-width: 100px">Pérdida<br />(mbar)</th>
-                  <th style="min-width: 100px">Pf<br />(mbar)</th>
-                  <th style="min-width: 110px">Velocidad<br />(m/s)</th>
-                  <th style="min-width: 110px">Material<br />(L)</th>
+                  <th style="min-width: 80px">Inicio</th>
+                  <th style="min-width: 80px">Fin</th>
+                  <th style="min-width: 110px">Caudal (m³/h)</th>
+                  <th style="min-width: 100px">Longitud (m)</th>
+                  <th style="min-width: 100px">L. Equiv (m)</th>
+                  <th style="min-width: 100px">Diámetro (mm)</th>
+                  <th style="min-width: 100px">Pi (mbar)</th>
+                  <th style="min-width: 100px">Pérdida (mbar)</th>
+                  <th style="min-width: 100px">Pf (mbar)</th>
+                  <th style="min-width: 110px">Velocidad (m/s)</th>
+                  <th style="min-width: 110px">Material</th>
                   <th style="min-width: 120px">Estado</th>
                   <th style="min-width: 100px">Acciones</th>
                 </tr>
@@ -221,24 +230,26 @@
                 <input
                   type="text"
                   id="mediaClientName"
+                  class="client-name"
+                  name="clientName"
                   placeholder="Nombre completo"
                 />
               </div>
               <div class="data-input">
                 <label><i class="fas fa-id-card"></i> CÉDULA</label>
-                <input type="text" id="mediaCedula" placeholder="79.295.777" />
+                <input type="text" id="mediaCedula" class="client-cedula" name="clientCedula" placeholder="79.295.777" />
               </div>
               <div class="data-input">
                 <label><i class="fas fa-map-marker-alt"></i> DIRECCIÓN</label>
-                <input type="text" id="mediaDireccion" placeholder="Dirección" />
+                <input type="text" id="mediaDireccion" class="client-direccion" name="clientDireccion" placeholder="Dirección" />
               </div>
               <div class="data-input">
                 <label><i class="fas fa-city"></i> MUNICIPIO</label>
-                <input type="text" id="mediaMunicipio" placeholder="Municipio" />
+                <input type="text" id="mediaMunicipio" class="client-municipio" name="clientMunicipio" placeholder="Municipio" />
               </div>
               <div class="data-input">
                 <label><i class="fas fa-phone"></i> TELÉFONO</label>
-                <input type="text" id="mediaTelefono" placeholder="Teléfono" />
+                <input type="text" id="mediaTelefono" class="client-telefono" name="clientTelefono" placeholder="Teléfono" />
               </div>
             </div>
           </div>
@@ -253,28 +264,24 @@
             <table class="excel-table" id="tablaMediaPresion">
               <thead>
                 <tr>
-                  <th style="min-width: 80px">Inicio<br />(B)</th>
-                  <th style="min-width: 80px">Fin<br />(C)</th>
-                  <th style="min-width: 105px">Caudal<br />(m³/h)</th>
-                  <th style="min-width: 90px">Ø Nom<br />(D)</th>
-                  <th style="min-width: 90px">Ø Int<br />(mm)</th>
-                  <th style="min-width: 90px">Long.<br />(m)</th>
-                  <th style="min-width: 90px; display:none;">Codos<br />(#)</th>
-                  <th style="min-width: 80px; display:none;">Tees<br />(#)</th>
-                  <th style="min-width: 90px; display:none;">Válvulas<br />(#)</th>
-                  <th style="min-width: 90px">L.Equiv<br />(m)</th>
-                  <th style="min-width: 90px">L.Total<br />(m)</th>
-                  <th style="min-width: 95px">P1<br />(mbar)</th>
-                  <th style="min-width: 95px">P abs<br />(mbar)</th>
-                  <th style="min-width: 95px">P2 abs<br />(mbar)</th>
-                  <th style="min-width: 95px">P2<br />(mbar)</th>
-                  <th style="min-width: 85px">PSI<br />(Q)</th>
-                  <th style="min-width: 95px">Pérd %<br />Abs</th>
-                  <th style="min-width: 95px">Pérd %<br />Man</th>
-                  <th style="min-width: 115px">Estado<br />Presión</th>
-                  <th style="min-width: 95px">Veloc.<br />(m/s)</th>
-                  <th style="min-width: 115px">Estado<br />Velocidad</th>
-                  <th style="min-width: 110px">Material<br />(M)</th>
+                  <th style="min-width: 80px">Inicio</th>
+                  <th style="min-width: 80px">Fin</th>
+                  <th style="min-width: 105px">Caudal (m³/h)</th>
+                  <th style="min-width: 90px">Ø Nom</th>
+                  <th style="min-width: 90px">Ø Int (mm)</th>
+                  <th style="min-width: 90px">Long. (m)</th>
+                  <th style="min-width: 90px">L.Equiv (m)</th>
+                  <th style="min-width: 90px">L.Total (m)</th>
+                  <th style="min-width: 95px">P1 (mbar)</th>
+                  <th style="min-width: 95px">P abs (mbar)</th>
+                  <th style="min-width: 95px">P2 abs (mbar)</th>
+                  <th style="min-width: 95px">P2 (mbar)</th>
+                  <th style="min-width: 85px">PSI</th>
+                  <th style="min-width: 95px">Pérd % Abs</th>
+                  <th style="min-width: 95px">Pérd % Man</th>
+                  <th style="min-width: 95px">Veloc. (m/s)</th>
+                  <th style="min-width: 115px">Estado</th>
+                  <th style="min-width: 110px">Material</th>
                   <th style="min-width: 100px">Acciones</th>
                 </tr>
               </thead>
@@ -316,6 +323,9 @@
       </div>
     </div>
 
+    <!-- Canvas for charts -->
+    <canvas id="pressureChart" width="400" height="200" style="display: none;"></canvas>
+
     <!-- FOOTER -->
     <footer class="main-footer">
       <div class="container" style="text-align: center">
@@ -334,6 +344,7 @@
       // ==================== BASE DE DATOS DE CIUDADES COLOMBIANAS ====================
       const CIUDADES_COLOMBIA = {
         "Garagoa": { "altitud": 2000, "G": 0.67, "PATM": 823, "departamento": "Boyacá" },
+        "Tunja": { "altitud": 2820, "G": 0.67, "PATM": 723.6, "departamento": "Boyacá" },
         "Bogota": { "altitud": 2640, "G": 0.68, "PATM": 735, "departamento": "Distrito Capital" },
         "Medellin": { "altitud": 1495, "G": 0.67, "PATM": 865, "departamento": "Antioquia" },
         "Cali": { "altitud": 1000, "G": 0.67, "PATM": 908, "departamento": "Valle del Cauca" },
@@ -372,13 +383,6 @@
         "Cobre 1/2": 12.7,
         "Cobre 3/4": 19.1,
         "Cobre 1": 25.4,
-      };
-
-      // FACTORES DE LONGITUD EQUIVALENTE (en metros por accesorio)
-      const ACCESORIOS_FACTORS = {
-        codos: 0.6,    // Un codo = 0.6m adicionales
-        tees: 1.2,     // Una T = 1.2m adicionales
-        valvulas: 0.5  // Una válvula = 0.5m
       };
 
       let rowsBAJA = [];
@@ -441,20 +445,11 @@
       }
 
       /**
-       * Calcula la Longitud Equivalente (LE) incluyendo accesorios
-       * LE = L_tubería + (codos × factor_codo) + (tees × factor_tee) + (válvulas × factor_válvula)
+       * Obtiene un valor de cliente dentro de la pestaña indicada
        */
-      function calcularLE(longitud, codos = 0, tees = 0, valvulas = 0) {
-        const numCodos = parseFloat(codos) || 0;
-        const numTees = parseFloat(tees) || 0;
-        const numValvulas = parseFloat(valvulas) || 0;
-
-        const leAccesorios =
-          (numCodos * ACCESORIOS_FACTORS.codos) +
-          (numTees * ACCESORIOS_FACTORS.tees) +
-          (numValvulas * ACCESORIOS_FACTORS.valvulas);
-
-        return parseFloat(longitud) + leAccesorios;
+      function getClientValue(tabSectionId, fieldClass) {
+        const section = document.getElementById(tabSectionId);
+        return section?.querySelector(`.${fieldClass}`)?.value.trim() || "N/A";
       }
 
       /**
@@ -464,16 +459,16 @@
       function applyStatusColor(cell, valor, limite) {
         const porcentaje = (valor / limite) * 100;
         if (porcentaje >= 100) {
-          cell.style.color = "#991b1b"; // Rojo oscuro
+          cell.style.color = "#991b1b";
           cell.style.fontWeight = "bold";
-          cell.style.backgroundColor = "#fee2e2"; // Fondo rojo claro
+          cell.style.backgroundColor = "#fee2e2";
         } else if (porcentaje >= 80) {
-          cell.style.color = "#b45309"; // Naranja
+          cell.style.color = "#92400e";
           cell.style.fontWeight = "bold";
-          cell.style.backgroundColor = "#fef3c7"; // Fondo naranja claro
+          cell.style.backgroundColor = "#fef3c7";
         } else {
-          cell.style.color = "#166534"; // Verde
-          cell.style.backgroundColor = "#dcfce7"; // Fondo verde claro
+          cell.style.color = "#065f46";
+          cell.style.backgroundColor = "#dcfce7";
         }
       }
 
@@ -508,6 +503,7 @@
       function validateFlowBalance(tableId, warningId) {
         const filas = document.querySelectorAll(`#${tableId} tr`);
         const nodos = {};
+        const tolerance = 0.01;
 
         filas.forEach((tr) => {
           const inicio = tr.querySelector(".inicio")?.value?.trim();
@@ -525,18 +521,37 @@
         });
 
         const mensajes = [];
+        const hasSourceOrSink = Object.values(nodos).some(valores =>
+          (valores.entrada === 0 && valores.salida > 0) ||
+          (valores.salida === 0 && valores.entrada > 0)
+        );
+        let hasStrictError = false;
+
         Object.entries(nodos).forEach(([nodo, valores]) => {
-          const error = Math.abs(valores.entrada - valores.salida);
-          if (error > 0.01) {
-            mensajes.push(`${nodo}: desequilibrio ${error.toFixed(3)} m³/h`);
+          const esFuente = valores.entrada === 0 && valores.salida > 0;
+          const esConsumo = valores.salida === 0 && valores.entrada > 0;
+          const delta = valores.entrada - valores.salida;
+
+          if (esFuente) {
+            mensajes.push(`${nodo}: fuente ${valores.salida.toFixed(3)} m³/h`);
+          } else if (esConsumo) {
+            mensajes.push(`${nodo}: consumo ${valores.entrada.toFixed(3)} m³/h`);
+          } else if (Math.abs(delta) > tolerance) {
+            mensajes.push(`${nodo}: consumo ${delta.toFixed(3)} m³/h`);
+            if (!hasSourceOrSink) {
+              hasStrictError = true;
+            }
           }
         });
 
         const warning = document.getElementById(warningId);
         if (warning) {
-          if (mensajes.length > 0) {
+          if (hasStrictError) {
             warning.textContent = "Balance de caudales incorrecto: " + mensajes.join("; ");
             warning.style.color = "#b91c1c";
+          } else if (mensajes.length > 0) {
+            warning.textContent = "Balance de caudales válido (con consumos/suministros): " + mensajes.join("; ");
+            warning.style.color = "#047857";
           } else {
             warning.textContent = "Balance de caudales válido";
             warning.style.color = "#047857";
@@ -576,73 +591,37 @@
       // ==================== BAJA PRESIÓN ====================
       function addRowBAJA() {
         const tabla = document.getElementById("tablaBAJA");
-        if (!tabla) {
-          console.error("❌ Error: No se encontró tabla#tablaBAJA");
-          return;
-        }
-        const rowNum = rowsBAJA.length + 1;
-        console.log("✅ Agregando fila BAJA #" + rowNum);
+        const rowIndex = tabla.children.length;
 
-        // Determina los nodos automáticamente
         let inicio = "A";
         let fin = "B";
-        if (rowNum > 1) {
-          const filaAnterior = tabla.children[rowNum - 2];
-          const finAnterior = filaAnterior.querySelector(".fin").value.trim().toUpperCase();
-          if (finAnterior) {
-            inicio = finAnterior;
-            fin = getNextLetter(finAnterior);
-          }
+        if (rowIndex > 0) {
+          const prevFin = tabla.children[rowIndex-1].querySelector(".fin").value.trim().toUpperCase();
+          inicio = prevFin;
+          fin = getNextLetter(prevFin);
         }
 
         const tr = document.createElement("tr");
         tr.innerHTML = `
-        <td class="row-input"><input type="text" value="${inicio}" class="inicio" readonly style="background:#e8f4f8; font-weight:bold; cursor:not-allowed;"></td>
-        <td class="row-input"><input type="text" value="${fin}" class="fin" style="font-weight:bold;" title="Cuando cambies esto, el siguiente Inicio se actualiza auto!"></td>
-        <td class="row-input"><input type="number" step="0.01" class="caudal" placeholder="0.00"></td>
-        <td class="row-input"><input type="number" step="0.01" class="longitud" placeholder="0.00"></td>
-        <td class="row-input"><input type="number" step="0" class="codos" placeholder="0" title="Cantidad de codos 90°"></td>
-        <td class="row-input"><input type="number" step="0" class="tees" placeholder="0" title="Cantidad de Tees"></td>
-        <td class="row-input"><input type="number" step="0" class="valvulas" placeholder="0" title="Cantidad de válvulas"></td>
-        <td class="row-calc le">-</td>
-        <td class="row-input"><input type="number" step="0.1" class="diametro" placeholder="0.0"></td>
-        <td class="row-input"><input type="number" step="0.1" class="pi" ${rowNum === 1 ? "" : "readonly"} placeholder="0.0" style="${rowNum === 1 ? "border: 2px solid #0066cc; background: white;" : "border: 2px solid #999; background: #f5f5f5; color: #666; cursor: not-allowed; font-weight: 600;"}" title="${rowNum === 1 ? "Ingrese presión inicial (regulador)" : "Se calcula automáticamente ← Presión anterior"}"></td>
-        <td class="row-calc perdida">-</td>
-        <td class="row-calc pf">-</td>
-        <td class="row-calc velocidad">-</td>
-        <td class="row-input">
-            <select class="material">
-                <option value="PEALPE">PEALPE</option>
-                <option value="Polietileno">Polietileno</option>
-                <option value="Cobre">Cobre</option>
-                <option value="Acero">Acero</option>
-            </select>
-        </td>
-        <td class="row-calc estado">-</td>
-        <td style="text-align: center;">
-            <button class="btn-row-action btn-delete" onclick="deleteRowBAJA(this)">
-                <i class="fas fa-trash-alt"></i>
-            </button>
-        </td>
-    `;
+          <td><input type="text" class="inicio" value="${inicio}" readonly style="background:#f0f0f0; font-weight:bold;"></td>
+          <td><input type="text" class="fin" value="${fin}" style="font-weight:bold;"></td>
+          <td><input type="number" step="0.01" class="caudal" placeholder="0.00"></td>
+          <td><input type="number" step="0.01" class="longitud" placeholder="0.00"></td>
+          <td class="le">-</td>
+          <td><input type="number" step="0.1" class="diametro" value="20"></td>
+          <td><input type="number" step="0.1" class="pi" ${rowIndex === 0 ? '' : 'readonly'} value="${rowIndex === 0 ? '23' : ''}"></td>
+          <td class="perdida">-</td>
+          <td class="pf">-</td>
+          <td class="velocidad">-</td>
+          <td><select class="material"><option value="PEALPE" selected>PEALPE</option></select></td>
+          <td class="estado">—</td>
+          <td><button class="btn-delete btn-row-action" aria-label="Eliminar fila" onclick="deleteRowBAJA(this)">🗑</button></td>
+        `;
 
         tabla.appendChild(tr);
-        rowsBAJA.push({});
-
-        // Listener especial para "Fin" → Auto-predice siguiente
-        const finInput = tr.querySelector(".fin");
-        finInput.addEventListener("input", () => {
-          autoPredictNextNode(tr, "tablaBAJA");
-        });
-
-        // Listeners para todos los inputs
-        tr.querySelectorAll("input").forEach((input) => {
-          input.addEventListener("input", () => {
-            calculateRowBAJA(tr, rowNum - 1);
-          });
-        });
-
-        if (rowNum === 1) calculateRowBAJA(tr, 0);
+        rowsBAJA.push(tr);
+        attachListenersBAJA(tr);
+        if (rowIndex === 0) calculateRowBAJA(tr, 0);
       }
 
       function deleteRowBAJA(btn) {
@@ -660,6 +639,7 @@
 
         tr.remove();
         rowsBAJA.splice(rowIndex, 1);
+        refreshRowSequence("tablaBAJA");
 
         // Recalcular filas posteriores
         const filas = document.querySelectorAll("#tablaBAJA tr");
@@ -673,9 +653,6 @@
         const caudal = parseFloat(tr.querySelector(".caudal").value) || 0;
         const longitud = parseFloat(tr.querySelector(".longitud").value) || 0;
         const diametro = parseFloat(tr.querySelector(".diametro").value) || 0;
-        const codos = parseFloat(tr.querySelector(".codos").value) || 0;
-        const tees = parseFloat(tr.querySelector(".tees").value) || 0;
-        const valvulas = parseFloat(tr.querySelector(".valvulas").value) || 0;
         let pi = parseFloat(tr.querySelector(".pi").value) || 0;
 
         // Continuidad automática (cascada de presión)
@@ -704,19 +681,19 @@
           return;
         }
 
-        // Calcula LE con accesorios
-        const leCalculada = calcularLE(longitud, codos, tees, valvulas);
-        const le = leCalculada.toFixed(3);
+        // LE automático (sin que el usuario llene nada)
+        const le = (longitud * 1.2).toFixed(3);
+        const lt = (longitud + parseFloat(le)).toFixed(3);
 
-        // Pérdida usando LE completa con accesorios
-        const perdida = (K * G * leCalculada * Math.pow(caudal, 1.82)) / Math.pow(diametro, 4.82);
+        // Pérdida usando la longitud total LT en la fórmula de Renouard
+        const perdida = (K * G * parseFloat(lt) * Math.pow(caudal, 1.82)) / Math.pow(diametro, 4.82);
         const perdidaVal = Number.isFinite(perdida) ? perdida : 0;
         let pf = Math.max(0, pi - perdidaVal);
 
-        const presionAbs = (parseFloat(pf) + PATM) / 1000;
+        const pAbs = pf + PATM;
         const velocidad =
-          diametro > 0 && presionAbs > 0
-            ? (354 * caudal) / (Math.pow(diametro, 2) * Math.sqrt(presionAbs))
+          diametro > 0 && pAbs > 0
+            ? (354 * caudal) / (Math.pow(diametro, 2) * Math.sqrt(pAbs))
             : 0;
 
         const perdidaPorc = pi > 0 ? (perdidaVal / pi) * 100 : 0;
@@ -760,84 +737,86 @@
         validateFlowBalance("tablaBAJA", "balanceWarningBaja");
       }
 
-      // ==================== MEDIA PRESIÓN ====================
-      function addRowMedia() {
-        const tabla = document.getElementById("tablaMedia");
-        if (!tabla) {
-          console.error("❌ Error: No se encontró tabla#tablaMedia");
-          return;
-        }
-        const rowNum = rowsMedia.length + 1;
-        console.log("✅ Agregando fila MEDIA #" + rowNum);
-
-        // Determina los nodos automáticamente
-        let inicio = "A";
-        let fin = "B";
-        if (rowNum > 1) {
-          const filaAnterior = tabla.children[rowNum - 2];
-          const finAnterior = filaAnterior.querySelector(".fin").value.trim().toUpperCase();
-          if (finAnterior) {
-            inicio = finAnterior;
-            fin = getNextLetter(finAnterior);
-          }
-        }
-
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-        <td class="row-input"><input type="text" value="${inicio}" class="inicio" readonly style="background:#e8f4f8; font-weight:bold; cursor:not-allowed;"></td>
-        <td class="row-input"><input type="text" value="${fin}" class="fin" style="font-weight:bold;" title="Cuando cambjes esto, el siguiente Inicio se actualiza auto!"></td>
-        <td class="row-input"><input type="number" step="0.01" class="caudal" placeholder="0.00"></td>
-        <td class="row-input"><input type="text" class="diamNom" placeholder="1/2" title="Diámetro nominal (1/2, 3/4, 1, etc)"></td>
-        <td class="row-input"><input type="number" step="0.1" class="diamInt" placeholder="0.0" title="Diámetro interno en mm"></td>
-        <td class="row-input"><input type="number" step="0.01" class="longitud" placeholder="0.00"></td>
-        <td class="row-input" style="display:none;"><input type="number" step="0" class="codos" value="0" placeholder="0" title="Cantidad de codos 90°" style="display:none;"></td>
-        <td class="row-input" style="display:none;"><input type="number" step="0" class="tees" value="0" placeholder="0" title="Cantidad de Tees" style="display:none;"></td>
-        <td class="row-input" style="display:none;"><input type="number" step="0" class="valvulas" value="0" placeholder="0" title="Cantidad de válvulas" style="display:none;"></td>
-        <td class="row-calc le">-</td>
-        <td class="row-calc lt">-</td>
-        <td class="row-input"><input type="number" step="0.1" class="p1" ${rowNum === 1 ? "" : "readonly"} placeholder="0.0" style="${rowNum === 1 ? "border: 2px solid #0066cc; background: white;" : "border: 2px solid #999; background: #f5f5f5; color: #666; cursor: not-allowed; font-weight: 600;"}" title="${rowNum === 1 ? "Ingrese presión inicial (regulador)" : "Se calcula automáticamente ← Presión anterior"}"></td>
-        <td class="row-calc pAbs">-</td>
-        <td class="row-calc p2Abs">-</td>
-        <td class="row-calc pf">-</td>
-        <td class="row-calc psi">-</td>
-        <td class="row-calc perdAbs">-</td>
-        <td class="row-calc perdMan">-</td>
-        <td class="row-calc estadoPerd">-</td>
-        <td class="row-calc velocidad">-</td>
-        <td class="row-calc estadoVel">-</td>
-        <td class="row-input">
-            <select class="material">
-                <option value="PEALPE">PEALPE</option>
-                <option value="Polietileno">Polietileno</option>
-                <option value="Cobre">Cobre</option>
-                <option value="Acero">Acero</option>
-            </select>
-        </td>
-        <td style="text-align: center;">
-            <button class="btn-row-action btn-delete" onclick="deleteRowMedia(this)">
-                <i class="fas fa-trash-alt"></i>
-            </button>
-        </td>
-    `;
-
-        tabla.appendChild(tr);
-        rowsMedia.push({});
-
+      function attachListenersBAJA(tr) {
         // Listener especial para "Fin" → Auto-predice siguiente
         const finInput = tr.querySelector(".fin");
         finInput.addEventListener("input", () => {
-          autoPredictNextNode(tr, "tablaMedia");
+          autoPredictNextNode(tr, "tablaBAJA");
+          const rowIndex = Array.from(tr.parentNode.children).indexOf(tr);
+          calculateRowBAJA(tr, rowIndex);
         });
 
         // Listeners para todos los inputs
         tr.querySelectorAll("input").forEach((input) => {
           input.addEventListener("input", () => {
-            calculateRowMedia(tr, rowNum - 1);
-            validateFlowBalance("tablaMedia", "balanceWarningMedia");
+            const rowIndex = Array.from(tr.parentNode.children).indexOf(tr);
+            calculateRowBAJA(tr, rowIndex);
           });
         });
+      }
 
-        if (rowNum === 1) calculateRowMedia(tr, 0);
+      function refreshRowSequence(tableId) {
+        const tbody = document.getElementById(tableId);
+        if (!tbody) return;
+        const filas = Array.from(tbody.children);
+        filas.forEach((tr, idx) => {
+          const inicioInput = tr.querySelector(".inicio");
+          const finInput = tr.querySelector(".fin");
+          if (!inicioInput || !finInput) return;
+
+          if (idx === 0) {
+            if (!inicioInput.value.trim()) inicioInput.value = "A";
+            if (!finInput.value.trim()) finInput.value = "B";
+          } else {
+            const prevFin = filas[idx - 1].querySelector(".fin").value.trim().toUpperCase() || "A";
+            inicioInput.value = prevFin;
+            if (!finInput.value.trim() || finInput.value.trim().toUpperCase() === prevFin) {
+              finInput.value = getNextLetter(prevFin);
+            }
+          }
+        });
+      }
+
+      // ==================== MEDIA PRESIÓN ====================
+      function addRowMedia() {
+        const tabla = document.getElementById("tablaMedia");
+        const rowIndex = tabla.children.length;
+
+        let inicio = "A";
+        let fin = "B";
+        if (rowIndex > 0) {
+          const prevFin = tabla.children[rowIndex-1].querySelector(".fin").value.trim().toUpperCase();
+          inicio = prevFin;
+          fin = getNextLetter(prevFin);
+        }
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td><input type="text" class="inicio" value="${inicio}" readonly style="background:#f0f0f0; font-weight:bold;"></td>
+          <td><input type="text" class="fin" value="${fin}" style="font-weight:bold;"></td>
+          <td><input type="number" step="0.01" class="caudal" placeholder="0.00"></td>
+          <td><input type="text" class="diamNom" placeholder="1"></td>
+          <td><input type="number" step="0.1" class="diamInt" value="20"></td>
+          <td><input type="number" step="0.01" class="longitud" placeholder="0.00"></td>
+          <td class="le">-</td>
+          <td class="lt">-</td>
+          <td><input type="number" step="0.1" class="p1" ${rowIndex === 0 ? '' : 'readonly'} value="${rowIndex === 0 ? '140' : ''}"></td>
+          <td class="pAbs">-</td>
+          <td class="p2Abs">-</td>
+          <td class="pf">-</td>
+          <td class="psi">-</td>
+          <td class="perdAbs">-</td>
+          <td class="perdMan">-</td>
+          <td class="velocidad">-</td>
+          <td class="estado">—</td>
+          <td><select class="material"><option value="PEALPE" selected>PEALPE</option></select></td>
+          <td><button class="btn-delete btn-row-action" aria-label="Eliminar fila" onclick="deleteRowMedia(this)">🗑</button></td>
+        `;
+
+        tabla.appendChild(tr);
+        rowsMedia.push(tr);
+        attachListenersMedia(tr);
+        if (rowIndex === 0) calculateRowMedia(tr, 0);
       }
 
       function deleteRowMedia(btn) {
@@ -855,6 +834,7 @@
 
         tr.remove();
         rowsMedia.splice(rowIndex, 1);
+        refreshRowSequence("tablaMedia");
 
         // Recalcular filas posteriores
         const filas = document.querySelectorAll("#tablaMedia tr");
@@ -868,9 +848,6 @@
         const caudal = parseFloat(tr.querySelector(".caudal").value) || 0;
         const diamInt = parseFloat(tr.querySelector(".diamInt").value) || 0;
         const longitud = parseFloat(tr.querySelector(".longitud").value) || 0;
-        const codos = parseFloat(tr.querySelector(".codos").value) || 0;
-        const tees = parseFloat(tr.querySelector(".tees").value) || 0;
-        const valvulas = parseFloat(tr.querySelector(".valvulas").value) || 0;
         let p1 = parseFloat(tr.querySelector(".p1").value) || 0;
 
         // Continuidad automática (cascada de presión)
@@ -897,28 +874,27 @@
           tr.querySelector(".perdAbs").textContent = "0.00%";
           tr.querySelector(".perdMan").textContent = "0.00%";
           tr.querySelector(".velocidad").textContent = "0.00";
-          tr.querySelector(".estadoPerd").textContent = "RECHAZADO";
-          tr.querySelector(".estadoVel").textContent = "RECHAZADO";
-          tr.querySelector(".estadoPerd").className = "row-calc estadoPerd status-rechazado";
-          tr.querySelector(".estadoVel").className = "row-calc estadoVel status-rechazado";
+          tr.querySelector(".estado").textContent = "RECHAZADO";
+          tr.querySelector(".estado").className = "row-calc estado status-rechazado";
           const nextRow = document.querySelectorAll("#tablaMedia tr")[rowIndex + 1];
           if (nextRow) calculateRowMedia(nextRow, rowIndex + 1);
           return;
         }
 
-        // Calcula LE automáticamente (Media Presión: 20% de la tubería, sin accesorios)
-        const le = (longitud * 0.20).toFixed(3);
+        // LE automático (sin que el usuario llene nada)
+        const le = (longitud * 1.2).toFixed(3);
         const lt = (longitud + parseFloat(le)).toFixed(3);
-        
+
         const pAbs = p1 + PATM;
-        const term = K * Math.pow(G, 0.425) * parseFloat(lt) * Math.pow(caudal, 1.82) * Math.pow(diamInt, -4.82);
-        const radicando = Math.max(0, Math.pow(pAbs, 2) - term);
+        const term1 = caudal * Math.pow(G, 0.425) * Math.pow(lt, 0.576);
+        const term2 = 4.61e-5 * Math.pow(diamInt, 2.725);
+        const term3 = Math.pow(term1 / term2, 1.74);
+        const radicando = Math.max(0, Math.pow(pAbs, 2) - term3);
         const p2Abs = Math.sqrt(radicando);
         let pf = p2Abs - PATM;
-        const presAbs = p2Abs / 1000;
         const velocidad =
-          diamInt > 0 && presAbs > 0
-            ? (354 * caudal) / (Math.pow(diamInt, 2) * Math.sqrt(presAbs))
+          diamInt > 0 && pAbs > 0
+            ? (354 * caudal) / (Math.pow(diamInt, 2) * Math.sqrt(pAbs))
             : 0;
 
         const psi = ((pf * 20) / 1380).toFixed(2);
@@ -956,13 +932,9 @@
         const perdidaCell = tr.querySelector(".perdAbs");
         applyStatusColor(perdidaCell, perdidaPorc, DEFAULT_PARAMS.perdidaRelativaMaxMedia);
 
-        tr.querySelector(".estadoPerd").textContent = estado;
-        tr.querySelector(".estadoVel").textContent = estado;
-        tr.querySelector(".estadoPerd").className =
-          "row-calc estadoPerd " +
-          (estado === "APROBADO" ? "status-aprobado" : "status-rechazado");
-        tr.querySelector(".estadoVel").className =
-          "row-calc estadoVel " +
+        tr.querySelector(".estado").textContent = estado;
+        tr.querySelector(".estado").className =
+          "row-calc estado " +
           (estado === "APROBADO" ? "status-aprobado" : "status-rechazado");
 
         const nextRow =
@@ -971,6 +943,26 @@
         
         // Validar balance después de calcular
         validateFlowBalance("tablaMedia", "balanceWarningMedia");
+      }
+
+      function attachListenersMedia(tr) {
+        // Listener especial para "Fin" → Auto-predice siguiente
+        const finInput = tr.querySelector(".fin");
+        finInput.addEventListener("input", () => {
+          autoPredictNextNode(tr, "tablaMedia");
+          const rowIndex = Array.from(tr.parentNode.children).indexOf(tr);
+          calculateRowMedia(tr, rowIndex);
+          validateFlowBalance("tablaMedia", "balanceWarningMedia");
+        });
+
+        // Listeners para todos the inputs
+        tr.querySelectorAll("input").forEach((input) => {
+          input.addEventListener("input", () => {
+            const rowIndex = Array.from(tr.parentNode.children).indexOf(tr);
+            calculateRowMedia(tr, rowIndex);
+            validateFlowBalance("tablaMedia", "balanceWarningMedia");
+          });
+        });
       }
 
       // ==================== UTILIDAD: CONVERTIR IMAGEN A BASE64 ====================
@@ -1090,11 +1082,11 @@
           // Columna 3: Caja de cliente (derecha) - alineada al borde derecho
           const rightColX = w - margin - 90;
           const rightColWidth = 90;
-          const c1 = document.getElementById("bajaClientName")?.value || "N/A";
-          const c2 = document.getElementById("bajaCedula")?.value || "N/A";
-          const c3 = document.getElementById("bajaDireccion")?.value || "N/A";
-          const c4 = document.getElementById("bajaMunicipio")?.value || "N/A";
-          const c5 = document.getElementById("bajaTelefono")?.value || "N/A";
+          const c1 = getClientValue("baja", "client-name");
+          const c2 = getClientValue("baja", "client-cedula");
+          const c3 = getClientValue("baja", "client-direccion");
+          const c4 = getClientValue("baja", "client-municipio");
+          const c5 = getClientValue("baja", "client-telefono");
           doc.autoTable({
             startY: 4,
             margin: { left: rightColX, right: margin },
@@ -1219,11 +1211,11 @@
                 const v = String(data.cell.raw || "").toUpperCase();
                 // IMPORTANTE: Verificar RECHAZADO y NO APROBADO PRIMERO
                 if (v.includes("RECHAZADO") || v.includes("NO APROBADO")) {
-                  data.cell.styles.fillColor = [239, 68, 68];
-                  data.cell.styles.textColor = [255, 255, 255];
+                  data.cell.styles.fillColor = [254, 226, 226];
+                  data.cell.styles.textColor = [153, 27, 27];
                 } else if (v.includes("APROBADO")) {
-                  data.cell.styles.fillColor = [16, 185, 129];
-                  data.cell.styles.textColor = [255, 255, 255];
+                  data.cell.styles.fillColor = [220, 252, 231];
+                  data.cell.styles.textColor = [6, 95, 70];
                 }
                 data.cell.styles.fontStyle = "bold";
                 data.cell.styles.halign = "center";
@@ -1249,6 +1241,11 @@
           const diametro1 =
             firstRow?.querySelector(".diametro")?.value || "N/A";
           const pi1 = firstRow?.querySelector(".pi")?.value || "N/A";
+          const patm = getParam("presionAtmosferica");
+          const pi1Value = parseFloat(pi1);
+          const pAbsInicial1 = Number.isFinite(pi1Value)
+            ? (pi1Value + patm).toFixed(3)
+            : "N/A";
 
           doc.autoTable({
             startY: formulasTableY,
@@ -1261,14 +1258,25 @@
                 le1 + " m",
               ],
               [
-                "Pérdida de Presión (Renouard Lineal)",
-                "ΔP = 23200 × G × LE × Q^1.82 / D^4.82",
-                perdida1 + " mbar",
+                "Longitud Total",
+                longitud1 + " + " + le1,
+                (Number.isFinite(parseFloat(longitud1)) && Number.isFinite(parseFloat(le1))
+                  ? (parseFloat(longitud1) + parseFloat(le1)).toFixed(3)
+                  : "N/A") + " m",
               ],
-              ["Presión Final", pi1 + " - " + perdida1, pf1 + " mbar"],
+              [
+                "Presión Absoluta Inicial",
+                pi1 + " + " + patm + " (atmosférica)",
+                pAbsInicial1 + " mbar",
+              ],
+              [
+                "Presión Final",
+                pi1 + " - " + perdida1,
+                pf1 + " mbar",
+              ],
               [
                 "Velocidad del Gas",
-                "V = 354×Q×(P+0.7236)^-1×D^-2",
+                "V = 354×Q×(P+" + patm + ")^-1×D^-2",
                 velocidad1 + " m/s",
               ],
 
@@ -1308,20 +1316,20 @@
           });
 
           // Firma/Certificación
-          const signW = 70,
-            signH = 35;
+          const signW = 58,
+            signH = 26;
           const signX = (w - signW) / 2;
-          const signY = doc.lastAutoTable?.finalY + 3;
+          const signY = doc.lastAutoTable?.finalY + 1;
           doc.setDrawColor(0, 0, 0);
           doc.setLineWidth(0.4);
           doc.rect(signX, signY, signW, signH);
 
-          // Agregar imagen de firma - más grande y en la parte superior
+          // Agregar imagen de firma - más compacta y en la parte superior
           if (firmaBase64) {
             try {
               console.log("📄 Agregando firma al PDF...");
               console.log("Firma disponible, longitud:", firmaBase64.length);
-              doc.addImage(firmaBase64, "PNG", signX + 8, signY + 2, 54, 18);
+              doc.addImage(firmaBase64, "PNG", signX + 8, signY + 1.5, 44, 14);
               console.log("✅ Firma agregada exitosamente");
             } catch (e) {
               console.error("❌ Error agregando firma:", e.message);
@@ -1332,16 +1340,16 @@
 
           // Texto en la parte inferior del recuadro
           doc.setFont("helvetica", "normal");
-          doc.setFontSize(8.5);
+          doc.setFontSize(7.5);
           doc.setTextColor(0, 0, 0);
-          doc.text("Luis Silvestre Supelano Beltran", w / 2, signY + 23, {
+          doc.text("Luis Silvestre Supelano Beltran", w / 2, signY + 18, {
             align: "center",
           });
-          doc.setFontSize(7);
+          doc.setFontSize(6);
           doc.text(
             "Ingeniero - MP 041122-0809747 BYC - COPNIA",
             w / 2,
-            signY + 29,
+            signY + 23,
             { align: "center" },
           );
 
@@ -1375,9 +1383,7 @@
             );
           }
 
-          const bajaName = (
-            document.getElementById("bajaClientName")?.value || "CLIENTE"
-          ).trim();
+          const bajaName = getClientValue("baja", "client-name").trim();
           const bajaSafe =
             bajaName.replace(/[^\w\s-]+/g, "").replace(/\s+/g, "_") ||
             "CLIENTE";
@@ -1470,11 +1476,11 @@
           // Columna 3: Caja de cliente (derecha) - alineada al borde derecho
           const rightColX = w - margin - 90;
           const rightColWidth = 90;
-          const c1 = document.getElementById("mediaClientName")?.value || "N/A";
-          const c2 = document.getElementById("mediaCedula")?.value || "N/A";
-          const c3 = document.getElementById("mediaDireccion")?.value || "N/A";
-          const c4 = document.getElementById("mediaMunicipio")?.value || "N/A";
-          const c5 = document.getElementById("mediaTelefono")?.value || "N/A";
+          const c1 = getClientValue("media", "client-name");
+          const c2 = getClientValue("media", "client-cedula");
+          const c3 = getClientValue("media", "client-direccion");
+          const c4 = getClientValue("media", "client-municipio");
+          const c5 = getClientValue("media", "client-telefono");
           doc.autoTable({
             startY: 4,
             margin: { left: rightColX, right: margin },
@@ -1529,9 +1535,8 @@
               tr.querySelector(".psi")?.textContent || "",
               tr.querySelector(".perdAbs")?.textContent || "",
               tr.querySelector(".perdMan")?.textContent || "",
-              tr.querySelector(".estadoPerd")?.textContent || "",
               tr.querySelector(".velocidad")?.textContent || "",
-              tr.querySelector(".estadoVel")?.textContent || "",
+              tr.querySelector(".estado")?.textContent || "",
               tr.querySelector(".material")?.value || "",
             ]);
           });
@@ -1558,9 +1563,8 @@
                 "PSI",
                 "Pérd\n%Abs",
                 "Pérd\n%Man",
-                "Est\nPres",
                 "Vel",
-                "Est\nVel",
+                "Estado",
                 "Material",
               ],
               [
@@ -1577,7 +1581,6 @@
                 "mbar",
                 "mbar",
                 "psi",
-                "",
                 "",
                 "",
                 "m/s",
@@ -1616,18 +1619,15 @@
               fillColor: [245, 250, 255],
             },
             didParseCell: (data) => {
-              if (
-                data.section === "body" &&
-                (data.column.index === 15 || data.column.index === 17)
-              ) {
+              if (data.section === "body" && data.column.index === 16) {
                 const v = String(data.cell.raw || "").toUpperCase();
                 // IMPORTANTE: Verificar RECHAZADO y NO APROBADO PRIMERO
                 if (v.includes("RECHAZADO") || v.includes("NO APROBADO")) {
-                  data.cell.styles.fillColor = [239, 68, 68];
-                  data.cell.styles.textColor = [255, 255, 255];
+                  data.cell.styles.fillColor = [254, 226, 226];
+                  data.cell.styles.textColor = [153, 27, 27];
                 } else if (v.includes("APROBADO")) {
-                  data.cell.styles.fillColor = [16, 185, 129];
-                  data.cell.styles.textColor = [255, 255, 255];
+                  data.cell.styles.fillColor = [220, 252, 231];
+                  data.cell.styles.textColor = [6, 95, 70];
                 }
                 data.cell.styles.fontStyle = "bold";
                 data.cell.styles.halign = "center";
@@ -1664,6 +1664,7 @@
           const diamIntMedia =
             firstRowMedia?.querySelector(".diamInt")?.value || "N/A";
           const p1Media = firstRowMedia?.querySelector(".p1")?.value || "N/A";
+          const patm = getParam("presionAtmosferica");
 
           doc.autoTable({
             startY: formulasTableY,
@@ -1682,7 +1683,7 @@
               ],
               [
                 "Presión Absoluta Inicial",
-                p1Media + " + 823 (atmosférica)",
+                p1Media + " + " + patm + " (atmosférica)",
                 pAbsMedia + " mbar",
               ],
               [
@@ -1693,7 +1694,7 @@
               ["Pérdida % Manométrica", "(P1-P2)/P1 × 100", perdManMedia],
               [
                 "Velocidad del Gas",
-                "V = 354×Q×(P+0.7236)^-1×D^-2",
+                "V = 354×Q×(P+" + patm + ")^-1×D^-2",
                 velocidadMedia + " m/s",
               ],
 
@@ -1733,20 +1734,20 @@
           });
 
           // Firma/Certificación
-          const signW = 70,
-            signH = 35;
+          const signW = 52,
+            signH = 23;
           const signX = (w - signW) / 2;
-          const signY = doc.lastAutoTable?.finalY + 3;
+          const signY = doc.lastAutoTable?.finalY + 1;
           doc.setDrawColor(0, 0, 0);
           doc.setLineWidth(0.4);
           doc.rect(signX, signY, signW, signH);
 
-          // Agregar imagen de firma - más grande y en la parte superior
+          // Agregar imagen de firma - más compacta y en la parte superior
           if (firmaBase64) {
             try {
               console.log("📄 Agregando firma al PDF...");
               console.log("Firma Base64 disponible, longitud:", firmaBase64.length);
-              doc.addImage(firmaBase64, "PNG", signX + 8, signY + 2, 54, 18);
+              doc.addImage(firmaBase64, "PNG", signX + 8, signY + 1.5, 43, 14);
               console.log("✅ Firma agregada correctamente al PDF");
             } catch (e) {
               console.error("❌ Error agregando firma:", e.message);
@@ -1757,16 +1758,16 @@
 
           // Texto en la parte inferior del recuadro
           doc.setFont("helvetica", "normal");
-          doc.setFontSize(8.5);
+          doc.setFontSize(7.2);
           doc.setTextColor(0, 0, 0);
-          doc.text("Luis Silvestre Supelano Beltran", w / 2, signY + 23, {
+          doc.text("Luis Silvestre Supelano Beltran", w / 2, signY + 16, {
             align: "center",
           });
-          doc.setFontSize(7);
+          doc.setFontSize(6);
           doc.text(
             "Ingeniero - MP 041122-0809747 BYC - COPNIA",
             w / 2,
-            signY + 29,
+            signY + 23,
             { align: "center" },
           );
 
@@ -1800,9 +1801,7 @@
             );
           }
 
-          const mediaName = (
-            document.getElementById("mediaClientName")?.value || "CLIENTE"
-          ).trim();
+          const mediaName = getClientValue("media", "client-name").trim();
           const mediaSafe =
             mediaName.replace(/[^\w\s-]+/g, "").replace(/\s+/g, "_") ||
             "CLIENTE";
