@@ -9,19 +9,19 @@
  */
 
 // CONSTANTES GLOBALES
-const PATM_MBAR = 723.6;  // Presión atmosférica en mbar
+const PATM_MBAR = 823;  // Presión atmosférica por defecto en mbar
 const FACTOR_RENOUARD = 23200 * 0.67;  // Constante Renouard
-const FACTOR_VEL_BAJA = 345;  // Factor velocidad BAJA
+const FACTOR_VEL_BAJA = 354;  // Factor velocidad unificado
 const FACTOR_VEL_MEDIA = 354;  // Factor velocidad MEDIA
 const FACTOR_LE_BAJA = 1.2;  // 20% adicional LE en BAJA
-const FACTOR_LE_MEDIA = 0.2;  // 20% de LE en MEDIA
+const FACTOR_LE_MEDIA = 1.2;  // 20% adicional LE en MEDIA
 
 /**
  * Obtiene la presión atmosférica según la ciudad/altitud
  * @returns {number} Presión atmosférica en mbar
  */
 function getPATM() {
-    const atmPressureInput = document.getElementById('atmPressure');
+    const atmPressureInput = document.getElementById('presionAtmosferica');
     return atmPressureInput ? parseFloat(atmPressureInput.value) || PATM_MBAR : PATM_MBAR;
 }
 
@@ -34,7 +34,7 @@ function getPATM() {
  * F = E * 1.2
  * I = 23200 * 0.67 * F * (D^1.82) * (G^-4.82)
  * J = H - I
- * K = 345 * D * (((J/1000) + 0.7236)^-1) * (G^-2)
+ * K = 354 * Q / (D² * √P)
  */
 function calculateSegmentBAJA(segment) {
     const { inicio, fin, caudal, longitud, diametro, pi, material } = segment;
@@ -58,14 +58,14 @@ function calculateSegmentBAJA(segment) {
     const pf = Math.max(0, pi - perdida);
 
     // 4. VELOCIDAD
-    // K = 345 * D * (((J/1000) + 0.7236)^-1) * (G^-2)
-    const presionMediaAbsBar = (pf / 1000) + 0.7236;  // bar
-    const velocidad = (presionMediaAbsBar > 0) 
-        ? FACTOR_VEL_BAJA * caudal * Math.pow(presionMediaAbsBar, -1) * Math.pow(diametro, -2)
+    // K = 354 * Q / (D² * √P)
+    const PATM = getPATM();
+    const pAbs = pf + PATM;  // mbar absoluto
+    const velocidad = (pAbs > 0) 
+        ? FACTOR_VEL_BAJA * caudal * Math.pow(diametro, -2) * Math.pow(pAbs, -0.5)
         : 0;
 
     // 5. PRESIONES ABSOLUTAS (referencia)
-    const PATM = getPATM();
     const piAbs = (pi + PATM) / 1000;  // bar
     const pfAbs = (pf + PATM) / 1000;  // bar
     const deltaAbsoluto = piAbs - pfAbs;
@@ -87,6 +87,7 @@ function calculateSegmentBAJA(segment) {
         longTotal,        // m
         pi,               // mbar
         perdida,          // mbar
+        deltaP: perdida,  // mbar (alias)
         pf: Math.max(0, pf),           // mbar
         velocidad,        // m/s
         status: estado,
@@ -106,17 +107,17 @@ function calculateSegmentBAJA(segment) {
  * Calcula MEDIA PRESIÓN exactamente como Excel:
  * J = F * 0.2
  * K = J + F
- * M = L + 723.6
+ * M = L + PATM
  * N = M^2
  * O = SQRT(N - (C*0.67^0.425*K^0.576/(4.61E-05*E^2.725))^1.74)
- * P = O - 723.6
+ * P = O - PATM
  * Q = (P*20)/1380
  * R = (M-O)/M
  * S = (L-P)/L
- * W = 354*C*(0.7236+P/1000)^-1*E^-2
+ * W = 354*C*(PATM+P/1000)^-1*E^-2
  */
 function calculateSegmentMEDIA(segment) {
-    const { tramo, caudal, diametroNominal, diametroInterior, longitud, tee, codos, valvulas, pi } = segment;
+    const { tramo, caudal, diametroNominal, diametroInterior, longitud, pi } = segment;
 
     // Validar datos
     if (!caudal || !longitud || !diametroInterior || pi === undefined || pi === null) {
@@ -129,8 +130,8 @@ function calculateSegmentMEDIA(segment) {
     const longTotal = longitud + le;  // K
 
     // 2. PRESIÓN ABSOLUTA
-    // M = L + 723.6
-    const p1Abs = pi + PATM_MBAR;  // mbar
+    // M = L + PATM
+    const p1Abs = pi + getPATM();  // mbar
 
     // 3. CUADRADO PRESIÓN ABSOLUTA
     // N = M^2
@@ -145,8 +146,8 @@ function calculateSegmentMEDIA(segment) {
     const p2Abs = Math.sqrt(p2AbsQuad);
 
     // 5. PRESIÓN FINAL MANOMÉTRICA
-    // P = O - 723.6
-    const pf = p2Abs - PATM_MBAR;
+    // P = O - PATM
+    const pf = p2Abs - getPATM();
 
     // 6. CONVERSIÓN A PSI
     // Q = (P*20)/1380
@@ -162,10 +163,10 @@ function calculateSegmentMEDIA(segment) {
     const estPerdida = (perdidaManometrica < 0.10) ? 'APROBADO' : 'NO APROBADO';
 
     // 9. VELOCIDAD
-    // W = 354*C*(0.7236+P/1000)^-1*E^-2
-    const presAbsBar = (pf / 1000) + 0.7236;  // bar
-    const velocidad = (presAbsBar > 0)
-        ? FACTOR_VEL_MEDIA * caudal * Math.pow(presAbsBar, -1) * Math.pow(diametroInterior, -2)
+    // W = 354 * Q / (D² * √P)
+    const pAbs = p1Abs;  // mbar absoluto de entrada
+    const velocidad = (pAbs > 0)
+        ? FACTOR_VEL_MEDIA * caudal * Math.pow(diametroInterior, -2) * Math.pow(pAbs, -0.5)
         : 0;
 
     // 10. VALIDACIÓN VELOCIDAD < 20 m/s
@@ -177,9 +178,6 @@ function calculateSegmentMEDIA(segment) {
         diametroNominal,  // pulg
         diametroInterior, // mm
         longitud,         // m
-        tee,              // cantidad
-        codos,            // cantidad
-        valvulas,         // cantidad
         le,               // m
         longTotal,        // m
         pi,               // mbar (P1)
@@ -187,6 +185,7 @@ function calculateSegmentMEDIA(segment) {
         p1AbsQuad,        // mbar² (N)
         p2Abs,            // mbar (O)
         pf: Math.max(0, pf),           // mbar (P2)
+        deltaP: pi - pf,               // mbar (diferencia de presión)
         psi: Math.max(0, psiValue),    // psi (Q)
         perdidaAbsoluta,  // % (R)
         perdidaManometrica, // % (S)
@@ -207,8 +206,9 @@ function calculateSegmentMEDIA(segment) {
  * @returns {number} - Longitud equivalente
  */
 function calculateLE(longitud, material) {
-    const factores = { 'PE AL PE': 1.2, 'Cobre': 1.15, 'Acero': 1.25 };
-    return longitud * (factores[material] || 1.0);
+    const L = parseFloat(longitud) || 0;
+    const factor = (config && config.factores && config.factores.accesorioGlobal) || 1.20;
+    return L * factor;
 }
 
 /**
@@ -379,6 +379,20 @@ function checkSegmentStatus({ velocidad, deltaP, pi, caudal, longitud, diametro,
         class: aprobado ? "approved-row" : "rejected-row",
         detalles
     };
+}
+
+/**
+ * Función automática que calcula un segmento basándose en el tipo de presión
+ * @param {object} segment - Datos del segmento
+ * @param {string} pressureType - Tipo de presión ('baja' o 'media')
+ * @returns {object} - Resultado del cálculo
+ */
+function calculateSegmentAutomatic(segment, pressureType) {
+    if (pressureType === 'media' || pressureType === 'MEDIA') {
+        return calculateSegmentMEDIA(segment);
+    } else {
+        return calculateSegmentBAJA(segment);
+    }
 }
 
 /**
