@@ -375,7 +375,7 @@ y += 18;
             y += 10;
             
             // Grafica 1: Presion a lo largo de la red - ALTA CALIDAD OPTIMIZADA
-            const chartP = document.getElementById('chartP');
+            const chartP = document.getElementById('pressureChart');
             if (chartP && typeof html2canvas !== 'undefined') {
                 const canvasP = await html2canvas(chartP, { 
                     scale: 2,  // Alta calidad optimizada

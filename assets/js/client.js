@@ -14,12 +14,12 @@
  */
 function saveClientData() {
     const clientData = {
-        name: sanitizeInput(document.getElementById('clientName')?.value || ''),
-        address: sanitizeInput(document.getElementById('clientAddress')?.value || ''),
-        projectDate: document.getElementById('projectDate')?.value || '',
-        gasType: sanitizeInput(document.getElementById('gasType')?.value || 'GN'),
-        pressureLevel: sanitizeInput(document.getElementById('pressureLevel')?.value || 'baja'),
-        initialPressure: parseFloat(document.getElementById('initialPressure')?.value || 23),
+        name: sanitizeInput(document.getElementById('bajaClientName')?.value || ''),
+        address: sanitizeInput(document.getElementById('bajaClientAddress')?.value || ''),
+        projectDate: document.getElementById('bajaProjectDate')?.value || '',
+        gasType: sanitizeInput(document.getElementById('bajaGasType')?.value || 'GN'),
+        pressureLevel: sanitizeInput(document.getElementById('bajaPressureLevel')?.value || 'baja'),
+        initialPressure: parseFloat(document.getElementById('bajaInitialPressure')?.value || 23),
         atmPressure: parseFloat(document.getElementById('atmPressure')?.value || 723.6),
         timestamp: new Date().toISOString()
     };
@@ -59,12 +59,12 @@ function loadClientData() {
         const savedClient = localStorage.getItem('currentGasClient');
         if (savedClient) {
             currentClient = JSON.parse(savedClient);
-            document.getElementById('clientName').value = currentClient.name || '';
-            document.getElementById('clientAddress').value = currentClient.address || '';
-            document.getElementById('projectDate').value = currentClient.projectDate || '';
-            document.getElementById('gasType').value = currentClient.gasType || 'GN';
-            document.getElementById('pressureLevel').value = currentClient.pressureLevel || 'baja';
-            document.getElementById('initialPressure').value = currentClient.initialPressure || 23;
+            document.getElementById('bajaClientName').value = currentClient.name || '';
+            document.getElementById('bajaClientAddress').value = currentClient.address || '';
+            document.getElementById('bajaProjectDate').value = currentClient.projectDate || '';
+            document.getElementById('bajaGasType').value = currentClient.gasType || 'GN';
+            document.getElementById('bajaPressureLevel').value = currentClient.pressureLevel || 'baja';
+            document.getElementById('bajaInitialPressure').value = currentClient.initialPressure || 23;
             document.getElementById('atmPressure').value = currentClient.atmPressure || 723.6;
         }
     } catch (error) {

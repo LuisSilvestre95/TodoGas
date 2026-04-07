@@ -12,6 +12,9 @@ const config = {
         diametro: 'mm',
         velocidad: 'm/s'
     },
+    factores: {
+        accesorioGlobal: 1.20 // 20% automático de mayoración por longitud equivalente
+    },
     // Métodos de cálculo activos
     methods: {
         baja: 'darcy',      // 'darcy' | 'renouard'
