@@ -39,6 +39,13 @@ html {
     font-size: 16px;
 }
 
+/* Oculta columnas de accesorios manuales si existen en la interfaz */
+.col-accesorios,
+th.accesorio,
+td.accesorio {
+    display: none !important;
+}
+
 body {
     font-family: 'Segoe UI', 'Roboto', sans-serif;
     background-color: var(--light-bg);
@@ -319,6 +326,11 @@ body {
 .result-table tr.editing-row {
     background-color: rgba(243, 156, 18, 0.2);
     animation: highlight 0.5s ease-in-out;
+}
+
+.excel-table tr.editing {
+    background-color: rgba(243, 156, 18, 0.2);
+    border-left: 4px solid var(--warning-color);
 }
 
 /* ========================= */
@@ -742,76 +754,86 @@ body {
 }
 
 .status-aprobado {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
-    color: white !important;
-    font-weight: 800;
-    padding: 0.6rem 1rem;
+    background: #dcfce7 !important;
+    color: #065f46 !important;
+    font-weight: 700;
+    padding: 0.45rem 0.75rem;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.5);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: 1px;
-    animation: pulseGreen 2s ease-in-out infinite;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(22, 101, 52, 0.18);
+    letter-spacing: 0.5px;
     text-transform: uppercase;
-    font-size: 0.85rem;
-}
-
-@keyframes pulseGreen {
-    0%, 100% {
-        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.5);
-    }
-    50% {
-        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.8);
-    }
+    font-size: 0.82rem;
 }
 
 .status-rechazado {
-    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
-    color: white !important;
-    font-weight: 800;
-    padding: 0.6rem 1rem;
+    background: #fee2e2 !important;
+    color: #991b1b !important;
+    font-weight: 700;
+    padding: 0.45rem 0.75rem;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.5);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: 1px;
-    animation: pulseRed 2s ease-in-out infinite;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(185, 28, 28, 0.18);
+    letter-spacing: 0.5px;
     text-transform: uppercase;
-    font-size: 0.85rem;
-}
-
-@keyframes pulseRed {
-    0%, 100% {
-        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.5);
-    }
-    50% {
-        box-shadow: 0 6px 20px rgba(239, 68, 68, 0.8);
-    }
+    font-size: 0.82rem;
 }
 
 .btn-row-action {
-    padding: 0.5rem 0.75rem;
+    padding: 0.45rem 0.85rem;
     border: none;
-    border-radius: 6px;
+    border-radius: 999px;
     cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
+    font-size: 0.92rem;
+    transition: all 0.22s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.3rem;
+    gap: 0.35rem;
+    min-width: 44px;
+    min-height: 38px;
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08);
+}
+
+.btn-edit {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    color: white;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.btn-edit:hover {
+    background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);
+    transform: translateY(-1px) scale(1.03);
+    box-shadow: 0 8px 18px rgba(2, 132, 199, 0.22);
+}
+
+.btn-edit:focus,
+.btn-delete:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
 }
 
 .btn-delete {
     background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
     color: white;
     font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    min-width: 44px;
+    min-height: 38px;
 }
 
 .btn-delete:hover {
     background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-    transform: translateY(-2px) scale(1.1);
-    box-shadow: 0 6px 12px rgba(239, 68, 68, 0.5);
+    transform: translateY(-1px) scale(1.04);
+    box-shadow: 0 8px 18px rgba(239, 68, 68, 0.26);
+}
+
+.excel-table td:last-child {
+    text-align: center;
+}
+
+.excel-table tbody tr:hover {
+    background: rgba(56, 189, 248, 0.07);
 }
 
 .btn-excel {
